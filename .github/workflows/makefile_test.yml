@@ -1,0 +1,54 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile_tester.yml                                :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/05 16:00:54 by umeneses          #+#    #+#              #
+#    Updated: 2025/01/05 08:39:23 by umeneses         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+name: makefile tester
+
+on:
+  push:
+    branches:
+    - main
+    - '**feature**'
+    - '**feat**'
+    - '**bugfix**'
+    - '**fix**'
+    - '**release**'
+  pull_request:
+    branches:
+    - main
+    - '**feature**'
+    - '**feat**'
+    - '**bugfix**'
+    - '**fix**'
+    - '**release**'
+
+jobs:
+  makefile_tester:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - name: Starting Github Actions
+        uses: actions/checkout@v4.1.4
+
+      # - name: Install Aptitude
+      #   run: sudo apt-get install aptitude
+
+      # - name: Install Valgrind
+      #   run: sudo aptitude install -y valgrind
+
+      # - name: Submodule Init
+      #   run: git submodule init && git submodule update
+
+      - name: Building Program with MiniShell Makefile
+        run: make
