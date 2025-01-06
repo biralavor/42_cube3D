@@ -17,8 +17,10 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		printf("Cube3D needs a map file to starts the game session.\n");
-		exit(EXIT_FAILURE);
+		if (ac < 2)
+			ft_error_msg("Cube3D needs a map file to starts the game session.\n");
+		else
+			printf("Cube3D only accepts one map file to starts the game session.\n");
 	}
 
 	printf("I grab the file: %s\n", av[1]);
