@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:     #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/05 11:46:52 by umeneses          #+#    #+#              #
-#    Updated: 2025/01/05 16:50:46 by umeneses         ###   ########.fr        #
+#    Created: 2025/01/06 13:13:39 by umeneses          #+#    #+#              #
+#    Updated: 2025/01/06 13:13:39 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,7 +132,7 @@ define					instructions
 endef
 
 define					instructions_bonus
-						@echo "No, you're ready to run Minishell with adrenaline!!"
+						@echo "Are you ready to run Cube3D with adrenaline???"
 						@echo "Hit ./$(NAME_BONUS) and call any command to start"
 endef
 
@@ -146,6 +146,10 @@ endif
 
 define					bonus
 						$(MAKE) WITH_BONUS=TRUE --no-print-directory
+endef
+
+define					map_for_testing
+						maps/tester_map.cub
 endef
 
 # **************************************************************************** #
@@ -221,7 +225,7 @@ min:				re
 					./$(NAME)
 
 go:					all
-					./$(NAME)
+					./$(NAME) $(call map_for_testing)
 
 gdb:				all
 					gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
