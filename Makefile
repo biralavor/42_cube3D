@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:     #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/05 11:46:52 by umeneses          #+#    #+#              #
-#    Updated: 2025/01/05 16:50:46 by umeneses         ###   ########.fr        #
+#    Created: 2025/01/06 13:13:39 by umeneses          #+#    #+#              #
+#    Updated: 2025/01/06 13:13:39 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,12 +45,13 @@ TDD_UTILS_D				= ./_tdd_utils/
 
 LIBFT					= $(addprefix $(LIBFT_D), libft.a)
 MLX42					= $(addprefix $(MLX42_BUILD), libmlx42.a)
-LIBS					= $(LIBTF) $(MLX42)
+LIBS					= $(LIBFT) $(MLX42)
 
 NAME					= cub3d
 
 SRC_FILES				= 01.main.c
-#SRC_FILES				+= 02.file_manager.c
+SRC_FILES				+= map_validation/map_validation.c
+SRC_FILES				+= map_validation/existing_mapfile.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -132,7 +133,7 @@ define					instructions
 endef
 
 define					instructions_bonus
-						@echo "No, you're ready to run Minishell with adrenaline!!"
+						@echo "Are you ready to run Cube3D with adrenaline???"
 						@echo "Hit ./$(NAME_BONUS) and call any command to start"
 endef
 
@@ -148,6 +149,10 @@ define					bonus
 						$(MAKE) WITH_BONUS=TRUE --no-print-directory
 endef
 
+define					map_for_testing
+						maps/tester_map.cub
+endef
+
 # **************************************************************************** #
 #								COMPILATION									   #
 # **************************************************************************** #
@@ -157,9 +162,9 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
 LDLIBS		= $(addprefix -L, $(dir $(LIBS)))
-LDFLAGS		= -ldl -lglfw -pthread -lm
+LDFLAGS		= -lft -ldl -lglfw -pthread -lm
 COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS_ALL) $(LDLIBS) -o $(NAME)
+COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
@@ -194,8 +199,8 @@ libft_lib:
 					@printf "$(RESET)"
 
 mlx_lib:
-					@cmake $(MLX42_D) -B $(MLX42_D)build
-					$(MAKE) -C $(MLX42_D)build -j4
+#					@cmake $(MLX42_D) -B $(MLX42_D)build
+#					@$(MAKE) -C $(MLX42_D)build -j4 --no-print-directory
 
 bonus:
 					$(call bonus)
@@ -221,7 +226,7 @@ min:				re
 					./$(NAME)
 
 go:					all
-					./$(NAME)
+					./$(NAME) $(call map_for_testing)
 
 gdb:				all
 					gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
