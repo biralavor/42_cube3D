@@ -45,7 +45,7 @@ TDD_UTILS_D				= ./_tdd_utils/
 
 LIBFT					= $(addprefix $(LIBFT_D), libft.a)
 MLX42					= $(addprefix $(MLX42_BUILD), libmlx42.a)
-LIBS					= $(LIBTF) $(MLX42)
+LIBS					= $(LIBFT) $(MLX42)
 
 NAME					= cub3d
 
@@ -161,9 +161,9 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
 LDLIBS		= $(addprefix -L, $(dir $(LIBS)))
-LDFLAGS		= -ldl -lglfw -pthread -lm
+LDFLAGS		= -lft -ldl -lglfw -pthread -lm
 COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS_ALL) $(LDLIBS) -o $(NAME)
+COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
@@ -199,7 +199,7 @@ libft_lib:
 
 mlx_lib:
 					@cmake $(MLX42_D) -B $(MLX42_D)build
-					$(MAKE) -C $(MLX42_D)build -j4
+					@$(MAKE) -C $(MLX42_D)build -j4 --no-print-directory
 
 bonus:
 					$(call bonus)
