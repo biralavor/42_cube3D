@@ -1,7 +1,7 @@
-/home/biralavor/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/mlx42.dir
-/home/biralavor/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/edit_cache.dir
-/home/biralavor/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/rebuild_cache.dir
-/home/biralavor/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/list_install_components.dir
-/home/biralavor/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/install.dir
-/home/biralavor/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/install/local.dir
-/home/biralavor/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/install/strip.dir
+/home/biralavor/Documents/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/mlx42.dir
+/home/biralavor/Documents/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/edit_cache.dir
+/home/biralavor/Documents/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/rebuild_cache.dir
+/home/biralavor/Documents/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/list_install_components.dir
+/home/biralavor/Documents/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/install.dir
+/home/biralavor/Documents/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/install/local.dir
+/home/biralavor/Documents/42_cursus/42_cube3D/libs/codam/build/CMakeFiles/install/strip.dir
