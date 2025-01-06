@@ -13,18 +13,20 @@
 #include "cube3d.h"
 
 
+
+
 int main(int ac, char **av)
 {
-	if (ac != 2)
-	{
-		if (ac < 2)
-			ft_error_msg("Cube3D needs a map file to starts the game session.\n");
-		else
-			printf("Cube3D only accepts one map file to starts the game session.\n");
-	}
+	t_map	*map;
 
-	printf("I grab the file: %s\n", av[1]);
-	
-	printf("Hello, Cube3D!\n");
-	return (0);
+	map = NULL;
+	if(map_validation(ac, av, map))
+	{
+		printf("I grab the file: %s\n", av[1]);
+		printf("Hello, Cube3D!\n");
+	}
+	else
+		exit(EXIT_FAILURE);
+
+	exit(EXIT_SUCCESS);
 }
