@@ -1,7 +1,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile_tester.yml                                :+:      :+:    :+:    #
+#    makefile_test.yml                                  :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -50,5 +50,5 @@ jobs:
       # - name: Submodule Init
       #   run: git submodule init && git submodule update
 
-      - name: Building Program with MiniShell Makefile
+      - name: Building Program with Cube3D Makefile
         run: make
