@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/06 18:52:50 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:29:32 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@
 typedef struct s_map
 {
 	char	**matrix_map;
+	char	*file;
 	int32_t	fd;
 }			t_map;
 
 bool	map_validation(int ac, char **av, t_map *map);
 bool	existing_mapfile(int ac, char **argv, t_map *map);
-
+bool	check_extension_valid(int ac, char **av, t_map *map);
+bool	check_file_content_map(int ac, char **av, t_map *map);
 
 
 // struct for all datas
