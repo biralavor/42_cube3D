@@ -19,11 +19,11 @@ int main(int ac, char **av)
 {
 	t_map	*map;
 
-	map = NULL;
+	map = ft_calloc(1, sizeof(t_map));
+
 	if(map_validation(ac, av, map))
 	{
-		printf("I grab the file: %s\n", av[1]);
-		printf("Hello, Cube3D!\n");
+		printf(GREEN"\n\nHello, Cube3D!\n"RESET);
 	}
 	else
 		exit(EXIT_FAILURE);

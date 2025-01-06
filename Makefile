@@ -51,7 +51,9 @@ NAME					= cub3d
 
 SRC_FILES				= 01.main.c
 SRC_FILES				+= map_validation/map_validation.c
-SRC_FILES				+= map_validation/existing_mapfile.c
+SRC_FILES				+= map_validation/map_opener.c
+SRC_FILES				+= map_validation/map_reader.c
+SRC_FILES				+= map_validation/map_printer.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -94,7 +96,6 @@ define	project_title
 		@printf "$(CYAN)"
 		@echo "                                                                    "
 		@echo "#########################    WELCOME TO    #########################"
-		@echo "                                                                    "
 		@echo "                         _            ___________                   "
 		@echo "                        | |          |____ |  _  \                  "
 		@echo "               ___ _   _| |__   ___      / / | | |                  "
@@ -102,9 +103,7 @@ define	project_title
 		@echo "             | (__| |_| | |_) |  __/ .___/ / |/ /                   "
 		@echo "              \___|\__,_|_.__/ \___| \____/|___/          ♥‿♥       "
 		@echo "                                                                    "
-		@echo "                                                                    "
 		@echo "####################################################################"
-		@echo "                                                                    "
 		@printf "$(RESET)"
 endef
 
@@ -112,7 +111,6 @@ define	project_title_bonus
 		@printf "$(CYAN)"
 		@echo "                                                                    "
 		@echo "#########################    WELCOME TO    #########################"
-		@echo "                                                                    "
 		@echo "                         _            ___________                   "
 		@echo "                        | |          |____ |  _  \                  "
 		@echo "               ___ _   _| |__   ___      / / | | |                  "
@@ -120,9 +118,7 @@ define	project_title_bonus
 		@echo "             | (__| |_| | |_) |  __/ .___/ / |/ /                   "
 		@echo "              \___|\__,_|_.__/ \___| \____/|___/          ♥‿♥       "
 		@echo "                                                                    "
-		@echo "                                                                    "
 		@echo "#########################       BONUS      #########################"
-		@echo "                                                                    "
 		@printf "$(RESET)"
 endef
 
