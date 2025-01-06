@@ -193,6 +193,10 @@ libft_lib:
 					@printf "$(YELLOW)"
 					@printf "$(RESET)"
 
+mlx_lib:
+					@cmake $(MLX42_D) -B $(MLX42_D)build
+					$(MAKE) -C $(MLX42_D)build -j4
+
 bonus:
 					$(call bonus)
 
@@ -223,6 +227,6 @@ gdb:				all
 					gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
 
 val:				re
-					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=readline.sup ./$(NAME)
+					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=mlx_suppressions.sup ./$(NAME)
 
 .PHONY:				all clean fclean re bonus min val gdb
