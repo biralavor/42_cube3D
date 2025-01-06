@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/07 18:58:44 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:52:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,35 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <string.h>
+
+# define MAX_MAP_WIDTH 20
+# define MAX_MAP_HEIGHT 20
+
+# define RED	"\033[0;31m"
+# define GREEN	"\033[0;32m"
+# define YELLOW	"\033[0;33m"
+# define BLUE	"\033[0;34m"
+# define PURPLE	"\033[0;35m"
+# define CYAN	"\033[0;36m"
+# define RESET	"\033[0m"
 
 
 typedef struct s_map
 {
 	char	**matrix_map;
 	char	*file;
+	char	*buffer;
+	int32_t	bytes_read;
 	int32_t	fd;
 }			t_map;
 
 bool	check_extension_valid(t_map *map);
 bool	check_file_content_map(t_map *map);
 bool	map_validation(int ac, char **av, t_map *map);
-bool	existing_mapfile(int ac, char **argv, t_map *map);
-
+bool	map_opener(int ac, char **argv, t_map *map);
+bool	map_reader(t_map *map);
+void	map_printer(t_map *map);
 
 
 // struct for all datas
