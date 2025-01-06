@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:28:14 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/06 18:40:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:02:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ bool	existing_mapfile(int ac, char **argv, t_map *map)
 	if (ac != 2)
 	{
 		if (ac < 2)
-			ft_error_msg("Cube3D needs a map file to starts the game session.\n");
+			ft_error_msg("Cube3D needs a map file to starts the game.\n");
 		else
-			printf("Cube3D only accepts one map file to starts the game session.\n");
+			printf("Cube3D only accepts one map file.\n");
 	}
 	map->fd = open(argv[1], O_RDONLY);
 	ft_printf("saving map file at map->fd = %d\n", map->fd);
