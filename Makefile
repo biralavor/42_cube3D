@@ -50,7 +50,8 @@ LIBS					= $(LIBFT) $(MLX42)
 NAME					= cub3d
 
 SRC_FILES				= 01.main.c
-#SRC_FILES				+= 02.file_manager.c
+SRC_FILES				+= map_validation/map_validation.c
+SRC_FILES				+= map_validation/existing_mapfile.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -198,8 +199,8 @@ libft_lib:
 					@printf "$(RESET)"
 
 mlx_lib:
-					@cmake $(MLX42_D) -B $(MLX42_D)build
-					@$(MAKE) -C $(MLX42_D)build -j4 --no-print-directory
+#					@cmake $(MLX42_D) -B $(MLX42_D)build
+#					@$(MAKE) -C $(MLX42_D)build -j4 --no-print-directory
 
 bonus:
 					$(call bonus)
