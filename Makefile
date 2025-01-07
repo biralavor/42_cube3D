@@ -52,6 +52,7 @@ NAME					= cub3d
 SRC_FILES				= 01.main.c
 SRC_FILES				+= map_validation/map_validation.c
 SRC_FILES				+= map_validation/existing_mapfile.c
+SRC_FILES				+= map_validation/invalid_extension.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -229,7 +230,7 @@ go:					all
 					./$(NAME) $(call map_for_testing)
 
 gdb:				all
-					gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
+					gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'b main' -ex 'run > /dev/null 2>&1' ./$(NAME)
 
 val:				re
 					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=mlx_suppressions.sup ./$(NAME)

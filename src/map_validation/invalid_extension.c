@@ -6,18 +6,18 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:32:29 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/06 19:27:55 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:58:30 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool	check_extension_valid(int ac, char **av, t_map *map)
+bool	check_extension_valid(t_map *map)
 {
 	int		i;
 
 	i = ft_strlen(map->file);
-	if (ft_strncmp(map->file[i - 4], ".cub", 4) != 0)
+	if (ft_strncmp(&map->file[i - 4], ".cub", 4) != 0)
 	{
 		ft_putendl_fd("Map not in .cub extension!\n", STDOUT_FILENO);
 		return (false);
@@ -25,11 +25,13 @@ bool	check_extension_valid(int ac, char **av, t_map *map)
 	return (true);
 }
 
-bool	check_file_content_map(int ac, char **av, t_map *map)
+bool	check_file_content_map(t_map *map)
 {
 	int		fd;
 	char	buffer[1];
+	int		i;
 
+	i = ft_strlen(map->file);
 	fd = open(map->file, O_RDONLY);
 	if (read(fd, buffer, 1) == 0)
 	{
