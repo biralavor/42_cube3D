@@ -51,6 +51,7 @@ NAME					= cub3d
 
 SRC_FILES				= 01.main.c
 SRC_FILES				+= map_validation/map_validation.c
+SRC_FILES				+= map_validation/invalid_extension.c
 SRC_FILES				+= map_validation/map_opener.c
 SRC_FILES				+= map_validation/map_reader.c
 SRC_FILES				+= map_validation/map_printer.c
@@ -148,7 +149,7 @@ define					bonus
 endef
 
 define					map_for_testing
-						maps/invalid_unique_def_compass.cub
+						maps/invalid_extension.cub3d
 endef
 
 # **************************************************************************** #
@@ -227,7 +228,7 @@ go:					all
 					./$(NAME) $(call map_for_testing)
 
 gdb:				all
-					gdb --tui -ex 'b main' -ex 'b unique_def_compass' -ex 'set args $(call map_for_testing)' -ex 'set detach-on-fork off'\
+					gdb --tui -ex 'b main' -ex 'b check_extension_valid' -ex 'set args $(call map_for_testing)' -ex 'set detach-on-fork off'\
 					-ex 'info inferiors' ./$(NAME)
 
 val:				re

@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/07 21:10:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:28:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_map
 	int32_t	fd;
 }			t_map;
 
+bool	valid_extension_checker(t_map *map);
+// bool	check_file_content_map(t_map *map);
 bool	map_validation(int ac, char **av, t_map *map);
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_reader(t_map *map);
