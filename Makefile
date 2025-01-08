@@ -54,6 +54,8 @@ SRC_FILES				+= map_validation/map_validation.c
 SRC_FILES				+= map_validation/map_opener.c
 SRC_FILES				+= map_validation/map_reader.c
 SRC_FILES				+= map_validation/map_printer.c
+SRC_FILES				+= map_validation/map_compass_datafinder.c
+SRC_FILES				+= map_validation/unique_def_compass.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -146,7 +148,7 @@ define					bonus
 endef
 
 define					map_for_testing
-						maps/tester_map.cub
+						maps/invalid_unique_def_compass.cub
 endef
 
 # **************************************************************************** #
@@ -225,9 +227,12 @@ go:					all
 					./$(NAME) $(call map_for_testing)
 
 gdb:				all
-					gdb --tui -ex 'b main' -ex 'set detach-on-fork off' -ex 'info inferiors' -ex 'run > /dev/null 2>&1' ./$(NAME)
+					gdb --tui -ex 'b main' -ex 'b unique_def_compass' -ex 'set args $(call map_for_testing)' -ex 'set detach-on-fork off'\
+					-ex 'info inferiors' ./$(NAME)
 
 val:				re
-					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=mlx_suppressions.sup ./$(NAME)
+					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*'\
+					--trace-children=yes --track-fds=yes --show-reachable=yes\
+					--suppressions=mlx_suppressions.sup ./$(NAME)  $(call map_for_testing)
 
 .PHONY:				all clean fclean re bonus min val gdb
