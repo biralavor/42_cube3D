@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/08 17:53:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:55:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 bool	map_validation(int ac, char **av, t_map *map)
 {
 	if (map_opener(ac, av, map)
-		&& map_reader(map))
+		&& map_reader(map)
+		&& unique_def_compass(map))
 	{
 		//check_extension_valid(map);
 		//check_file_content_map(map);
