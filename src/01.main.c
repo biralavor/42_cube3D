@@ -26,7 +26,7 @@ int main(int ac, char **av)
 		printf(GREEN"\n\nHello, Cube3D!\n"RESET);
 	}
 	else
-		exit(EXIT_FAILURE);
+		ft_error_msg("Map validation failed\n");
 
 	exit(EXIT_SUCCESS);
 }
