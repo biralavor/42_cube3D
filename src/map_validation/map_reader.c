@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:10:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/06 20:15:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:16:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ bool	map_reader(t_map *map)
 		map->buffer[map->bytes_read] = '\0';
 		return (true);
 	}
-	ft_error_msg("No map data to print. Is it empty?\n");
+	ft_error_msg("No map data here. Is it empty?\n");
 	return (false);
 }

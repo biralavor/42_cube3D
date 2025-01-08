@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   existing_mapfile.c                                 :+:      :+:    :+:   */
+/*   map_opener.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:28:14 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/06 20:22:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:22:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	map_opener(int ac, char **av, t_map *map)
 	map->fd = open(av[1], O_RDONLY);
 	if (map->fd != -1)
 		return (true);
-	ft_error_msg("Error!\nInvalid map file T.T\n");
 	close(map->fd);
+	ft_error_msg("No map file found with this name T.T\n");
 	return (false);
 }
