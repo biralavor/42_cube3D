@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_printer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:08:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/06 20:18:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:04:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	map_printer(t_map *map)
 {
-	int32_t	y;
-
-	y = -1;
 	if (map->buffer)
 	{
 		ft_printf(CYAN"\nThis is your MAP:\n"RESET);
