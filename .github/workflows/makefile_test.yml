@@ -45,7 +45,7 @@ jobs:
         run: sudo apt-get install aptitude
 
       - name: Install GLFW Library
-        run: sudo aptitude install libglfw3 libglfw3-dev libglfw3-doc
+        run: sudo aptitude install libglfw3 libglfw3-dev libglfw3-doc -y
 
       # - name: Install Aptitude
       #   run: sudo apt-get install aptitude
