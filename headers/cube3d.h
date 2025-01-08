@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/08 17:52:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:54:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ bool	map_validation(int ac, char **av, t_map *map);
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_reader(t_map *map);
 void	map_printer(t_map *map);
+bool	unique_def_compass(t_map *map);
+bool	north_compass_datafinder(t_map *map, int *already_found);
+bool	south_compass_datafinder(t_map *map, int *already_found);
+bool	west_compass_datafinder(t_map *map, int *already_found);
+bool	east_compass_datafinder(t_map *map, int *already_found);
 
 
 // struct for all datas
