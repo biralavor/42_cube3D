@@ -41,6 +41,12 @@ jobs:
       - name: Starting Github Actions
         uses: actions/checkout@v4.1.4
 
+      - name: Install Aptitude
+        run: sudo apt-get install aptitude
+
+      - name: Install GLFW Library
+        run: sudo aptitude install libglfw3 libglfw3-dev libglfw3-doc -y
+
       # - name: Install Aptitude
       #   run: sudo apt-get install aptitude
 
