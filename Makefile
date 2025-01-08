@@ -58,6 +58,8 @@ SRC_FILES				+= map_validation/map_reader.c
 SRC_FILES				+= map_validation/map_printer.c
 SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
+# SRC_FILES				+= map_validation/existing_mapfile.c
+SRC_FILES				+= map_validation/invalid_extension.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
