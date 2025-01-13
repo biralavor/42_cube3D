@@ -50,6 +50,7 @@ LIBS					= $(LIBFT) $(MLX42)
 NAME					= cub3d
 
 SRC_FILES				= 01.main.c
+SRC_FILES				+= 02.structures_init.c
 SRC_FILES				+= map_validation/map_validation.c
 SRC_FILES				+= map_validation/invalid_extension.c
 SRC_FILES				+= map_validation/map_opener.c
@@ -58,6 +59,7 @@ SRC_FILES				+= map_validation/map_printer.c
 SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
 SRC_FILES				+= map_validation/no_garbage_checker.c
+SRC_FILES				+= map_validation/map_array_printer.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -153,6 +155,10 @@ define					map_for_testing
 						maps/tester_map.cub
 endef
 
+define					function_for_testing
+						no_garbage_at_gamemap
+endef
+
 # **************************************************************************** #
 #								COMPILATION									   #
 # **************************************************************************** #
@@ -229,7 +235,7 @@ go:					all
 					./$(NAME) $(call map_for_testing)
 
 gdb:				all
-					gdb --tui -ex 'b main' -ex 'b valid_extension_checker' -ex 'set args $(call map_for_testing)' -ex 'set detach-on-fork off'\
+					gdb --tui -ex 'b main' -ex 'b $(call function_for_testing)' -ex 'set args $(call map_for_testing)' -ex 'set detach-on-fork off'\
 					-ex 'info inferiors' ./$(NAME)
 
 val:				re
