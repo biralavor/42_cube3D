@@ -52,7 +52,7 @@ bool	north_compass_datafinder(t_map *map, int *already_found);
 bool	south_compass_datafinder(t_map *map, int *already_found);
 bool	west_compass_datafinder(t_map *map, int *already_found);
 bool	east_compass_datafinder(t_map *map, int *already_found);
-
+bool	nothing_aftermap(t_map *map, int *already_found);
 
 // struct for all datas
 typedef struct s_data
