@@ -1,0 +1,12 @@
+NO ./images/n.png
+SO ./images/s.png
+WE ./images/w.png
+EA ./images/e.png
+C 225,0,0
+
+1111111
+1000001
+100N001
+1000001
+1111111
+F 240,233,133
