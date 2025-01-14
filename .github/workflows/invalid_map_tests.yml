@@ -1,0 +1,52 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    invalid_map_tests.yml                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/14 16:00:54 by umeneses          #+#    #+#              #
+#    Updated: 2025/01/05 08:39:23 by umeneses         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+name: Test Maps
+
+on: [push, pull_request]
+
+jobs:
+  test-maps:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.4
+
+    - name: Replace map_validation.c
+      run: |
+        cp ./.github/workflows/map_validation_for_actions.c ./src/map_validation/map_validation.c
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential
+
+    - name: Compile Cube3D with make
+      run: make
+
+    - name: Testing all maps in the maps folder
+      run: |
+        mkdir -p test-results
+        for map in ./maps/*; do
+          echo "Testing map: $map"
+          if make go MAP=$map; then
+            echo "🎊 🎊 🎊"
+            echo "😎 😎 😎"
+            echo "🎉 🎉 🎉" 
+            echo "$map: SUCCESS" >> test-results/results.txt
+          else
+            echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+            echo "$map: FAILURE" >> test-results/results.txt
+          fi
+        done
+
+    - name: Display test results
+      run: cat test-results/results.txt
