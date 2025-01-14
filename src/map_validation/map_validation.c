@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/12 22:23:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:07:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ bool	map_validation(int ac, char **av, t_map *map)
 		map_printer(map);
 		return (true);
 	}
-		
 	return(false);
 }
