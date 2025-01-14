@@ -23,10 +23,10 @@ jobs:
       uses: actions/checkout@v4.1.4
 
     - name: Install Aptitude
-      run: sudo apt-get install aptitude
+      run: sudo apt-get install -y aptitude
 
     - name: Install GLFW Library
-      run: sudo aptitude install libglfw3 libglfw3-dev libglfw3-doc -y
+      run: sudo aptitude install -y libglfw3 libglfw3-dev libglfw3-doc
 
     - name: Replace map_validation.c
       run: |
@@ -43,14 +43,27 @@ jobs:
         mkdir -p test-results
         for map in ./maps/*; do
           echo "Testing map: $map"
-          if make go MAP=$map; then
-            echo "🎊 🎊 🎊"
-            echo "😎 😎 😎"
-            echo "🎉 🎉 🎉" 
-            echo "$map: SUCCESS" >> test-results/results.txt
+          filename=$(basename -- "$map")
+          if [[ $filename == invalid* ]]; then
+            if make go MAP=$map; then
+              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+              echo "$map: FAILURE (expected to fail but passed)" >> test-results/results.txt
+            else
+              echo "🎊 🎊 🎊"
+              echo "😎 😎 😎"
+              echo "🎉 🎉 🎉" 
+              echo "$map: SUCCESS (expected to fail and failed)" >> test-results/results.txt
+            fi
           else
-            echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
-            echo "$map: FAILURE" >> test-results/results.txt
+            if make go MAP=$map; then
+              echo "🎊 🎊 🎊"
+              echo "😎 😎 😎"
+              echo "🎉 🎉 🎉" 
+              echo "$map: SUCCESS" >> test-results/results.txt
+            else
+              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+              echo "$map: FAILURE" >> test-results/results.txt
+            fi
           fi
         done
 
