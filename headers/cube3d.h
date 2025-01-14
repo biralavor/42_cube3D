@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/08 19:01:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/12 15:25:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define MAX_MAP_WIDTH 20
-# define MAX_MAP_HEIGHT 20
+# define MAX_MAP_WIDTH 200
+# define MAX_MAP_HEIGHT 200
 
 # define RED	"\033[0;31m"
 # define GREEN	"\033[0;32m"
@@ -35,14 +35,15 @@
 
 typedef struct s_map
 {
-	char	**matrix_map;
+	char	**gamemap;
 	char	*buffer;
 	int32_t	bytes_read;
 	int32_t	fd;
 }			t_map;
 
+void	gamemap_init(t_map *map);
+
 bool	valid_extension_checker(char **av);
-// bool	check_file_content_map(t_map *map);
 bool	map_validation(int ac, char **av, t_map *map);
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_reader(t_map *map);
@@ -52,6 +53,11 @@ bool	north_compass_datafinder(t_map *map, int *already_found);
 bool	south_compass_datafinder(t_map *map, int *already_found);
 bool	west_compass_datafinder(t_map *map, int *already_found);
 bool	east_compass_datafinder(t_map *map, int *already_found);
+bool	no_garbage_checker(t_map *map);
+int		skipping_all_except_gamemap(t_map *map);
+void	gamemap_into_array(t_map *map);
+void	map_array_printer(char **array);
+bool	no_garbage_at_gamemap(t_map *map);
 bool	nothing_aftermap(t_map *map, int *already_found);
 
 // struct for all datas

@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01.main.c                                          :+:      :+:    :+:   */
+/*   02.structures_init.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 13:13:28 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/06 13:13:28 by umeneses         ###   ########.fr       */
+/*   Created: 2025/01/12 13:23:56 by umeneses          #+#    #+#             */
+/*   Updated: 2025/01/12 13:23:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-
-
-
-int main(int ac, char **av)
+void	gamemap_init(t_map *map)
 {
-	t_map	*map;
+	int	idx;
 
-	map = ft_calloc(1, sizeof(t_map));
-	gamemap_init(map);
-
-	if(map_validation(ac, av, map))
+	idx = -1;
+	map->gamemap = (char **)ft_calloc(MAX_MAP_HEIGHT, sizeof(char *));
+	if (!map->gamemap)
+		ft_error_msg("Malloc failed at gamemap rows\n");
+	while (++idx < MAX_MAP_HEIGHT)
 	{
-		printf(GREEN"\n\nHello, Cube3D!\n"RESET);
+		map->gamemap[idx] = (char *)ft_calloc(MAX_MAP_WIDTH, sizeof(char));
+		if (!map->gamemap[idx])
+			ft_error_msg("Malloc failed at gamemap columns\n");
 	}
-	else
-		ft_error_msg("Map validation failed\n");
-
-	exit(EXIT_SUCCESS);
 }
