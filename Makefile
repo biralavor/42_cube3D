@@ -60,6 +60,7 @@ SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
 SRC_FILES				+= map_validation/no_garbage_checker.c
 SRC_FILES				+= map_validation/map_array_printer.c
+SRC_FILES				+= map_validation/player_checker.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -156,7 +157,7 @@ define					map_for_testing
 endef
 
 define					function_for_testing
-						gamemap_into_array
+						player_detected
 endef
 
 # **************************************************************************** #
