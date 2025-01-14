@@ -58,7 +58,7 @@ int		skipping_all_except_gamemap(t_map *map);
 void	gamemap_into_array(t_map *map);
 void	map_array_printer(char **array);
 bool	no_garbage_at_gamemap(t_map *map);
-
+bool	nothing_aftermap(t_map *map, int *already_found);
 
 // struct for all datas
 typedef struct s_data
