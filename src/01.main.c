@@ -22,7 +22,7 @@ int main(int ac, char **av)
 	map = ft_calloc(1, sizeof(t_map));
 	gamemap_init(map);
 
-	if(map_validation(ac, av, map))
+	if(map_validation_manager(ac, av, map))
 	{
 		printf(GREEN"\n\nHello, Cube3D!\n"RESET);
 	}
