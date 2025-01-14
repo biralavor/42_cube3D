@@ -17,11 +17,7 @@ bool	no_garbage_checker(t_map *map)
 	gamemap_into_array(map);
 	map_array_printer(map->gamemap);
 	if (no_garbage_at_gamemap(map))
-	{
-		printf(PURPLE"Game Map ending point found\n");
-		printf(GREEN"Game Map approved!\n");
 		return (true);
-	}
 	ft_error_msg("Garbage inside GameMap detected\n");
 	return (false);
 }
