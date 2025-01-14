@@ -156,7 +156,7 @@ define					map_for_testing
 endef
 
 define					function_for_testing
-						no_garbage_at_gamemap
+						gamemap_into_array
 endef
 
 # **************************************************************************** #
