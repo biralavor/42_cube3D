@@ -69,3 +69,13 @@ jobs:
 
     - name: Display test results
       run: cat test-results/results.txt
+
+    - name: Check for failures
+      run: |
+        if grep -q "FAILURE" test-results/results.txt; then
+          echo "Some tests failed."
+          grep "FAILURE" test-results/results.txt
+          exit 1
+        else
+          echo "All tests passed."
+        fi
