@@ -1,0 +1,81 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    invalid_map_tests.yml                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/14 16:00:54 by umeneses          #+#    #+#              #
+#    Updated: 2025/01/05 08:39:23 by umeneses         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+name: Test Maps
+
+on: [push, pull_request]
+
+jobs:
+  test-maps:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.4
+
+    - name: Install Aptitude
+      run: sudo apt-get install -y aptitude
+
+    - name: Install GLFW Library
+      run: sudo aptitude install -y libglfw3 libglfw3-dev libglfw3-doc
+
+    - name: Replace map_validation.c
+      run: |
+        cp ./.github/workflows/map_validation_for_actions.c ./src/map_validation/map_validation.c
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential
+
+    - name: Compile Cube3D with make
+      run: make
+
+    - name: Testing all maps in the maps folder
+      run: |
+        mkdir -p test-results
+        for map in ./maps/*; do
+          echo "Testing map: $map"
+          filename=$(basename -- "$map")
+          if [[ $filename == invalid* ]]; then
+            if make go MAP=$map; then
+              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+              echo "$map: FAILURE (expected to fail but passed)" >> test-results/results.txt
+            else
+              echo "🎊 🎊 🎊"
+              echo "😎 😎 😎"
+              echo "🎉 🎉 🎉" 
+              echo "$map: SUCCESS (expected to fail and failed)" >> test-results/results.txt
+            fi
+          else
+            if make go MAP=$map; then
+              echo "🎊 🎊 🎊"
+              echo "😎 😎 😎"
+              echo "🎉 🎉 🎉" 
+              echo "$map: SUCCESS" >> test-results/results.txt
+            else
+              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+              echo "$map: FAILURE" >> test-results/results.txt
+            fi
+          fi
+        done
+
+    - name: Display test results
+      run: cat test-results/results.txt
+
+    - name: Check for failures
+      run: |
+        if grep -q "FAILURE" test-results/results.txt; then
+          echo "Some tests failed."
+          grep "FAILURE" test-results/results.txt
+          exit 1
+        else
+          echo "All tests passed."
+        fi
