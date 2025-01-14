@@ -14,52 +14,15 @@
 
 bool	no_garbage_checker(t_map *map)
 {
-	int	idx;
-
-	idx = -1;
 	gamemap_into_array(map);
 	map_array_printer(map->gamemap);
-	// if (no_garbage_at_gamemap(map))
-	// {
-	// 	printf(PURPLE"Game Map ending point found\n");
-	// 	return (true);
-	// }
-	while (map->buffer[++idx])
+	if (no_garbage_at_gamemap(map))
 	{
-		if (map->buffer[idx] == 'N' || map->buffer[idx] == 'S'
-			|| map->buffer[idx] == 'W' || map->buffer[idx] == 'E')
-			while (map->buffer[idx] != '\n')
-				idx++;
-		else if ((map->buffer[idx] == '\n' || map->buffer[idx + 1] == 'F'
-			|| map->buffer[idx + 1] == 'C') || (map->buffer[idx] == 'F'
-			|| map->buffer[idx] == 'C'))
-			while (map->buffer[idx] != '\n')
-				idx++;
-		else if (map->buffer[idx] == '1' && map->buffer[idx + 1] == '1')
-			while (map->buffer[idx] == '1' || map->buffer[idx] == '0'
-				|| map->buffer[idx] == 'N' || map->buffer[idx] == 'S'
-				|| map->buffer[idx] == 'W' || map->buffer[idx] == 'E'
-				|| map->buffer[idx] == '\n' || map->buffer[idx] == '2')
-				idx++;
-		else if (map->buffer[idx] == '1' && map->buffer[idx - 1] == '1'
-				&& map->buffer[idx - 2] == '1' && map->buffer[idx + 1] == '\0')
-		{
-			printf("Game Map ending point found\n");
-			return (true);
-		}
-		else
-			break ;
+		printf(PURPLE"Game Map ending point found\n");
+		printf(GREEN"Game Map approved!\n");
+		return (true);
 	}
-	ft_putstr_fd(RED"Garbage found on map file at line ", STDERR_FILENO);
-	ft_putstr_fd(ft_itoa(idx), STDERR_FILENO);
-	ft_putendl_fd(":"YELLOW, STDERR_FILENO);
-	ft_putchar_fd('>', STDERR_FILENO);
-	ft_putstr_fd(RED"", STDERR_FILENO);
-	while (map->buffer[idx])
-	{
-		ft_putchar_fd(map->buffer[idx], STDERR_FILENO);
-		idx++;
-	}
+	ft_error_msg("Garbage inside GameMap detected\n");
 	return (false);
 }
 
@@ -67,12 +30,21 @@ int	skipping_all_except_gamemap(t_map *map)
 {
 	int	idx;
 
-	idx = -1;
-	while (map->buffer[++idx])
+	idx = 0;
+	while (map->buffer[idx])
 	{
-		if (map->buffer[idx] == '1' && map->buffer[idx + 1] == '1'
-			&& map->buffer[idx + 2] == '1' && map->buffer[idx + 3] == '1')
-			return (idx);
+		if (map->buffer[idx] == 'C')
+		{
+			while (map->buffer[idx] != '\n')
+				idx++;
+			if (map->buffer[idx] == '\n')
+			{
+				while (map->buffer[idx] == '\n')
+					idx++;
+				return (idx);
+			}
+		}
+		idx++;
 	}
 	return (-1);
 }
@@ -102,26 +74,30 @@ void	gamemap_into_array(t_map *map)
 	}
 }
 
-// bool	no_garbage_at_gamemap(t_map *map)
-// {
-// 	char	**gmap;
-// 	int	y;
-// 	int	x;
+bool	no_garbage_at_gamemap(t_map *map)
+{
+	char	**arr;
+	int		y;
+	int		x;
 
-// 	gmap = map->gamemap;
-// 	y = -1;
-// 	while (gmap[++y])
-// 	{
-// 		x = 0;
-// 		while (gmap[y + 1][0] && (gmap[y][x] == '1' || gmap[y][x] == '0'
-// 				|| gmap[y][x] == 'N' || gmap[y][x] == 'S' || gmap[y][x] == 'W'
-// 				|| gmap[y][x] == 'E' || gmap[y][x] == '2' || gmap[y][x] == '\000'))
-// 		{
-// 			if (gmap[y][x] == '\000' && gmap[y + 1][0] == '\000'
-// 				&& gmap[y][x - 1] == '1' && gmap[y][x - 2] == '1')
-// 				return (true);
-// 			x++;
-// 		}
-// 	}
-// 	return (false);
-// }
+	arr = map->gamemap;
+	y = -1;
+	while (arr[++y][0] != '\0')
+	{
+		x = -1;
+		while (arr[y][++x])
+		{
+			if (arr[y][x] != '1' && arr[y][x] != '0'&& arr[y][x] != 'N'
+				&& arr[y][x] != 'S' && arr[y][x] != 'W' && arr[y][x] != 'E'
+				&& arr[y][x] != '2')
+					return (false);
+			if ((arr[y][x] == '1' && !arr[y][x + 1] && arr[y][x - 1] == '1'
+				&& arr[y][x - 2] == '1' && !arr[y + 2][0] && !arr[y + 1][1])
+				&& (arr[y + 1][0] == '\n' || !arr[y + 1][0]))
+				return (true);
+			else if (arr[y][x + 1] == '\0' && arr[y + 1][0])
+				break ;
+		}
+	}
+	return (false);
+}
