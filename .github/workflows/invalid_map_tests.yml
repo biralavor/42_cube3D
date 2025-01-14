@@ -22,6 +22,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4.1.4
 
+    - name: Install Aptitude
+      run: sudo apt-get install aptitude
+
+    - name: Install GLFW Library
+      run: sudo aptitude install libglfw3 libglfw3-dev libglfw3-doc -y
+
     - name: Replace map_validation.c
       run: |
         cp ./.github/workflows/map_validation_for_actions.c ./src/map_validation/map_validation.c
