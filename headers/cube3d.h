@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/14 19:17:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/14 21:00:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_map
 	char	*buffer;
 	int32_t	bytes_read;
 	int32_t	fd;
+	int		player_pos_y;
+	int		player_pos_x;
 }			t_map;
 
 void	gamemap_init(t_map *map);
@@ -63,6 +65,8 @@ bool	nothing_aftermap(t_map *map, int *already_found);
 
 bool	map_player_checker(t_map *map);
 bool	player_detected(t_map *map);
+void	player_position_into_struct(t_map *map);
+bool	player_free_to_go(t_map *map);
 
 // struct for all datas
 typedef struct s_data

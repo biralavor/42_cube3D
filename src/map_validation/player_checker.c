@@ -37,3 +37,58 @@ bool	player_detected(t_map *map)
 	ft_error_msg("Player not found or more than one player found\n");
 	return (false);
 }
+
+void	player_position_into_struct(t_map *map)
+{
+	int		y;
+	int		x;
+	char	**arr;
+
+	y = -1;
+	arr = map->gamemap;
+	while (arr[++y])
+	{
+		x = -1;
+		while (arr[y][++x])
+		{
+			if (arr[y][x] == 'N' || arr[y][x] == 'S' || arr[y][x] == 'W'
+				|| arr[y][x] == 'E')
+			{
+				map->player_pos_y = y;
+				map->player_pos_x = x;
+				break ;
+			}
+		}
+	}
+}
+
+bool	player_free_to_go(t_map *map)
+{
+	int		y;
+	int		x;
+	int		corners;
+	char	**arr;
+
+	player_position_into_struct(map);
+	y = map->player_pos_y - 1;
+	corners = 0;
+	arr = map->gamemap;
+	while(arr[y] && (y < (map->player_pos_y + 2)))
+	{
+		x = map->player_pos_x - 2;
+		while(arr[y][++x] && x < (map->player_pos_x + 2))
+		{
+			if (arr[y][x] == '1')
+				corners++;
+			else if (arr[y][x] == 'N' || arr[y][x] == 'S' || arr[y][x] == 'W'
+				|| arr[y][x] == 'E')
+				continue ;
+			else
+				break ;
+		}
+		y++;
+	}
+	if (corners < 8)
+		return (true);
+	return (false);
+}
