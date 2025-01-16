@@ -14,11 +14,9 @@
 
 bool	no_garbage_checker(t_map *map)
 {
-	gamemap_into_array(map);
-	map_array_printer(map->gamemap);
 	if (no_garbage_at_gamemap(map))
 		return (true);
-	ft_error_msg("Garbage inside GameMap detected\n");
+	ft_putstr_fd(RED"Garbage inside GameMap detected", STDERR_FILENO);
 	return (false);
 }
 

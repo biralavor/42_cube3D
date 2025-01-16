@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/14 20:48:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:58:13 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 bool	map_validation_manager(int ac, char **av, t_map *map)
 {
+	gamemap_into_array(map);
+	map_array_printer(map->gamemap);
 	if (map_file_checker(ac, av, map)
 		&& map_player_checker(map))
 	{
