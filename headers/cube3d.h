@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/14 21:00:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:44:30 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ bool	map_player_checker(t_map *map);
 bool	player_detected(t_map *map);
 void	player_position_into_struct(t_map *map);
 bool	player_free_to_go(t_map *map);
+int		player_boundary_finder(t_map *map, char **arr, int y, int x);
 
 // struct for all datas
 typedef struct s_data
