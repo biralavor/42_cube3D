@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/14 19:40:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:48:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ bool	map_file_checker(int ac, char **av, t_map *map)
 
 bool	map_player_checker(t_map *map)
 {
-	if (player_detected(map))
-	{
+	if (player_detected(map)
+		&& player_free_to_go(map))
 		return (true);
-	}
 	return (false);
 }

@@ -152,12 +152,12 @@ define					bonus
 						$(MAKE) WITH_BONUS=TRUE --no-print-directory
 endef
 
-define					map_for_testing
-						maps/tester_map.cub
+define					map_for_test
+						maps/invalid_player_boundary.cub
 endef
 
-define					function_for_testing
-						player_detected
+define					function_for_debug
+						player_free_to_go
 endef
 
 # **************************************************************************** #
@@ -233,15 +233,15 @@ min:				re
 					./$(NAME)
 
 go:					all
-					./$(NAME) $(call map_for_testing)
+					./$(NAME) $(call map_for_test)
 
 gdb:				all
-					gdb --tui -ex 'b main' -ex 'b $(call function_for_testing)' -ex 'set args $(call map_for_testing)' -ex 'set detach-on-fork off'\
+					gdb --tui -ex 'b main' -ex 'b $(call function_for_debug)' -ex 'set args $(call map_for_test)' -ex 'set detach-on-fork off'\
 					-ex 'info inferiors' ./$(NAME)
 
 val:				re
 					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*'\
 					--trace-children=yes --track-fds=yes --show-reachable=yes\
-					--suppressions=mlx_suppressions.sup ./$(NAME)  $(call map_for_testing)
+					--suppressions=mlx_suppressions.sup ./$(NAME)  $(call map_for_test)
 
 .PHONY:				all clean fclean re bonus min val gdb
