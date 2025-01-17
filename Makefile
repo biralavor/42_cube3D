@@ -60,6 +60,8 @@ SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
 SRC_FILES				+= map_validation/no_garbage_checker.c
 SRC_FILES				+= map_validation/map_array_printer.c
+SRC_FILES				+= map_validation/map_structs_init.c
+SRC_FILES				+= map_validation/closed_wall_manager.c
 SRC_FILES				+= map_validation/player_checker.c
 
 
@@ -153,7 +155,7 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/invalid_player_boundary.cub
+						maps/tester_map.cub
 endef
 
 define					function_for_debug
