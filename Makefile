@@ -156,7 +156,7 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/invalid_nothing_aftermap_1.cub
+						maps/default_map.cub
 endef
 
 define					function_for_debug
