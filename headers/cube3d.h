@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/16 16:44:30 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:37:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ bool	map_file_checker(int ac, char **av, t_map *map);
 bool	valid_extension_checker(char **av);
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_reader(t_map *map);
+void	map_structs_init(t_map *map);
 void	map_printer(t_map *map);
 bool	unique_def_compass(t_map *map);
 bool	north_compass_datafinder(t_map *map, int *already_found);
@@ -68,6 +69,11 @@ bool	player_detected(t_map *map);
 void	player_position_into_struct(t_map *map);
 bool	player_free_to_go(t_map *map);
 int		player_boundary_finder(t_map *map, char **arr, int y, int x);
+
+bool	closed_wall_manager(t_map *map);
+bool	top_wall_finder(t_map *map, char tofind);
+bool	middle_wall_finder(t_map *map, char tofind);
+bool	bottom_wall_finder(t_map *map, char tofind);
 
 // struct for all datas
 typedef struct s_data
