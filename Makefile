@@ -155,11 +155,11 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/tester_map.cub
+						maps/invalid_nothing_aftermap_1.cub
 endef
 
 define					function_for_debug
-						player_free_to_go
+						no_garbage_at_gamemap
 endef
 
 # **************************************************************************** #
@@ -238,12 +238,21 @@ go:					all
 					./$(NAME) $(call map_for_test)
 
 gdb:				all
-					gdb --tui -ex 'b main' -ex 'b $(call function_for_debug)' -ex 'set args $(call map_for_test)' -ex 'set detach-on-fork off'\
+					gdb --tui \
+					-ex 'b main' \
+					-ex 'b $(call function_for_debug)' \
+					-ex 'set args $(call map_for_test)' \
+					-ex 'set detach-on-fork off' \
 					-ex 'info inferiors' ./$(NAME)
 
 val:				re
-					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*'\
-					--trace-children=yes --track-fds=yes --show-reachable=yes\
-					--suppressions=mlx_suppressions.sup ./$(NAME)  $(call map_for_test)
+					valgrind --leak-check=full \
+					--track-origins=yes \
+					--trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' \
+					--trace-children=yes \
+					--track-fds=yes \
+					--show-reachable=yes\
+					--suppressions=mlx_suppressions.sup \
+					./$(NAME)  $(call map_for_test)
 
 .PHONY:				all clean fclean re bonus min val gdb
