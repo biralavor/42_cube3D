@@ -91,27 +91,3 @@ bool	east_compass_datafinder(t_map *map, int *already_found)
 	ft_error_msg("No data found for 'EA' in map file\n");
 	return (false);
 }
-
-bool	nothing_aftermap(t_map *map, int *already_found)
-{
-	int	idx;
-	int line;
-	idx = -1;
-	line = 0;
-	while (map->buffer[++idx])
-	{
-		if (map->buffer[idx] == '\n')
-			line = idx;
-		if (map->buffer[idx + 1] == '\0')
-		{
-			if (map->buffer[line] == '\n' && map->buffer[line + 1] == '\0')
-			{
-				break ;
-				already_found[4]++;
-				return (true);
-			}
-		}
-	}
-	ft_error_msg("Canoot have content after the map! :(\n");
-	return (false);
-}

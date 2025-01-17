@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/16 18:36:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:00:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ bool	map_file_checker(int ac, char **av, t_map *map)
 	{
 		map_structs_init(map);
 		if (unique_def_compass(map)
-			&& no_garbage_checker(map))
+			&& no_garbage_checker(map)
+			&& nothing_aftermap(map))
 			return (true);
 	}
 	return(false);

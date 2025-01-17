@@ -59,6 +59,7 @@ SRC_FILES				+= map_validation/map_printer.c
 SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
 SRC_FILES				+= map_validation/no_garbage_checker.c
+SRC_FILES				+= map_validation/nothing_aftermap.c
 SRC_FILES				+= map_validation/map_array_printer.c
 SRC_FILES				+= map_validation/map_structs_init.c
 SRC_FILES				+= map_validation/closed_wall_manager.c
@@ -159,7 +160,7 @@ define					map_for_test
 endef
 
 define					function_for_debug
-						no_garbage_at_gamemap
+						bottom_wall_finder
 endef
 
 # **************************************************************************** #
