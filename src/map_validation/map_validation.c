@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/14 20:48:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:36:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 bool	map_validation_manager(int ac, char **av, t_map *map)
 {
 	if (map_file_checker(ac, av, map)
-		&& map_player_checker(map))
+		&& map_player_checker(map)
+		&& closed_wall_manager(map))
 	{
 		printf(GREEN"Game Map approved!\n");
 		map_printer(map);
@@ -26,12 +27,15 @@ bool	map_validation_manager(int ac, char **av, t_map *map)
 
 bool	map_file_checker(int ac, char **av, t_map *map)
 {
-	if (map_opener(ac, av, map)
-		&& map_reader(map)
-		&& unique_def_compass(map)
-		&& valid_extension_checker(av)
-		&& no_garbage_checker(map))
-		return (true);
+	if (valid_extension_checker(av)
+		&& map_opener(ac, av, map)
+		&& map_reader(map))
+	{
+		map_structs_init(map);
+		if (unique_def_compass(map)
+			&& no_garbage_checker(map))
+			return (true);
+	}
 	return(false);
 }
 
