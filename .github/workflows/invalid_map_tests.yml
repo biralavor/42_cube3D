@@ -28,9 +28,9 @@ jobs:
     - name: Install GLFW Library
       run: sudo aptitude install -y libglfw3 libglfw3-dev libglfw3-doc
 
-    - name: Replace map_validation.c
+    - name: Replace main.c
       run: |
-        cp ./.github/workflows/map_validation_for_actions.c ./src/map_validation/map_validation.c
+        cp ./.github/workflows/main_for_actions.c ./src/01.main.c
 
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y build-essential
