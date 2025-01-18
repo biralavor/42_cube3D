@@ -6,15 +6,15 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/17 14:00:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/18 09:57:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool	map_validation_manager(int ac, char **av, t_map *map)
+bool	map_validation_manager(char **av, t_map *map)
 {
-	if (map_file_checker(ac, av, map)
+	if (map_file_checker(av, map)
 		&& map_player_checker(map)
 		&& closed_wall_manager(map))
 	{
@@ -25,10 +25,9 @@ bool	map_validation_manager(int ac, char **av, t_map *map)
 	return(false);
 }
 
-bool	map_file_checker(int ac, char **av, t_map *map)
+bool	map_file_checker(char **av, t_map *map)
 {
 	if (valid_extension_checker(av)
-		&& map_opener(ac, av, map)
 		&& map_reader(map))
 	{
 		map_structs_init(map);
