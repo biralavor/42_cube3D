@@ -45,7 +45,7 @@ jobs:
           echo "Testing map: $map"
           filename=$(basename -- "$map")
           if [[ $filename == invalid* ]]; then
-            if make go MAP=$map; then
+            if ./cub3d MAP=$map; then
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
               echo "$map: FAILURE (expected to fail but passed)" >> test-results/results.txt
             else
