@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-name: makefile tester
+name: Makefile Test
 
 on:
   push:
@@ -31,7 +31,7 @@ on:
     - '**release**'
 
 jobs:
-  makefile_tester:
+  Makefile-test:
     runs-on: ubuntu-latest
     timeout-minutes: 7
     defaults:
