@@ -44,8 +44,9 @@ jobs:
         for map in ./maps/*; do
           echo "Testing map: $map"
           filename=$(basename -- "$map")
+          output=$(./cub3d MAP=$map 2>&1)
+          echo "$output" >> test-results/output.log
           if [[ $filename == invalid* ]]; then
-            output=$(./cub3d MAP=$map 2>&1)
             if echo "$output" | grep -q "<< Error >> No map file found with this name T.T"; then
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
               echo "$map: FAILURE (No map file found with this name)" >> test-results/results.txt
@@ -59,7 +60,6 @@ jobs:
               echo "$map: SUCCESS (expected to fail and failed)" >> test-results/results.txt
             fi
           else
-            output=$(./cub3d MAP=$map 2>&1)
             if echo "$output" | grep -q "<< Error >> No map file found with this name T.T"; then
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
               echo "$map: FAILURE (No map file found with this name)" >> test-results/results.txt
@@ -74,6 +74,7 @@ jobs:
             fi
           fi
         done
+        cat test-results/output.log
 
     - name: Display test results
       run: cat test-results/results.txt
