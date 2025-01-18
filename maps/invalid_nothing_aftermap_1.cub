@@ -2,7 +2,6 @@ NO ./images/n.png
 SO ./images/s.png
 WE ./images/w.png
 EA ./images/e.png
-EA ./images/e.png
 F 240,233,133
 C 225,0,0
 
@@ -11,3 +10,15 @@ C 225,0,0
 100N001
 1000001
 1111111
+
+
+
+
+
+
+
+
+
+
+
+1

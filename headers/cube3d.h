@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/16 19:37:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:27:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int		skipping_all_except_gamemap(t_map *map);
 void	gamemap_into_array(t_map *map);
 void	map_array_printer(char **array);
 bool	no_garbage_at_gamemap(t_map *map);
-bool	nothing_aftermap(t_map *map, int *already_found);
+bool	nothing_aftermap(t_map *map);
+bool	linebreak_reader(char **arr, int y, int x);
 
 bool	map_player_checker(t_map *map);
 bool	player_detected(t_map *map);

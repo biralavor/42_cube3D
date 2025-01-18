@@ -37,10 +37,9 @@ bool	no_garbage_at_gamemap(t_map *map)
 				&& arr[y][x] != 'S' && arr[y][x] != 'W' && arr[y][x] != 'E'
 				&& arr[y][x] != '2')
 					return (false);
-			if (((arr[y][x] == '1' || arr[y][x] == '0') && !arr[y][x + 1]
-				&& arr[y][x - 1] == '1' && arr[y][x - 2] == '1'
-				&& !arr[y + 2][0]) && (arr[y + 1][0] == '\n'
-				|| arr[y + 1][0] == '\0'))
+			if ((arr[y][x] == '1' || arr[y][x] == '0') && arr[y][x - 1] == '1'
+				&& arr[y][x - 2] == '1' && y > 2 && arr[y - 1][x] == '1'
+				&& (arr[y][x + 1] == '\n' || !arr[y][x + 1]))
 				return (true);
 			else if (arr[y][x + 1] == '\0' && arr[y + 1][0])
 				break ;

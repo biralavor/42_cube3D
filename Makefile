@@ -59,6 +59,7 @@ SRC_FILES				+= map_validation/map_printer.c
 SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
 SRC_FILES				+= map_validation/no_garbage_checker.c
+SRC_FILES				+= map_validation/nothing_aftermap.c
 SRC_FILES				+= map_validation/map_array_printer.c
 SRC_FILES				+= map_validation/map_structs_init.c
 SRC_FILES				+= map_validation/closed_wall_manager.c
@@ -155,11 +156,11 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/tester_map.cub
+						maps/default_map.cub
 endef
 
 define					function_for_debug
-						player_free_to_go
+						bottom_wall_finder
 endef
 
 # **************************************************************************** #
@@ -238,12 +239,21 @@ go:					all
 					./$(NAME) $(call map_for_test)
 
 gdb:				all
-					gdb --tui -ex 'b main' -ex 'b $(call function_for_debug)' -ex 'set args $(call map_for_test)' -ex 'set detach-on-fork off'\
+					gdb --tui \
+					-ex 'b main' \
+					-ex 'b $(call function_for_debug)' \
+					-ex 'set args $(call map_for_test)' \
+					-ex 'set detach-on-fork off' \
 					-ex 'info inferiors' ./$(NAME)
 
 val:				re
-					valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*'\
-					--trace-children=yes --track-fds=yes --show-reachable=yes\
-					--suppressions=mlx_suppressions.sup ./$(NAME)  $(call map_for_test)
+					valgrind --leak-check=full \
+					--track-origins=yes \
+					--trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' \
+					--trace-children=yes \
+					--track-fds=yes \
+					--show-reachable=yes\
+					--suppressions=mlx_suppressions.sup \
+					./$(NAME)  $(call map_for_test)
 
 .PHONY:				all clean fclean re bonus min val gdb

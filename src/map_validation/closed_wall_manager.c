@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/17 11:16:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:57:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,27 @@ bool	middle_wall_finder(t_map *map, char tofind)
 
 bool	bottom_wall_finder(t_map *map, char tofind)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	char	**arr;
 
 	y = 0;
 	x = 0;
-	while (map->gamemap[y][x] && map->gamemap[y + 1][x])
+	arr = map->gamemap;
+	while (arr[y][x] && arr[y + 1][x] && arr[y + 1][x] != '\n')
 		y++;
-	if (map->gamemap[y][x] == tofind)
-	{	
-		while (map->gamemap[y][x] && map->gamemap[y][x] == tofind)
+	if (arr[y][x] == tofind)
+	{
+		while (arr[y][x] && arr[y][x] == tofind)
 		{
-			if (!map->gamemap[y][x + 1])
-				return (true);
+			if ((!arr[y][x + 1] || arr[y][x + 1] == '\n')
+				&& (!arr[y + 1][0] || arr[y + 1][0] == '\n'))
+			{
+				if (arr[y][x + 1] == '\n' && linebreak_reader(arr, y, x))
+					return (true);
+				else if (!arr[y][x + 1])
+					return (true);
+			}
 			x++;
 		}
 	}
