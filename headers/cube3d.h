@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/17 16:27:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/18 09:57:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct s_map
 
 void	gamemap_init(t_map *map);
 
-bool	map_validation_manager(int ac, char **av, t_map *map);
-bool	map_file_checker(int ac, char **av, t_map *map);
-bool	valid_extension_checker(char **av);
 bool	map_opener(int ac, char **argv, t_map *map);
+bool	map_validation_manager(char **av, t_map *map);
+bool	map_file_checker(char **av, t_map *map);
+bool	valid_extension_checker(char **av);
 bool	map_reader(t_map *map);
 void	map_structs_init(t_map *map);
 void	map_printer(t_map *map);
