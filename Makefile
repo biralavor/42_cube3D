@@ -232,7 +232,7 @@ fclean:				clean
 
 re:					fclean all
 
-min:				re
+run:				all
 					./$(NAME)
 
 go:					all
