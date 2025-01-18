@@ -38,13 +38,12 @@ jobs:
     - name: Compile Cube3D with make
       run: make
 
-    - name: Print working directory and list files
+    - name: Print working directory and list files and directories
       run: |
         pwd
         ls -la
-        ls -la ./maps
 
-    - name: Check file permissions
+    - name: Check map file permissions
       run: ls -la ./maps
 
     - name: Testing all maps in the maps folder
