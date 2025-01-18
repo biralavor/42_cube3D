@@ -51,14 +51,14 @@ jobs:
             else
               echo "🎊 🎊 🎊"
               echo "😎 😎 😎"
-              echo "🎉 🎉 🎉" 
+              echo "🎉 🎉 🎉"
               echo "$map: SUCCESS (expected to fail and failed)" >> test-results/results.txt
             fi
           else
             if ./cub3d MAP=$map; then
               echo "🎊 🎊 🎊"
               echo "😎 😎 😎"
-              echo "🎉 🎉 🎉" 
+              echo "🎉 🎉 🎉"
               echo "$map: SUCCESS" >> test-results/results.txt
             else
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
