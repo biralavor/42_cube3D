@@ -10,12 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-name: Test Maps
+name: All Maps Test
 
 on: [push, pull_request]
 
 jobs:
-  test-maps:
+  all-maps:
     runs-on: ubuntu-latest
 
     steps:
