@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/17 18:57:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:37:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ bool	closed_wall_manager(t_map *map)
 
 bool	top_wall_finder(t_map *map, char tofind)
 {
-	int	x;
+	int		x;
+	char	**arr;
 
 	x = 0;
-	if (map->gamemap[0][x] == tofind)
+	arr = map->gamemap;
+	if (arr[0][x] == tofind)
 	{
-		while (map->gamemap[0][++x] && map->gamemap[0][x] == tofind)
+		while (arr[0][++x] && arr[0][x] == tofind)
 		{
-			if (!map->gamemap[0][x + 1])
+			if (!arr[0][x + 1])
 				return (true);
 		}
 	}
@@ -43,22 +45,24 @@ bool	top_wall_finder(t_map *map, char tofind)
 
 bool	middle_wall_finder(t_map *map, char tofind)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	char	**arr;
 
 	y = 1;
 	x = 0;
-	while (map->gamemap[y][x] && map->gamemap[y][x] == tofind
-		&& map->gamemap[y + 2])
+	arr = arr;
+	while (arr[y][x] && arr[y][x] == tofind
+		&& arr[y + 2])
 	{
-		while (map->gamemap[y][x + 1])
+		while (arr[y][x + 1])
 			x++;
-		if (map->gamemap[y][x] == tofind)
+		if (arr[y][x] == tofind)
 		{
-			if (map->gamemap[y + 2][x] == '\0')
+			if (arr[y + 2][x] == '\0')
 				return (true);
 		}
-		else if (map->gamemap[y][x] != tofind)
+		else if (arr[y][x] != tofind)
 			break ;
 		y++;
 		x = 0;
