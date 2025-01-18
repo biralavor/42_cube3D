@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/18 12:37:29 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:38:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	middle_wall_finder(t_map *map, char tofind)
 
 	y = 1;
 	x = 0;
-	arr = arr;
+	arr = map->gamemap;
 	while (arr[y][x] && arr[y][x] == tofind
 		&& arr[y + 2])
 	{
