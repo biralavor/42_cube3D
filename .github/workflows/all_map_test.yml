@@ -40,6 +40,7 @@ jobs:
 
     - name: Testing all maps in the maps folder
       run: |
+        set +e
         mkdir -p test-results
         for map in ./maps/*; do
           echo "Testing map: $map"
