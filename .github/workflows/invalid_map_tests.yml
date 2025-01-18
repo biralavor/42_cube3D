@@ -41,7 +41,7 @@ jobs:
     - name: Testing all maps in the maps folder
       run: |
         mkdir -p test-results
-        for map in ./maps/*; do
+        for map in ../maps/*; do
           echo "Testing map: $map"
           filename=$(basename -- "$map")
           if [[ $filename == invalid* ]]; then
