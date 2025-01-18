@@ -41,7 +41,7 @@ jobs:
     - name: Testing all maps in the maps folder
       run: |
         mkdir -p test-results
-        for map in ../maps/*; do
+        for map in ./maps/*; do
           echo "Testing map: $map"
           filename=$(basename -- "$map")
           if [[ $filename == invalid* ]]; then
@@ -55,7 +55,7 @@ jobs:
               echo "$map: SUCCESS (expected to fail and failed)" >> test-results/results.txt
             fi
           else
-            if make go MAP=$map; then
+            if ./cub3d MAP=$map; then
               echo "🎊 🎊 🎊"
               echo "😎 😎 😎"
               echo "🎉 🎉 🎉" 
