@@ -45,7 +45,11 @@ jobs:
           echo "Testing map: $map"
           filename=$(basename -- "$map")
           if [[ $filename == invalid* ]]; then
-            if ./cub3d MAP=$map; then
+            output=$(./cub3d MAP=$map 2>&1)
+            if echo "$output" | grep -q "<< Error >> No map file found with this name T.T"; then
+              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+              echo "$map: FAILURE (No map file found with this name)" >> test-results/results.txt
+            elif ./cub3d MAP=$map; then
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
               echo "$map: FAILURE (expected to fail but passed)" >> test-results/results.txt
             else
@@ -55,7 +59,11 @@ jobs:
               echo "$map: SUCCESS (expected to fail and failed)" >> test-results/results.txt
             fi
           else
-            if ./cub3d MAP=$map; then
+            output=$(./cub3d MAP=$map 2>&1)
+            if echo "$output" | grep -q "<< Error >> No map file found with this name T.T"; then
+              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭"
+              echo "$map: FAILURE (No map file found with this name)" >> test-results/results.txt
+            elif ./cub3d MAP=$map; then
               echo "🎊 🎊 🎊"
               echo "😎 😎 😎"
               echo "🎉 🎉 🎉"
