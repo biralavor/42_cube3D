@@ -38,11 +38,18 @@ jobs:
     - name: Compile Cube3D with make
       run: make
 
+    - name: Print working directory and list files
+      run: |
+        pwd
+        ls -la
+        ls -la ./maps
+
     - name: Testing all maps in the maps folder
       run: |
         set +e
         mkdir -p test-results
         for map in ./maps/*; do
+          echo "/////////////////////////////////////"
           echo "Testing map: $map" | tee -a test-results/output.log
           filename=$(basename -- "$map")
           output=$(./cub3d MAP=$map 2>&1)
