@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 16:43:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:47:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ bool	middle_wall_finder(t_map *map, char w)
 	{
 		if (!arr[y + 2][0] && middle_last_line_checker(arr, y, x, w))
 			return (true);
-		if ((arr[y - 1][x] == w && arr[y + 1][x] == w)
-			|| arr[y + 1][x + 1] == w
-			|| middle_max_boundary(arr, y, x, w)) // max boundary
+		if (y == 1 || (arr[y - 1][x] == w && arr[y + 1][x] == w)
+			|| arr[y + 1][x + 1] == w || middle_max_boundary(arr, y, x, w)) // max boundary
 		{
 			if (!arr[y + 2][0])
 				return (true);
@@ -78,8 +77,18 @@ bool	goto_arr_bondary(char **arr, int *y, int *x, char w)
 {
 	while (arr[*y][*x + 1])
 		*x = *x + 1;
-	if (arr[*y][*x] == w)
+	if (arr[*y][*x] == w && !arr[*y + 2][0])
 		return (true);
+	else if (arr[*y][*x] == w && (arr[*y - 1][*x - 1] == w
+		|| arr[*y - 1][*x] == w))
+		return (true);
+	else if (arr[*y][*x] == w && (!arr[*y - 1][*x - 1] || !arr[*y - 1][*x]))
+	{
+		while (arr[*y][*x] == w)
+			*x = *x - 1;
+		if (arr[*y - 1][*x] == w)
+			return (true);
+	}
 	return (false);
 }
 
@@ -87,10 +96,11 @@ bool	middle_last_line_checker(char **arr, int y, int x, char w)
 {
 	if (arr[y][x] == w && !arr[y + 2][0]) // last middle line
 	{
-		if (arr[y - 1][x + 1] && arr[y - 1][x + 1] == w) // check if previous line with next char is closed
+		if ((arr[y - 1][x] == w && !arr[y - 1][x + 1])
+			|| (arr[y - 1][x + 1] && arr[y - 1][x + 1] == w)) // check if previous line with next char is closed
 		{
 			while (arr[y][x] == w)
-					x--;
+				x--;
 			if (arr[y + 1][x] == w)
 				return (true);
 		}
@@ -101,8 +111,7 @@ bool	middle_last_line_checker(char **arr, int y, int x, char w)
 bool	middle_max_boundary(char **arr, int y, int x, char w)
 {
 	if (!arr[y + 1][x] && !arr[y - 1][x]
-		&& arr[y - 1][x - 1] == w
-		&& arr[y + 1][x - 1] == w)
+		&& arr[y - 1][x - 1] == w && arr[y + 1][x - 1] == w)
 		return (true);
 	return (false);
 }
