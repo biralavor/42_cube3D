@@ -156,11 +156,11 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/default_map.cub
+						maps/invalid_wall_breach_middle_2.cub
 endef
 
 define					function_for_debug
-						bottom_wall_finder
+						middle_wall_finder
 endef
 
 # **************************************************************************** #
