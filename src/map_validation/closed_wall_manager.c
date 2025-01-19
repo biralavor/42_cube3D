@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 12:25:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:39:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,20 @@ bool	middle_wall_finder(t_map *map, char tofind)
 	while (arr[y][x] && arr[y][x] == tofind && arr[y + 2]
 		&& goto_arr_bondary(arr, &y, &x, tofind))
 	{
-		if (arr[y][x] == tofind && !arr[y + 2][0]
-			&& middle_last_line_checker(arr, y, x, tofind))
+		if (!arr[y + 2][0] && middle_last_line_checker(arr, y, x, tofind))
 			return (true);
-		else if (arr[y][x] == tofind && arr[y + 1][x + 1] != tofind)
+		if ((arr[y - 1][x] == tofind && arr[y + 1][x] == tofind)
+			|| arr[y + 1][x + 1] == tofind
+			|| middle_max_boundary(arr, y, x, tofind)) // max boundary
 		{
-			if (arr[y + 1][x + 1] == tofind // next line with next char is closed by tofind
-				|| middle_max_boundary(arr, y, x, tofind)) // max boundary
-			{
-				y++;
-				x = 0;
-				continue ;
-			}
-			else
-				break ;
+			if (!arr[y + 2][0])
+				return (true);
+			y++;
+			x = 0;
+			continue ;
 		}
-		y++;
-		x = 0;
+		else
+			break ;
 	}
 	ft_putstr_fd(RED"Your MAP has a breach on the middle wall", STDOUT_FILENO);
 	return (false);
