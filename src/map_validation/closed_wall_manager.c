@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 16:39:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:43:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 bool	closed_wall_manager(t_map *map)
 {
-	char	tofind;
+	char	w;
 
-	tofind = '1';
-	if (top_wall_finder(map, tofind)
-		&& middle_wall_finder(map, tofind)
-		&& bottom_wall_finder(map, tofind))
+	w = '1';
+	if (top_wall_finder(map, w)
+		&& middle_wall_finder(map, w)
+		&& bottom_wall_finder(map, w))
 		return (true);
 	return (false);
 }
 
-bool	top_wall_finder(t_map *map, char tofind)
+bool	top_wall_finder(t_map *map, char w)
 {
 	int		x;
 	char	**arr;
 
 	x = 0;
 	arr = map->gamemap;
-	if (arr[0][x] == tofind)
+	if (arr[0][x] == w)
 	{
-		while (arr[0][++x] && arr[0][x] == tofind)
+		while (arr[0][++x] && arr[0][x] == w)
 		{
 			if (!arr[0][x + 1])
 				return (true);
@@ -43,7 +43,7 @@ bool	top_wall_finder(t_map *map, char tofind)
 	return (false);
 }
 
-bool	middle_wall_finder(t_map *map, char tofind)
+bool	middle_wall_finder(t_map *map, char w)
 {
 	int		y;
 	int		x;
@@ -52,14 +52,14 @@ bool	middle_wall_finder(t_map *map, char tofind)
 	y = 1;
 	x = 0;
 	arr = map->gamemap;
-	while (arr[y][x] && arr[y][x] == tofind && arr[y + 2]
-		&& goto_arr_bondary(arr, &y, &x, tofind))
+	while (arr[y][x] && arr[y][x] == w && arr[y + 2]
+		&& goto_arr_bondary(arr, &y, &x, w))
 	{
-		if (!arr[y + 2][0] && middle_last_line_checker(arr, y, x, tofind))
+		if (!arr[y + 2][0] && middle_last_line_checker(arr, y, x, w))
 			return (true);
-		if ((arr[y - 1][x] == tofind && arr[y + 1][x] == tofind)
-			|| arr[y + 1][x + 1] == tofind
-			|| middle_max_boundary(arr, y, x, tofind)) // max boundary
+		if ((arr[y - 1][x] == w && arr[y + 1][x] == w)
+			|| arr[y + 1][x + 1] == w
+			|| middle_max_boundary(arr, y, x, w)) // max boundary
 		{
 			if (!arr[y + 2][0])
 				return (true);
@@ -74,40 +74,40 @@ bool	middle_wall_finder(t_map *map, char tofind)
 	return (false);
 }
 
-bool	goto_arr_bondary(char **arr, int *y, int *x, char tofind)
+bool	goto_arr_bondary(char **arr, int *y, int *x, char w)
 {
 	while (arr[*y][*x + 1])
 		*x = *x + 1;
-	if (arr[*y][*x] == tofind)
+	if (arr[*y][*x] == w)
 		return (true);
 	return (false);
 }
 
-bool	middle_last_line_checker(char **arr, int y, int x, char tofind)
+bool	middle_last_line_checker(char **arr, int y, int x, char w)
 {
-	if (arr[y][x] == tofind && !arr[y + 2][0]) // last middle line
+	if (arr[y][x] == w && !arr[y + 2][0]) // last middle line
 	{
-		if (arr[y - 1][x + 1] && arr[y - 1][x + 1] == tofind) // check if previous line with next char is closed
+		if (arr[y - 1][x + 1] && arr[y - 1][x + 1] == w) // check if previous line with next char is closed
 		{
-			while (arr[y][x] == tofind)
+			while (arr[y][x] == w)
 					x--;
-			if (arr[y + 1][x] == tofind)
+			if (arr[y + 1][x] == w)
 				return (true);
 		}
 	}
 	return (false);
 }
 
-bool	middle_max_boundary(char **arr, int y, int x, char tofind)
+bool	middle_max_boundary(char **arr, int y, int x, char w)
 {
 	if (!arr[y + 1][x] && !arr[y - 1][x]
-		&& arr[y - 1][x - 1] == tofind
-		&& arr[y + 1][x - 1] == tofind)
+		&& arr[y - 1][x - 1] == w
+		&& arr[y + 1][x - 1] == w)
 		return (true);
 	return (false);
 }
 
-bool	bottom_wall_finder(t_map *map, char tofind)
+bool	bottom_wall_finder(t_map *map, char w)
 {
 	int		y;
 	int		x;
@@ -118,9 +118,9 @@ bool	bottom_wall_finder(t_map *map, char tofind)
 	arr = map->gamemap;
 	while (arr[y][x] && arr[y + 1][x] && arr[y + 1][x] != '\n')
 		y++;
-	if (arr[y][x] == tofind)
+	if (arr[y][x] == w)
 	{
-		while (arr[y][x] && arr[y][x] == tofind)
+		while (arr[y][x] && arr[y][x] == w)
 		{
 			if ((!arr[y][x + 1] || arr[y][x + 1] == '\n')
 				&& (!arr[y + 1][0] || arr[y + 1][0] == '\n'))
