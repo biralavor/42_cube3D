@@ -61,7 +61,8 @@ SRC_FILES				+= map_validation/unique_def_compass.c
 SRC_FILES				+= map_validation/no_garbage_checker.c
 SRC_FILES				+= map_validation/nothing_aftermap.c
 SRC_FILES				+= map_validation/map_array_printer.c
-SRC_FILES				+= map_validation/map_structs_init.c
+SRC_FILES				+= map_validation/map_struct_init.c
+SRC_FILES				+= map_validation/map_struct_skippers.c
 SRC_FILES				+= map_validation/closed_wall_manager.c
 SRC_FILES				+= map_validation/player_checker.c
 
@@ -156,7 +157,7 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/invalid_wall_breach_middle_2.cub
+						maps/default.cub
 endef
 
 define					function_for_debug
