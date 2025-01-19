@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 19:13:19 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 19:13:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/19 19:36:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	skipping_all_except_colors(t_map *map)
 
 	idx = 0;
 	while (map->buffer[idx] != 'F')
-		idx++;
-	if (map->buffer[idx] == 'F')
 		idx++;
 	return (idx);
 }
