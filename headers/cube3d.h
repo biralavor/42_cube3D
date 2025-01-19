@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/19 12:25:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/19 19:23:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 typedef struct s_map
 {
 	char	**gamemap;
+	char	**colors;
 	char	*buffer;
 	int32_t	bytes_read;
 	int32_t	fd;
@@ -43,7 +44,7 @@ typedef struct s_map
 	int		player_pos_x;
 }			t_map;
 
-void	gamemap_init(t_map *map);
+void	structures_init(t_map *map);
 
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_validation_manager(char **av, t_map *map);
@@ -52,16 +53,22 @@ bool	valid_extension_checker(char **av);
 bool	map_reader(t_map *map);
 void	map_structs_init(t_map *map);
 void	map_printer(t_map *map);
+
 bool	unique_def_compass(t_map *map);
 bool	north_compass_datafinder(t_map *map, int *already_found);
 bool	south_compass_datafinder(t_map *map, int *already_found);
 bool	west_compass_datafinder(t_map *map, int *already_found);
 bool	east_compass_datafinder(t_map *map, int *already_found);
+
 bool	no_garbage_checker(t_map *map);
 int		skipping_all_except_gamemap(t_map *map);
 void	gamemap_into_array(t_map *map);
 void	map_array_printer(char **array);
 bool	no_garbage_at_gamemap(t_map *map);
+void	colorsmap_into_array(t_map *map);
+int		skipping_all_except_colors(t_map *map);
+bool	no_garbage_at_colors(t_map *map);
+
 bool	nothing_aftermap(t_map *map);
 bool	linebreak_reader(char **arr, int y, int x);
 

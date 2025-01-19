@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_structs_init.c                                 :+:      :+:    :+:   */
+/*   map_struct_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:05:54 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/16 18:14:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/19 19:24:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,36 @@
 void	map_structs_init(t_map *map)
 {
 	gamemap_into_array(map);
+	// colorsmap_into_array(map);
 	map_array_printer(map->gamemap);
+}
+
+void	colorsmap_into_array(t_map *map)
+{
+	int	idx;
+	int	x;
+	int	y;
+
+	x = -1;
+	y = 0;
+	idx = skipping_all_except_colors(map);
+	if (idx != -1)
+	{
+		while (map->buffer[idx])
+		{
+			map->colors[y][++x] = map->buffer[idx];
+			idx++;
+			if (map->buffer[idx] == '\n')
+			{
+				y++;
+				x = -1;
+				idx++;
+			}
+			else if (map->buffer[idx] == '\n' && map->buffer[idx + 1] == '1'
+				&& map->buffer[idx + 2] == '1' && map->buffer[idx + 3] == '1')
+				break ;
+		}
+	}
 }
 
 void	gamemap_into_array(t_map *map)
@@ -41,27 +70,4 @@ void	gamemap_into_array(t_map *map)
 			}
 		}
 	}
-}
-
-int	skipping_all_except_gamemap(t_map *map)
-{
-	int	idx;
-
-	idx = 0;
-	while (map->buffer[idx])
-	{
-		if (map->buffer[idx] == 'C')
-		{
-			while (map->buffer[idx] != '\n')
-				idx++;
-			if (map->buffer[idx] == '\n')
-			{
-				while (map->buffer[idx] == '\n')
-					idx++;
-				return (idx);
-			}
-		}
-		idx++;
-	}
-	return (-1);
 }
