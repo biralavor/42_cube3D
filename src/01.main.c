@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	t_map	*map;
 
 	map = ft_calloc(1, sizeof(t_map));
-	gamemap_init(map);
+	structures_init(map);
 
 	if(map_opener(ac, av, map)
 		&& map_validation_manager(av, map))

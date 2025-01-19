@@ -12,13 +12,14 @@
 
 #include "cube3d.h"
 
-void	gamemap_init(t_map *map)
+void	structures_init(t_map *map)
 {
 	int	idx;
 
 	idx = -1;
 	map->gamemap = (char **)ft_calloc(MAX_MAP_HEIGHT, sizeof(char *));
-	if (!map->gamemap)
+	map->colors = (char **)ft_calloc(30, sizeof(char *));
+	if (!map->gamemap || !map->colors)
 		ft_error_msg("Malloc failed at gamemap rows\n");
 	while (++idx < MAX_MAP_HEIGHT)
 	{
