@@ -12,21 +12,15 @@
 
 #include "cube3d.h"
 
-bool	no_garbage_at_colors(t_map *map)
+bool	no_garbage_at_colors(t_map *map, int *rgbrgb)
 {
 	int			y;
 	int			x;
 	int			id;
-	static int	color_digits[6];
-	static int	rgbrgb[6];
 
 	y = -1;
 	x = -1;
 	id = -1;
-	color_digits_counter(map, color_digits);
-	while (color_digits[++id])
-		printf("Color Digits[%d]: %d\n", id, color_digits[id]);
-
 	while (map->colors[++y][0])
 	{
 		while (map->colors[y][++x] != ',')
@@ -51,32 +45,6 @@ bool	no_garbage_at_colors(t_map *map)
 	ft_putstr_fd(RED"Garbage inside MapColors detected", STDERR_FILENO);
 	// ft_putstr_fd(RED"Invalid definition at Color Map\n"RESET, STDERR_FILENO);
 	return (false);
-}
-
-void	color_digits_counter(t_map *map, int *color_digits)
-{
-	int	y;
-	int	x;
-	int	id;
-	int	comma_counter;
-
-	y = -1;
-	id = 0;
-	while (map->colors[++y][0])
-	{
-		comma_counter = 0;
-		x = 1;
-		while (comma_counter < 3)
-		{
-			while (map->colors[y][++x] && map->colors[y][x] != ','
-				&& map->colors[y][x] != '\n')
-				color_digits[id]++;
-			comma_counter++;
-			id++;
-			if (map->colors[y][x + 1] == '\n')
-				break ;
-		}
-	}
 }
 
 bool	no_garbage_at_gamemap(t_map *map)
