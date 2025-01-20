@@ -3,7 +3,7 @@ SO ./images/s.png
 WE ./images/w.png
 EA ./images/e.png
 F 240,233,133
-C 225,0,0
+C 225,100,200
 
 11111111111
 10000100001
