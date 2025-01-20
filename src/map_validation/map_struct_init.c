@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:05:54 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 19:32:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:38:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	colorsmap_into_array(t_map *map)
 		{
 			map->colors[y][++x] = map->buffer[idx];
 			idx++;
-			if (map->buffer[idx] == '\n')
+			if (map->buffer[idx] == '\n' && map->buffer[idx + 1] == '1'
+				&& map->buffer[idx + 2] == '1' && map->buffer[idx + 3] == '1')
+				break ;
+			else if (map->buffer[idx] == '\n' && map->buffer[idx + 1] == 'C')
 			{
 				y++;
 				x = -1;
 				idx++;
 			}
-			else if (map->buffer[idx] == '\n' && map->buffer[idx + 1] == '1'
-				&& map->buffer[idx + 2] == '1' && map->buffer[idx + 3] == '1')
-				break ;
 		}
 	}
 }
