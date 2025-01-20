@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/19 19:23:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:38:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ bool	west_compass_datafinder(t_map *map, int *already_found);
 bool	east_compass_datafinder(t_map *map, int *already_found);
 
 bool	no_garbage_checker(t_map *map);
-int		skipping_all_except_gamemap(t_map *map);
-void	gamemap_into_array(t_map *map);
-void	map_array_printer(char **array);
-bool	no_garbage_at_gamemap(t_map *map);
-void	colorsmap_into_array(t_map *map);
-int		skipping_all_except_colors(t_map *map);
 bool	no_garbage_at_colors(t_map *map);
+bool	no_garbage_at_gamemap(t_map *map);
+int		skipping_all_except_colors(t_map *map);
+int		skipping_all_except_gamemap(t_map *map);
+void	colorsmap_into_array(t_map *map);
+void	gamemap_into_array(t_map *map);
+void	color_digits_counter(t_map *map, int *color_digits);
+void	map_array_printer(char **array);
 
 bool	nothing_aftermap(t_map *map);
 bool	linebreak_reader(char **arr, int y, int x);

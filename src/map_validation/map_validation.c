@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 18:57:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:54:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ bool	closed_wall_manager(t_map *map)
 
 bool	no_garbage_checker(t_map *map)
 {
-	if (no_garbage_at_gamemap(map))
+	if (no_garbage_at_gamemap(map)
+		&& no_garbage_at_colors(map))
 		return (true);
-	ft_putstr_fd(RED"Garbage inside GameMap detected", STDERR_FILENO);
 	return (false);
 }
