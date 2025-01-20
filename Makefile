@@ -63,6 +63,7 @@ SRC_FILES				+= map_validation/nothing_aftermap.c
 SRC_FILES				+= map_validation/map_array_printer.c
 SRC_FILES				+= map_validation/map_struct_init.c
 SRC_FILES				+= map_validation/map_struct_skippers.c
+SRC_FILES				+= map_validation/map_colors.c
 SRC_FILES				+= map_validation/closed_wall_manager.c
 SRC_FILES				+= map_validation/player_checker.c
 
@@ -157,11 +158,11 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/default.cub
+						maps/invalid_colors_f_def.cub
 endef
 
 define					function_for_debug
-						middle_wall_finder
+						map_colors_manager
 endef
 
 # **************************************************************************** #
