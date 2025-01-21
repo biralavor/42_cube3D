@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/21 07:54:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/21 09:46:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	color_digits_quantity_checker(int *color_digits)
 	return (false);
 }
 
-void	color_digits_counter(t_map *map, int *color_digits)
+void	color_digits_counter(char **arr, int *color_digits)
 {
 	int	y;
 	int	x;
@@ -42,24 +42,24 @@ void	color_digits_counter(t_map *map, int *color_digits)
 
 	y = -1;
 	id = 0;
-	while (map->colors[++y][0])
+	while (arr[++y][0])
 	{
 		comma_counter = 0;
 		x = 1;
 		while (comma_counter < 3)
 		{
-			while (map->colors[y][++x] && map->colors[y][x] != ','
-				&& map->colors[y][x] != '\n')
+			while (arr[y][++x] && arr[y][x] != ','
+				&& arr[y][x] != '\n')
 				color_digits[id]++;
 			comma_counter++;
 			id++;
-			if (map->colors[y][x + 1] == '\n')
+			if (arr[y][x + 1] == '\n')
 				break ;
 		}
 	}
 }
 
-bool	color_digits_into_array(t_map *map, int *color_digits, int *rgbrgb)
+bool	color_digits_into_array(char **arr, int *color_digits, int *rgbrgb)
 {
 	int		y;
 	int		x;
@@ -70,30 +70,30 @@ bool	color_digits_into_array(t_map *map, int *color_digits, int *rgbrgb)
 	y = -1;
 	id = 0;
 	color_value = NULL;
-	while (map->colors[++y][0])
+	while (arr[++y][0])
 	{
 		digit = -1;
 		x = 1;
-		while (++digit <= color_digits[id] && (ft_isdigit(map->colors[y][++x])
-			|| !map->colors[y][x] || map->colors[y][x] == ',' || map->colors[y][x] == '\n'))
+		while (++digit <= color_digits[id] && (ft_isdigit(arr[y][++x])
+			|| !arr[y][x] || arr[y][x] == ',' || arr[y][x] == '\n'))
 		{
 			if (digit == 0)
-				color_value = ft_substr(map->colors[y], x, 1);
-			else if (ft_isdigit(map->colors[y][x]))
-				color_value = ft_strjoin(color_value, ft_substr(map->colors[y], x, 1));
-			if (map->colors[y][x] == ',' || map->colors[y][x] == '\n'
-				|| !map->colors[y][x])
+				color_value = ft_substr(arr[y], x, 1);
+			else if (ft_isdigit(arr[y][x]))
+				color_value = ft_strjoin(color_value, ft_substr(arr[y], x, 1));
+			if (arr[y][x] == ',' || arr[y][x] == '\n'
+				|| !arr[y][x])
 			{
 				rgbrgb[id] = ft_atoi(color_value);
 				free(color_value);
 				id++;
 				digit = -1;
-				if (map->colors[y][x] == '\n' || !map->colors[y][x])
+				if (arr[y][x] == '\n' || !arr[y][x])
 					break ;
 			}
 		}
 	}
-	if (!map->colors[y][0])
+	if (!arr[y][0])
 		return (true);
 	ft_putstr_fd(RED"Non-digit value detected at Color Map", STDERR_FILENO);
 	return (false);

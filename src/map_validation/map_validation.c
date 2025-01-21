@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/21 08:25:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/21 09:48:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,13 @@ bool	map_colors_manager(t_map *map)
 {
 	static int	color_digits[6];
 	static int	rgbrgb[6];
+	char		**arr;
 
-	color_digits_counter(map, color_digits);
+	arr = map->colors;
+	color_digits_counter(arr, color_digits);
 	if (color_digits_quantity_checker(color_digits)
-		&& no_garbage_at_colors(map, color_digits)
-		&& color_digits_into_array(map, color_digits, rgbrgb)
+		&& no_garbage_at_colors(arr, color_digits)
+		&& color_digits_into_array(arr, color_digits, rgbrgb)
 		&& colors_with_min_max_values(rgbrgb))
 	{
 		printf(GREEN"\nColor Map approved!\n");
