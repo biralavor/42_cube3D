@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/20 19:15:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/20 22:57:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	colorsmap_into_array(t_map *map);
 void	gamemap_into_array(t_map *map);
 void	color_digits_counter(t_map *map, int *color_digits);
 bool	color_digits_quantity_checker(int *color_digits);
+bool	color_digits_into_array(t_map *map, int *color_digits, int *rgbrgb);
+bool	colors_with_min_max_values(int *rgbrgb);
 void	map_array_printer(char **array);
 
 bool	nothing_aftermap(t_map *map);
