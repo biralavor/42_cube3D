@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/20 19:16:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:06:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ bool	closed_wall_manager(t_map *map)
 bool	map_colors_manager(t_map *map)
 {
 	static int	color_digits[6];
-	// static int	rgbrgb[6];
+	static int	rgbrgb[6];
 	int	id; //
 
 	id = -1; //
 	color_digits_counter(map, color_digits);
-	while (color_digits[++id])
-		printf("Color Digits[%d]: %d\n", id, color_digits[id]);
-	if (color_digits_quantity_checker(color_digits))
+	if (color_digits_quantity_checker(color_digits)
+		&& color_digits_into_array(map, color_digits, rgbrgb)
+		&& colors_with_min_max_values(rgbrgb))
 	{
 		printf(GREEN"\nColor Map approved!\n");
 		map_array_printer(map->colors);

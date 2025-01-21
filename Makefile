@@ -162,7 +162,7 @@ define					map_for_test
 endef
 
 define					function_for_debug
-						map_colors_manager
+						colors_with_min_max_values
 endef
 
 # **************************************************************************** #
