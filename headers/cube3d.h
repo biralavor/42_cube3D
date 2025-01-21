@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/21 08:02:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/21 09:49:09 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ bool	east_compass_datafinder(t_map *map, int *already_found);
 
 bool	map_colors_manager(t_map *map);
 bool	no_garbage_checker(t_map *map);
-bool	no_garbage_at_colors(t_map *map, int *rgbrgb);
+bool	no_garbage_at_colors(char **arr, int *rgbrgb);
 bool	no_garbage_at_gamemap(t_map *map);
 int		skipping_all_except_colors(t_map *map);
 int		skipping_all_except_gamemap(t_map *map);
 void	colorsmap_into_array(t_map *map);
 void	gamemap_into_array(t_map *map);
-void	color_digits_counter(t_map *map, int *color_digits);
+void	color_digits_counter(char **arr, int *color_digits);
 bool	color_digits_quantity_checker(int *color_digits);
-bool	color_digits_into_array(t_map *map, int *color_digits, int *rgbrgb);
+bool	color_digits_into_array(char **arr, int *color_digits, int *rgbrgb);
 bool	colors_with_min_max_values(int *rgbrgb);
 void	map_array_printer(char **array, char *array_name);
 
