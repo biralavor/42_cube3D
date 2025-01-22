@@ -43,45 +43,6 @@ bool	no_garbage_at_color_values(char **arr, int *color_digits, int id)
 	return (false);
 }
 
-// bool	no_garbage_at_color_values(char **arr, int *color_digits, int *color_values)
-// {
-// 	int		y;
-// 	int		x;
-// 	int		id;
-// 	int		digit;
-
-// 	y = -1;
-// 	id = 0;
-// 	while (arr[++y][0])
-// 	{
-// 		digit = -1;
-// 		x = 1;
-// 		while (++digit <= color_digits[id] && (ft_isdigit(arr[y][++x])
-// 			|| !arr[y][x] || arr[y][x] == ',' || arr[y][x] == '\n'))
-// 		{
-// 			if (digit == 0)
-// 				color_values[id] = (int)(*ft_substr(arr[y], x, 1));
-// 			else if (ft_isdigit(arr[y][x]))
-// 			{
-// 				color_values[id] *= 10;
-// 				color_values[id] += (int)(*ft_substr(arr[y], x, 1));
-// 			}
-// 			if (arr[y][x] == ',' || arr[y][x] == '\n'
-// 				|| !arr[y][x])
-// 			{
-// 				id++;
-// 				digit = -1;
-// 				if (arr[y][x] == '\n' || !arr[y][x])
-// 					break ;
-// 			}
-// 		}
-// 		if (!arr[y][0] && id == 5)
-// 			return (true);
-// 	}
-// 	ft_putstr_fd(RED"Garbage inside MapColors detected", STDERR_FILENO);
-// 	return (true);
-// }
-
 bool	no_garbage_at_gamemap(t_map *map)
 {
 	char	**arr;
