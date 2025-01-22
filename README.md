@@ -13,10 +13,9 @@ This project is inspired by the world-famous Wolfenstein 3D game, which was the 
 The majority functions of `map_validation_manager` was built in boolean type. This approach helps code maintenance and readability.
 - Map Validation Manager
   - File Checker
-    - Extension Checker
+    - Valid Extension Checker
+    - Map Reader
     - Unique Definitions for Compass Points
-    - No Garbage
-      - In GameMap
     - Nothing After Map
   - Map Player Checker
     - Player Detected
@@ -25,9 +24,18 @@ The majority functions of `map_validation_manager` was built in boolean type. Th
     - Top Wall Finder
     - Middle Wall Finder
     - Bottom Wall Finder
+  - Map Colors Manager
+    - Color Digit Counter
+    - Color Digit Quantity Checker
+    - No Garbage at Color Values
+    - Color Values into Array
+    - Color with Min and Max Values
+  - No Garbage
+    - In GameMap
   - $\color{BurntOrange}{Map Graphics Checker <--- We-are-Here!!}$
 
 
-![image](https://github.com/user-attachments/assets/a216fe7c-f3af-45bd-970a-6a20ea57fb87)
+![image](https://github.com/user-attachments/assets/effee62f-6b31-4a09-a036-86428f2d6cd1)
+
 
 
