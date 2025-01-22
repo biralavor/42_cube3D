@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/21 09:46:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:44:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,44 +59,46 @@ void	color_digits_counter(char **arr, int *color_digits)
 	}
 }
 
-bool	color_digits_into_array(char **arr, int *color_digits, int *rgbrgb)
+bool	color_values_into_array(char **arr, int *color_digits, int *rgbrgb)
 {
 	int		y;
 	int		x;
 	int		id;
-	int		digit;
-	char	*color_value;
+	char	*one_value;
 
 	y = -1;
 	id = 0;
-	color_value = NULL;
+	one_value = NULL;
 	while (arr[++y][0])
 	{
-		digit = -1;
 		x = 1;
-		while (++digit <= color_digits[id] && (ft_isdigit(arr[y][++x])
-			|| !arr[y][x] || arr[y][x] == ',' || arr[y][x] == '\n'))
+		while (color_digits[id] && x++)
 		{
-			if (digit == 0)
-				color_value = ft_substr(arr[y], x, 1);
-			else if (ft_isdigit(arr[y][x]))
-				color_value = ft_strjoin(color_value, ft_substr(arr[y], x, 1));
-			if (arr[y][x] == ',' || arr[y][x] == '\n'
-				|| !arr[y][x])
-			{
-				rgbrgb[id] = ft_atoi(color_value);
-				free(color_value);
-				id++;
-				digit = -1;
-				if (arr[y][x] == '\n' || !arr[y][x])
-					break ;
-			}
+			if (arr[y][x] || arr[y][x] != ',' || arr[y][x] != '\n')
+				one_value = ft_substr(arr[y], x++, 1);
+			while (color_digits[id]-- > 0 && arr[y][x] != ',')
+				one_value = ft_strjoin(one_value, ft_substr(arr[y], x++, 1));
+			convert_color_digits_id_to_int(arr[y][x], rgbrgb, &id, one_value);
+			if (arr[y][x] == '\n' || !arr[y][x])
+				break ;
 		}
 	}
 	if (!arr[y][0])
 		return (true);
-	ft_putstr_fd(RED"Non-digit value detected at Color Map", STDERR_FILENO);
+	ft_putstr_fd(RED"Couldn't convert values of Color Map", STDERR_FILENO);
 	return (false);
+}
+
+void	convert_color_digits_id_to_int(char actual_char, int *rgbrgb, int *id,
+		 char *one_value)
+{
+	if (actual_char == ',' || actual_char == '\n' || !actual_char)
+	{
+		rgbrgb[*id] = ft_atoi(one_value);
+		free(one_value);
+		one_value = NULL;
+		*id = *id + 1;
+	}
 }
 
 bool	colors_with_min_max_values(int *rgbrgb)
