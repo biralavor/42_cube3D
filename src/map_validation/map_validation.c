@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/21 09:48:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:46:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,29 @@ bool	closed_wall_manager(t_map *map)
 bool	map_colors_manager(t_map *map)
 {
 	static int	color_digits[6];
-	static int	rgbrgb[6];
+	// static int	color_values[6];
+	// static int	rgbrgb[6];
 	char		**arr;
+	int			id;
 
 	arr = map->colors;
+	id = 0;
 	color_digits_counter(arr, color_digits);
-	if (color_digits_quantity_checker(color_digits)
-		&& no_garbage_at_colors(arr, color_digits)
-		&& color_digits_into_array(arr, color_digits, rgbrgb)
-		&& colors_with_min_max_values(rgbrgb))
+	if (color_digits_quantity_checker(color_digits))
+		if (!no_garbage_at_color_values(arr, color_digits, id))
+		{
+			ft_putstr_fd(RED"Garbage inside MapColors detected", STDERR_FILENO);
+			return (false);
+		}
+
 	{
-		printf(GREEN"\nColor Map approved!\n");
-		map_array_printer(map->colors, "map->colors");
-		return (true);
+		// if (color_digits_into_array(arr, color_digits, rgbrgb)
+		// && colors_with_min_max_values(rgbrgb))
+		// {
+			printf(GREEN"\nColor Map approved!\n");
+			map_array_printer(map->colors, "map->colors");
+			return (true);
+		// }
 	}
 	return (false);
 }

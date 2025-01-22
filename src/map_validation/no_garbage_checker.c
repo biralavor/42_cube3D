@@ -12,40 +12,75 @@
 
 #include "cube3d.h"
 
-bool	no_garbage_at_colors(t_map *map, int *rgbrgb)
+
+bool	no_garbage_at_color_values(char **arr, int *color_digits, int id)
 {
-	int			y;
-	int			x;
-	int			id;
+	int		y;
+	int		x;
+	int		digit;
 
 	y = -1;
-	x = -1;
-	id = -1;
-	while (map->colors[++y][0])
+	while (arr[++y][0])
 	{
-		while (map->colors[y][++x] != ',')
-			;
-		if (ft_isdigit(map->colors[y][x - 1])	
-			&& ft_isdigit(map->colors[y][x - 2])
-			&& ft_isdigit(map->colors[y][x + 2]))
+		digit = 0;
+		x = 1;
+		while (digit++ <= color_digits[id] && ++x)
+		{
+			if (ft_isdigit(arr[y][x]) && id == 5 && (arr[y][x + 1] == '\n'
+				|| !arr[y][x + 1]))
+				return (true);
+			if (arr[y][x] == ',' || arr[y][x] == '\n' || !arr[y][x])
 			{
-				rgbrgb[++id] = 1;
-				x += 2;
+				id++;
+				digit = 0;
+				if (arr[y][x] == '\n' || !arr[y][x])
+					break ;
 			}
-		else if (map->colors[y][x] == '\n')
-			break ;
+			else if (!ft_isdigit(arr[y][x]))
+				return (false);
+		}
 	}
-	if (rgbrgb[0] == 1 && rgbrgb[1] == 1 && rgbrgb[2] == 1
-		&& rgbrgb[3] == 1 && rgbrgb[4] == 1 && rgbrgb[5] == 1)
-	{
-		printf("\nPrinting Map Colors:\n");
-		map_array_printer(map->colors);
-		return (true);
-	}
-	ft_putstr_fd(RED"Garbage inside MapColors detected", STDERR_FILENO);
-	// ft_putstr_fd(RED"Invalid definition at Color Map\n"RESET, STDERR_FILENO);
 	return (false);
 }
+
+// bool	no_garbage_at_color_values(char **arr, int *color_digits, int *color_values)
+// {
+// 	int		y;
+// 	int		x;
+// 	int		id;
+// 	int		digit;
+
+// 	y = -1;
+// 	id = 0;
+// 	while (arr[++y][0])
+// 	{
+// 		digit = -1;
+// 		x = 1;
+// 		while (++digit <= color_digits[id] && (ft_isdigit(arr[y][++x])
+// 			|| !arr[y][x] || arr[y][x] == ',' || arr[y][x] == '\n'))
+// 		{
+// 			if (digit == 0)
+// 				color_values[id] = (int)(*ft_substr(arr[y], x, 1));
+// 			else if (ft_isdigit(arr[y][x]))
+// 			{
+// 				color_values[id] *= 10;
+// 				color_values[id] += (int)(*ft_substr(arr[y], x, 1));
+// 			}
+// 			if (arr[y][x] == ',' || arr[y][x] == '\n'
+// 				|| !arr[y][x])
+// 			{
+// 				id++;
+// 				digit = -1;
+// 				if (arr[y][x] == '\n' || !arr[y][x])
+// 					break ;
+// 			}
+// 		}
+// 		if (!arr[y][0] && id == 5)
+// 			return (true);
+// 	}
+// 	ft_putstr_fd(RED"Garbage inside MapColors detected", STDERR_FILENO);
+// 	return (true);
+// }
 
 bool	no_garbage_at_gamemap(t_map *map)
 {
