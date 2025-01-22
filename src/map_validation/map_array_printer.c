@@ -6,19 +6,19 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:14:30 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/12 15:28:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/21 08:31:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	map_array_printer(char **array)
+void	map_array_printer(char **array, char *array_name)
 {
 	int	y_id;
 	int	x_id;
 
 	y_id = 0;
-	fprintf(stderr, YELLOW"\\ Printing Array Content__________________________\n");
+	fprintf(stderr, YELLOW"\\ Printing Array from: "CYAN"   %s\n", array_name);
 	while (array[y_id])
 	{
 		fprintf(stderr, YELLOW"\\ ");
@@ -36,10 +36,7 @@ void	map_array_printer(char **array)
 			if (array[y_id][x_id] == '\0')
 				fprintf(stderr, PURPLE"\\0");
 			else if (array[y_id][x_id] == '\n')
-			{
 				fprintf(stderr, PURPLE"\\n");
-				// continue ;
-			}
 			else
 				fprintf(stderr, BLUE"%c", array[y_id][x_id]);
 			x_id++;
@@ -47,5 +44,5 @@ void	map_array_printer(char **array)
 		fprintf(stderr, RESET"\n");
 		y_id++;
 	}
-	fprintf(stderr, YELLOW"\\ End of Array Printing___________________________\n"RESET);
+	fprintf(stderr, YELLOW"\\ End of Array Printing_______________________\n");
 }

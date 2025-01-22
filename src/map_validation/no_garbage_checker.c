@@ -12,11 +12,34 @@
 
 #include "cube3d.h"
 
-bool	no_garbage_checker(t_map *map)
+
+bool	no_garbage_at_color_values(char **arr, int *color_digits, int id)
 {
-	if (no_garbage_at_gamemap(map))
-		return (true);
-	ft_putstr_fd(RED"Garbage inside GameMap detected", STDERR_FILENO);
+	int		y;
+	int		x;
+	int		digit;
+
+	y = -1;
+	while (arr[++y][0])
+	{
+		digit = 0;
+		x = 1;
+		while (digit++ <= color_digits[id] && ++x)
+		{
+			if (ft_isdigit(arr[y][x]) && id == 5 && (arr[y][x + 1] == '\n'
+				|| !arr[y][x + 1]))
+				return (true);
+			if (arr[y][x] == ',' || arr[y][x] == '\n' || !arr[y][x])
+			{
+				id++;
+				digit = 0;
+				if (arr[y][x] == '\n' || !arr[y][x])
+					break ;
+			}
+			else if (!ft_isdigit(arr[y][x]))
+				return (false);
+		}
+	}
 	return (false);
 }
 
@@ -45,5 +68,6 @@ bool	no_garbage_at_gamemap(t_map *map)
 				break ;
 		}
 	}
+	ft_putstr_fd(RED"Garbage inside GameMap detected", STDERR_FILENO);
 	return (false);
 }

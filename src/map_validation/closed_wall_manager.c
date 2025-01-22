@@ -6,23 +6,11 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 17:48:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/01/19 18:57:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-bool	closed_wall_manager(t_map *map)
-{
-	char	w;
-
-	w = '1';
-	if (top_wall_finder(map, w)
-		&& middle_wall_finder(map, w)
-		&& bottom_wall_finder(map, w))
-		return (true);
-	return (false);
-}
 
 bool	top_wall_finder(t_map *map, char w)
 {

@@ -12,18 +12,26 @@
 
 #include "cube3d.h"
 
-void	gamemap_init(t_map *map)
+void	structures_init(t_map *map)
 {
 	int	idx;
 
 	idx = -1;
 	map->gamemap = (char **)ft_calloc(MAX_MAP_HEIGHT, sizeof(char *));
-	if (!map->gamemap)
-		ft_error_msg("Malloc failed at gamemap rows\n");
+	map->colors = (char **)ft_calloc(15, sizeof(char *));
+	if (!map->gamemap || !map->colors)
+		ft_error_msg("Malloc failed at structures init\n");
 	while (++idx < MAX_MAP_HEIGHT)
 	{
 		map->gamemap[idx] = (char *)ft_calloc(MAX_MAP_WIDTH, sizeof(char));
 		if (!map->gamemap[idx])
 			ft_error_msg("Malloc failed at gamemap columns\n");
+	}
+	idx = -1;
+	while (++idx < 8)
+	{
+		map->colors[idx] = (char *)ft_calloc(15, sizeof(char));
+		if (!map->colors[idx])
+			ft_error_msg("Malloc failed at colors columns\n");
 	}
 }
