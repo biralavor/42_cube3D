@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:42:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 18:03:03 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:45:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ bool	texture_path_manager(t_map *map)
 
 bool	texture_path_tester(char *path)
 {
-	int		path_fd;
-	char	*cwd;
-	char	*redux_path;
+	int			path_fd;
+	static char	cwd[MAX_TEXTURE_PATH];
+	char		*updated_cwd;
+	char		*redux_path;
 
 	path += 3;
 	redux_path = ft_strdup(path);
 	path -= 3;
-	cwd = getcwd(NULL, 0);
-	cwd = ft_strjoin(cwd, "/");
-	redux_path = ft_strjoin(cwd, redux_path);
-	free(cwd);
+	getcwd(cwd, MAX_TEXTURE_PATH);
+	updated_cwd = ft_strjoin(cwd, "/");
+	redux_path = ft_strjoin(updated_cwd, redux_path);
+	free(updated_cwd);
 	path_fd = open(redux_path, O_RDONLY);
 	free(redux_path);
 	if (path_fd != -1)

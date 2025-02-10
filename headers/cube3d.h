@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/10 17:59:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:43:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define MAX_MAP_WIDTH 200
 # define MAX_MAP_HEIGHT 200
-# define MAX_TEXTURE_PATH 100
+# define MAX_TEXTURE_PATH 200
 # define MAX_COLOR_DIGIT 15
 
 # define RED	"\033[0;31m"
