@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:30:01 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 14:34:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:45:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ char			*ft_gnl_clear_nodes(t_char *str);
 void			ft_error_msg(char *string);
 char			*ft_dec_to_binary(int number);
 char			*ft_strreversing_order(char *string);
+void			ft_free_array(char **array);
 /* my functions */
 
 #endif
