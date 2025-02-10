@@ -51,6 +51,7 @@ NAME					= cub3d
 
 SRC_FILES				= 01.main.c
 SRC_FILES				+= 02.structures_init.c
+SRC_FILES				+= clear_all.c
 SRC_FILES				+= map_validation/map_validation.c
 SRC_FILES				+= map_validation/invalid_extension.c
 SRC_FILES				+= map_validation/map_opener.c
@@ -163,7 +164,7 @@ define					map_for_test
 endef
 
 define					function_for_debug
-						texture_path_manager
+						color_digits_counter
 endef
 
 # **************************************************************************** #
