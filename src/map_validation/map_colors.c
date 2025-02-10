@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 14:04:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:06:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,9 @@ bool	color_values_into_array(char **arr, int *color_digits, int *rgbrgb)
 	while (arr[++y][0])
 	{
 		x = 1;
-		while (color_digits[id] && x++)
+		while (color_digits[id] && arr[y][1] == ' ' && x++)
 		{
-			if (arr[y][x] || arr[y][x] != ',' || arr[y][x] != '\n')
-				one_value = ft_substr(arr[y], x++, 1);
-			while (color_digits[id]-- > 0 && arr[y][x] != ',')
+			while (color_digits[--id] > 0 && arr[y][x] != ',')
 				one_value = ft_strjoin(one_value, ft_substr(arr[y], x++, 1));
 			convert_color_digits_id_to_int(arr[y][x], rgbrgb, &id, one_value);
 			if (arr[y][x] == '\n' || !arr[y][x])

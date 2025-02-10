@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/26 20:31:36 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/14 13:59:45 by umeneses         ###   ########.fr        #
+#    Updated: 2025/02/10 17:43:39 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ BUILD_D				= ./build/
 
 NAME 				= libft.a
 
+# ****** libft functions ****** #
 FILES				= ft_atoi.c
 FILES				+= ft_bzero.c
 FILES				+= ft_calloc.c
@@ -69,7 +70,8 @@ FILES				+= ft_strmapi.c
 FILES				+= ft_strjoin.c
 FILES				+= ft_split.c	
 FILES				+= ft_strtrim.c
-# ****** libft functions ****** #
+
+# ****** bonus libft functions ****** #
 FILES				+= ft_lstadd_back_void.c
 FILES				+= ft_lstadd_front_void.c
 FILES				+= ft_lstclear_void.c
@@ -80,24 +82,27 @@ FILES				+= ft_lstmap_t_list.c
 FILES				+= ft_lstnew_t_list.c
 FILES				+= ft_lstsize_int.c
 FILES				+= ft_lstend_void.c
-# ****** bonus libft functions ****** #
+
+# ****** ft_printf functions ****** #
 FILES				+= ft_printf.c
 FILES				+= ft_printf_placeholder.c
 FILES				+= ft_put_unsigned_nbr.c
 FILES				+= ft_putnbrbase.c
 FILES				+= ft_putptr.c
-# ****** ft_printf functions ****** #
+
+# ****** gnl functions ****** #
 FILES				+= ft_get_next_line.c
 FILES				+= ft_gnl_clear_nodes.c
 FILES				+= ft_gnl_get_let.c
 FILES				+= ft_gnl_get_line.c
 FILES				+= ft_gnl_join_let.c
 FILES				+= ft_gnl_join_line.c
-# ****** gnl functions ****** #
+
+# ****** my functions ****** #
 FILES				+= ft_error_msg.c
 FILES				+= ft_dec_to_binary.c
 FILES				+= ft_strreversing_order.c
-# ****** my functions ****** #
+FILES				+= ft_free_array.c
 
 SRC_FILES			= $(addprefix $(SRC_D), $(FILES))
 

@@ -26,10 +26,9 @@ int main(int ac, char **av)
 	}
 	else
 	{
-		// free(map->buffer);
-		// free(map->gamemap);
-		free(map);
+		clear_all_exit_smoothly(map);
 		ft_error_msg("Map validation failed\n");
 	}
+	clear_all_exit_smoothly(map);
 	exit(EXIT_SUCCESS);
 }

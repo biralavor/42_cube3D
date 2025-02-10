@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:42:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 16:23:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:03:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ bool	texture_path_tester(char *path)
 	redux_path = ft_strjoin(cwd, redux_path);
 	free(cwd);
 	path_fd = open(redux_path, O_RDONLY);
+	free(redux_path);
 	if (path_fd != -1)
 	{
 		close(path_fd);

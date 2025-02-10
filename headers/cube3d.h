@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/10 15:29:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:59:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define MAX_MAP_WIDTH 200
 # define MAX_MAP_HEIGHT 200
 # define MAX_TEXTURE_PATH 100
+# define MAX_COLOR_DIGIT 15
 
 # define RED	"\033[0;31m"
 # define GREEN	"\033[0;32m"
@@ -99,6 +100,8 @@ bool	goto_arr_bondary(char **arr, int *y, int *x, char tofind);
 bool	middle_last_line_checker(char **arr, int y, int x, char tofind);
 bool	middle_max_boundary(char **arr, int y, int x, char tofind);
 bool	bottom_wall_finder(t_map *map, char tofind);
+
+void	clear_all_exit_smoothly(t_map *map);
 
 // struct for all datas
 typedef struct s_data
