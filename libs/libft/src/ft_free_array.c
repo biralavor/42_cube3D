@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:40:12 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 17:42:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:20:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_free_array(char **array)
 		return ;
 	idx = 0;
 	tmp = array;
-	while(tmp[idx] != NULL)
+	while (tmp[idx])
 	{
 		free(tmp[idx]);
 		idx++;

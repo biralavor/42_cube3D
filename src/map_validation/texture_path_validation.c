@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:42:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 18:03:03 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:12:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ bool	texture_path_manager(t_map *map)
 	char		*path;
 	int			idx;
 	static int	approved_texture[4];
+	static char	cwd[MAX_TEXTURE_PATH];
 
 	idx = -1;
+	getcwd(cwd, MAX_TEXTURE_PATH);
 	while (map->ggraph[++idx])
 	{
 		path = map->ggraph[idx];
-		if (texture_path_tester(path))
+		if (texture_path_tester(path, cwd))
 		{
 			approved_texture[idx]++;
 			if (idx == 3
@@ -38,21 +40,22 @@ bool	texture_path_manager(t_map *map)
 	return (false);
 }
 
-bool	texture_path_tester(char *path)
+bool	texture_path_tester(char *path, char *cwd)
 {
 	int		path_fd;
-	char	*cwd;
+	char	*updated_cwd;
 	char	*redux_path;
+	char	*new_path;
 
-	path += 3;
-	redux_path = ft_strdup(path);
-	path -= 3;
-	cwd = getcwd(NULL, 0);
-	cwd = ft_strjoin(cwd, "/");
-	redux_path = ft_strjoin(cwd, redux_path);
-	free(cwd);
-	path_fd = open(redux_path, O_RDONLY);
+	redux_path = (char *)ft_calloc(ft_strlen(path), sizeof(char *));
+	ft_memmove(redux_path, path + 3, ft_strlen(path));
+	updated_cwd = ft_strjoin(cwd, "/");
+	new_path = ft_strjoin(updated_cwd, redux_path);
+	printf("\nredux_path: %s\n", new_path);
+	free(updated_cwd);
+	path_fd = open(new_path, O_RDONLY);
 	free(redux_path);
+	free(new_path);
 	if (path_fd != -1)
 	{
 		close(path_fd);
