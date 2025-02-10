@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 11:31:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:27:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ bool	map_validation_manager(char **av, t_map *map)
 		&& map_player_checker(map)
 		&& closed_wall_manager(map)
 		&& no_garbage_checker(map)
-		&& map_colors_manager(map))
+		&& map_colors_manager(map)
+		&& texture_path_manager(map))
 	{
 		printf(GREEN"\nGame Map approved!\n");
 		map_printer(map);
