@@ -64,6 +64,7 @@ SRC_FILES				+= map_validation/map_array_printer.c
 SRC_FILES				+= map_validation/map_struct_init.c
 SRC_FILES				+= map_validation/map_struct_skippers.c
 SRC_FILES				+= map_validation/map_colors.c
+SRC_FILES				+= map_validation/texture_path_validation.c
 SRC_FILES				+= map_validation/closed_wall_manager.c
 SRC_FILES				+= map_validation/player_checker.c
 
@@ -158,11 +159,11 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/invalid_colors_f_def.cub
+						maps/default.cub
 endef
 
 define					function_for_debug
-						colors_with_min_max_values
+						texture_path_manager
 endef
 
 # **************************************************************************** #

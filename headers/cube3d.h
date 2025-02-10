@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/10 12:33:01 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:29:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ bool	color_digits_quantity_checker(int *color_digits);
 bool	color_values_into_array(char **arr, int *color_values, int *rgbrgb);
 bool	colors_with_min_max_values(int *rgbrgb);
 void	map_array_printer(char **array, char *array_name);
+
+bool	texture_path_manager(t_map *map);
+bool	texture_path_tester(char *path);
 
 bool	nothing_aftermap(t_map *map);
 bool	linebreak_reader(char **arr, int y, int x);
