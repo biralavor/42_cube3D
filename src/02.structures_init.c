@@ -18,14 +18,22 @@ void	structures_init(t_map *map)
 
 	idx = -1;
 	map->gamemap = (char **)ft_calloc(MAX_MAP_HEIGHT, sizeof(char *));
+	map->ggraph = (char **)ft_calloc(MAX_TEXTURE_PATH, sizeof(char *));
 	map->colors = (char **)ft_calloc(15, sizeof(char *));
-	if (!map->gamemap || !map->colors)
+	if (!map->gamemap || !map->ggraph  || !map->colors)
 		ft_error_msg("Malloc failed at structures init\n");
 	while (++idx < MAX_MAP_HEIGHT)
 	{
 		map->gamemap[idx] = (char *)ft_calloc(MAX_MAP_WIDTH, sizeof(char));
 		if (!map->gamemap[idx])
 			ft_error_msg("Malloc failed at gamemap columns\n");
+	}
+	idx = -1;
+	while (++idx < 4)
+	{
+		map->ggraph[idx] = (char *)ft_calloc(MAX_TEXTURE_PATH, sizeof(char));
+		if (!map->ggraph[idx])
+			ft_error_msg("Malloc failed at gamegraph columns\n");
 	}
 	idx = -1;
 	while (++idx < 8)
