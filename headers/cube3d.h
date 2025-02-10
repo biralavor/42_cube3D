@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/01/22 16:53:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:33:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define MAX_MAP_WIDTH 200
 # define MAX_MAP_HEIGHT 200
+# define MAX_TEXTURE_PATH 100
 
 # define RED	"\033[0;31m"
 # define GREEN	"\033[0;32m"
@@ -36,6 +37,7 @@
 typedef struct s_map
 {
 	char	**gamemap;
+	char	**ggraph;
 	char	**colors;
 	char	*buffer;
 	int32_t	bytes_read;
@@ -64,6 +66,8 @@ bool	map_colors_manager(t_map *map);
 bool	no_garbage_checker(t_map *map);
 bool	no_garbage_at_color_values(char **arr, int *color_digits, int id);
 bool	no_garbage_at_gamemap(t_map *map);
+void	gamegraph_into_array(t_map *map);
+bool	no_garbage_at_texture(t_map *map);
 int		skipping_all_except_colors(t_map *map);
 int		skipping_all_except_gamemap(t_map *map);
 void	colorsmap_into_array(t_map *map);

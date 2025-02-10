@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/22 12:59:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:31:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ bool	map_colors_manager(t_map *map)
 
 bool	no_garbage_checker(t_map *map)
 {
-	if (no_garbage_at_gamemap(map))
+	if (no_garbage_at_texture(map)
+		&& no_garbage_at_gamemap(map))
 		return (true);
 	return (false);
 }

@@ -12,7 +12,6 @@
 
 #include "cube3d.h"
 
-
 bool	no_garbage_at_color_values(char **arr, int *color_digits, int id)
 {
 	int		y;
@@ -59,7 +58,11 @@ bool	no_garbage_at_gamemap(t_map *map)
 			if (arr[y][x] != '1' && arr[y][x] != '0' && arr[y][x] != 'N'
 				&& arr[y][x] != 'S' && arr[y][x] != 'W' && arr[y][x] != 'E'
 				&& arr[y][x] != '2')
-					return (false);
+			{
+				ft_putstr_fd(RED"Garbage inside GameMap "
+					"detected", STDERR_FILENO);
+				return (false);
+			}
 			if ((arr[y][x] == '1' || arr[y][x] == '0') && arr[y][x - 1] == '1'
 				&& arr[y][x - 2] == '1' && y > 2 && arr[y - 1][x] == '1'
 				&& (arr[y][x + 1] == '\n' || !arr[y][x + 1]))
@@ -69,5 +72,32 @@ bool	no_garbage_at_gamemap(t_map *map)
 		}
 	}
 	ft_putstr_fd(RED"Garbage inside GameMap detected", STDERR_FILENO);
+	return (false);
+}
+
+bool	no_garbage_at_texture(t_map *map)
+{
+	char	**arr;
+	int		y;
+	int		x;
+
+	arr = map->ggraph;
+	y = 0;
+	x = 0;
+	while (arr[y][x] != '\0')
+	{
+		if ((arr[y][x] == 'N' && arr[y][x + 1] == 'O')
+			|| (arr[y][x] == 'S' && arr[y][x + 1] == 'O')
+			|| (arr[y][x] == 'W' && arr[y][x + 1] == 'E')
+			|| (arr[y][x] == 'E' && arr[y][x + 1] == 'A'))
+		{
+			if (y == 3)
+				return (true);
+			y++;
+		}
+		else
+			break ;
+	}
+	ft_putstr_fd(RED"Garbage inside Textures detected", STDERR_FILENO);
 	return (false);
 }

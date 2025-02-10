@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/22 17:44:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:04:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,19 +104,22 @@ void	convert_color_digits_id_to_int(char actual_char, int *rgbrgb, int *id,
 bool	colors_with_min_max_values(int *rgbrgb)
 {
 	int			id;
-	static int	color_approved[6];
+	static int	approved_color[6];
 
-	id = -1;
-	while (rgbrgb[++id])
+	id = 0;
+	while (rgbrgb)
 	{
 		if (rgbrgb[id] >= 0 && rgbrgb[id] <= 255)
 		{
-			color_approved[id]++;
-			if (id == 5 && color_approved[0] == 1 && color_approved[1] == 1
-				&& color_approved[2] == 1 && color_approved[3] == 1
-				&& color_approved[4] == 1 && color_approved[5] == 1)
+			approved_color[id]++;
+			if (id == 5 && approved_color[0] == 1 && approved_color[1] == 1
+				&& approved_color[2] == 1 && approved_color[3] == 1
+				&& approved_color[4] == 1 && approved_color[5] == 1)
 				return (true);
+			id++;
 		}
+		else
+			break ;
 	}
 	ft_putstr_fd(RED"Color value in ColorMap out of range", STDERR_FILENO);
 	return (false);
