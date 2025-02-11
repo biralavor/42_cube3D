@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 15:27:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:45:15 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ bool	map_validation_manager(char **av, t_map *map)
 		&& map_player_checker(map)
 		&& closed_wall_manager(map)
 		&& no_garbage_checker(map)
-		&& map_colors_manager(map)
-		&& texture_path_manager(map))
+		&& texture_path_manager(map)
+		&& map_colors_manager(map))
 	{
-		printf(GREEN"\nGame Map approved!\n");
+		printf(GREEN"✅ Game Map \t\tapproved!\n");
 		map_printer(map);
 		return (true);
 	}
@@ -81,8 +81,7 @@ bool	map_colors_manager(t_map *map)
 		if (color_values_into_array(arr, color_digits, rgbrgb)
 		&& colors_with_min_max_values(rgbrgb))
 		{
-			printf(GREEN"\nColor Map approved!\n");
-			map_array_printer(map->colors, "map->colors");
+			printf(GREEN"✅ Color Map \t\tapproved!\n");
 			return (true);
 		}
 	}

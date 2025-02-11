@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:42:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/11 15:39:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:45:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	texture_path_manager(t_map *map)
 				&& approved_texture[0] == 1 && approved_texture[1] == 1
 				&& approved_texture[2] == 1 && approved_texture[3] == 1)
 			{
-				printf(GREEN"\nTexture paths approved!\n");
+				printf(GREEN"\n✅ Texture Paths Map \tapproved!\n");
 				return (true);
 			}
 		}
