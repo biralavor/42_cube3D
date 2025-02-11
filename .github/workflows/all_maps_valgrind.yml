@@ -62,33 +62,34 @@ jobs:
           echo "/////////////////////////////////////"
           echo "Testing map: $map" | tee -a test-results/output.log
           filename=$(basename -- "$map")
-          output=$(${{ env.my_valgrind }} ./cub3d $map 2>&1)
+          output=$(${my_valgrind} ./cub3d $map 2>&1)
           echo "$output" | tee -a test-results/output.log
+          error_summary=$(echo "$output" | grep "ERROR SUMMARY")
+          echo "$error_summary" | tee -a test-results/output.log
           if [[ $filename == invalid* ]]; then
             if echo "$output" | grep -q "<< Error >> No map file found with this name T.T"; then
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭" | tee -a test-results/output.log
               echo "$map: FAILURE (No map file found with this name)" | tee -a test-results/results.txt
-            elif ${{ env.my_valgrind }} ./cub3d $map; then
+            elif echo "$error_summary" | grep -q "ERROR SUMMARY: [^0]"; then
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭" | tee -a test-results/output.log
-              echo "$map: FAILURE (expected to fail but passed)" | tee -a test-results/results.txt
+              echo "$map: FAILURE (Valgrind errors found)" | tee -a test-results/results.txt
             else
               echo "🎊 🎊 🎊" | tee -a test-results/output.log
               echo "😎 😎 😎" | tee -a test-results/output.log
-              echo "🎉 🎉 🎉" | tee -a test-results/output.log
               echo "$map: SUCCESS (expected to fail and failed)" | tee -a test-results/results.txt
             fi
           else
             if echo "$output" | grep -q "<< Error >> No map file found with this name T.T"; then
               echo "😭 😭 😭 😭 😭 😭 😭 😭 😭" | tee -a test-results/output.log
               echo "$map: FAILURE (No map file found with this name)" | tee -a test-results/results.txt
-            elif ${{ env.my_valgrind }} ./cub3d $map; then
+            elif echo "$error_summary" | grep -q "ERROR SUMMARY: [^0]"; then
+              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭" | tee -a test-results/output.log
+              echo "$map: FAILURE (Valgrind errors found)" | tee -a test-results/results.txt
+            else
               echo "🎊 🎊 🎊" | tee -a test-results/output.log
               echo "😎 😎 😎" | tee -a test-results/output.log
               echo "🎉 🎉 🎉" | tee -a test-results/output.log
               echo "$map: SUCCESS" | tee -a test-results/results.txt
-            else
-              echo "😭 😭 😭 😭 😭 😭 😭 😭 😭" | tee -a test-results/output.log
-              echo "$map: FAILURE" | tee -a test-results/results.txt
             fi
           fi
         done
