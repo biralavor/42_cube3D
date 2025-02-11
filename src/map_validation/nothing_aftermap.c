@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:57:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/17 18:59:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:15:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ bool	nothing_aftermap(t_map *map)
 		x = -1;
 		while (arr[y][++x])
 		{
-			if ((arr[y][x] == '1' || arr[y][x] == '0') && arr[y][x - 1] == '1'
-				&& arr[y][x - 2] == '1' && y > 2 && arr[y - 1][x] == '1'
-				&& (arr[y][x + 1] == '\n' || !arr[y][x + 1]))
+			if (arr[y][x] && (arr[y][x] == '1' || arr[y][x] == '0')
+				&& (x - 2) > 0 && arr[y][x - 1] && arr[y][x - 1] == '1'
+				&& arr[y][x - 2] && arr[y][x - 2] == '1' && y > 2
+				&& arr[y - 1][x] && arr[y - 1][x] == '1'
+				&& (!arr[y][x + 1] || arr[y][x + 1] == '\n'))
 			{
 				if ((!arr[y][x + 1] || arr[y + 1][0] == '\n')
 					&& linebreak_reader(arr, y, x))
