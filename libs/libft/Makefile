@@ -6,7 +6,7 @@
 #    By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/26 20:31:36 by umeneses          #+#    #+#              #
-#    Updated: 2025/02/10 17:43:39 by umeneses         ###   ########.fr        #
+#    Updated: 2025/02/11 15:59:32 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,7 @@ FILES				+= ft_gnl_join_let.c
 FILES				+= ft_gnl_join_line.c
 
 # ****** my functions ****** #
+FILES				+= ft_array_len.c
 FILES				+= ft_error_msg.c
 FILES				+= ft_dec_to_binary.c
 FILES				+= ft_strreversing_order.c
