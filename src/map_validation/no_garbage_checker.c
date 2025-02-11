@@ -63,9 +63,11 @@ bool	no_garbage_at_gamemap(t_map *map)
 					"detected", STDERR_FILENO);
 				return (false);
 			}
-			if ((arr[y][x] == '1' || arr[y][x] == '0') && arr[y][x - 1] == '1'
-				&& arr[y][x - 2] == '1' && y > 2 && arr[y - 1][x] == '1'
-				&& (arr[y][x + 1] == '\n' || !arr[y][x + 1]))
+			if (arr[y][x] && (arr[y][x] == '1' || arr[y][x] == '0')
+				&& (x - 1) > 0 && arr[y][x - 1] && arr[y][x - 1] == '1'
+				&& (x - 2) > 0 && arr[y][x - 2] && arr[y][x - 2] == '1'
+				&& y > 2 && arr[y - 1][x] == '1' && (arr[y][x + 1] == '\n'
+				|| !arr[y][x + 1]))
 				return (true);
 			else if (arr[y][x + 1] == '\0' && arr[y + 1][0])
 				break ;
