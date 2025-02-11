@@ -18,13 +18,9 @@ jobs:
   all-maps-valgrind:
     runs-on: ubuntu-latest
     env:
-      my_valgrind: valgrind --leak-check=full \
-                  --track-origins=yes \
-                  --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' \
-                  --trace-children=yes \
-                  --track-fds=yes \
-                  --show-reachable=yes \
-                  --suppressions=mlx_suppressions.sup
+      my_valgrind: >
+        valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*'
+        --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=mlx_suppressions.sup
 
     steps:
     - name: Checkout repository
