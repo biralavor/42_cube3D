@@ -56,7 +56,7 @@ void	player_position_into_struct(t_map *map)
 			{
 				map->player_pos_y = y;
 				map->player_pos_x = x;
-				break ;
+				return ;
 			}
 		}
 	}
