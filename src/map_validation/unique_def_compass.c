@@ -25,6 +25,7 @@ bool	unique_def_compass(t_map *map)
 			&& already_found[2] == 1 && already_found[3] == 1)
 				return (true);
 	}
-	ft_error_msg("Not unique definitions for compass points detected\n");
+	ft_putstr_fd(RED"Not unique definitions for "
+		"compass points detected", STDERR_FILENO);
 	return (false);
 }

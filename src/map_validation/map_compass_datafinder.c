@@ -28,7 +28,7 @@ bool	north_compass_datafinder(t_map *map, int *already_found)
 			return (true);
 		}
 	}
-	ft_error_msg("No data found for 'NO' in map file\n");
+	ft_putstr_fd("No data found for 'NO' in map file", STDERR_FILENO);
 	return (false);
 }
 
@@ -48,7 +48,7 @@ bool	south_compass_datafinder(t_map *map, int *already_found)
 			return (true);
 		}
 	}
-	ft_error_msg("No data found for 'SO' in map file\n");
+	ft_putstr_fd("No data found for 'SO' in map file", STDERR_FILENO);
 	return (false);
 }
 
@@ -68,7 +68,7 @@ bool	west_compass_datafinder(t_map *map, int *already_found)
 			return (true);
 		}
 	}
-	ft_error_msg("No data found for 'WE' in map file\n");
+	ft_putstr_fd("No data found for 'WE' in map file", STDERR_FILENO);
 	return (false);
 }
 
@@ -88,6 +88,6 @@ bool	east_compass_datafinder(t_map *map, int *already_found)
 			return (true);
 		}
 	}
-	ft_error_msg("No data found for 'EA' in map file\n");
+	ft_putstr_fd("No data found for 'EA' in map file", STDERR_FILENO);
 	return (false);
 }
