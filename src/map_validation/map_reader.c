@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:10:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/13 18:58:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:27:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ bool	map_reader(t_map *map)
 	char	buffer[(MAX_MAP_WIDTH * MAX_MAP_HEIGHT)];
 
 	map->bytes_read = read(map->fd, buffer, sizeof(buffer));
+	close(map->fd);
 	if (map->bytes_read < 0)
 	{
 		perror("Couldn't read the file");
@@ -27,14 +28,13 @@ bool	map_reader(t_map *map)
 		map->buffer = (char *)ft_calloc(map->bytes_read + 1, sizeof(char));
 		if (!map->buffer)
 		{
-			ft_error_msg("Memory allocation failed T.T\n");
+			ft_putstr_fd("Memory allocation failed T.T\n", STDERR_FILENO);
 			return (false);
 		}
 		ft_memcpy(map->buffer, buffer, map->bytes_read);
 		map->buffer[map->bytes_read] = '\0';
-		close(map->fd);
 		return (true);
 	}
-	ft_error_msg("No map data here. Is it empty?\n");
+	ft_putstr_fd("No map data here. Is it empty?\n", STDERR_FILENO);
 	return (false);
 }
