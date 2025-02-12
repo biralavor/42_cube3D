@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		ft_error_msg("Map Memory Allocation failed\n");
-	structures_init(map);
+	memory_struct_init(map);
 	if(map_opener(ac, av, map)
 		&& map_validation_manager(av, map))
 	{
