@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/11 16:45:15 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:37:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	map_validation_manager(char **av, t_map *map)
 
 bool	map_file_checker(char **av, t_map *map)
 {
-	if (valid_extension_checker(av)
+	if (valid_extension_checker(av, map)
 		&& map_reader(map))
 	{
 		map_structs_init(map);
