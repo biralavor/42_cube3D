@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/12 13:12:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:37:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	memory_struct_init(t_map *map);
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_validation_manager(char **av, t_map *map);
 bool	map_file_checker(char **av, t_map *map);
-bool	valid_extension_checker(char **av);
+bool	valid_extension_checker(char **av, t_map *map);
 bool	map_reader(t_map *map);
 void	map_structs_init(t_map *map);
 void	map_printer(t_map *map);
