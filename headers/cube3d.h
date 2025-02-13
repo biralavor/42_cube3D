@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/13 16:43:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:07:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ bool	player_free_to_go(t_map *map);
 int		player_boundary_finder(t_map *map, char **arr, int y, int x);
 
 bool	closed_wall_manager(t_map *map);
-bool	top_wall_finder(t_map *map, char tofind);
-bool	middle_wall_finder(t_map *map, char tofind);
+bool	top_wall_finder(char **arr, char tofind);
+bool	middle_wall_finder(char **arr, char tofind);
 bool	goto_arr_bondary(char **arr, int *y, int *x, char tofind);
 bool	middle_last_line_checker(char **arr, int y, int x, char tofind);
 bool	middle_max_boundary(char **arr, int y, int x, char tofind);
-bool	bottom_wall_finder(t_map *map, char tofind);
+bool	bottom_wall_finder(char **arr, char tofind);
 
 void	clear_all_exit_smoothly(t_map *map);
 

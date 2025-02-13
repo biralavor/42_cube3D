@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 16:43:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:08:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ bool	closed_wall_manager(t_map *map)
 	char	w;
 
 	w = '1';
-	if (top_wall_finder(map, w)
-		&& middle_wall_finder(map, w)
-		&& bottom_wall_finder(map, w))
+	if (top_wall_finder(map->gamemap, w)
+		&& middle_wall_finder(map->gamemap, w)
+		&& bottom_wall_finder(map->gamemap, w))
 		return (true);
 	return (false);
 }

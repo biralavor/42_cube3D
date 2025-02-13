@@ -66,7 +66,9 @@ SRC_FILES				+= map_validation/map_struct_init.c
 SRC_FILES				+= map_validation/map_struct_skippers.c
 SRC_FILES				+= map_validation/map_colors.c
 SRC_FILES				+= map_validation/texture_path_validation.c
-SRC_FILES				+= map_validation/closed_wall_manager.c
+SRC_FILES				+= map_validation/closed_wall_bottomwall.c
+SRC_FILES				+= map_validation/closed_wall_middlewall.c
+SRC_FILES				+= map_validation/closed_wall_topwall.c
 SRC_FILES				+= map_validation/player_checker.c
 
 
@@ -160,7 +162,7 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/default.cub
+						maps/invalid_wall_breach_middle_1.cub
 endef
 
 define					function_for_debug
