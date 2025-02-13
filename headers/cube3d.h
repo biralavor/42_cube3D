@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/13 14:49:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:36:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_map
 	int		player_pos_x;
 }			t_map;
 
-void	memory_struct_init(t_map *map);
+void	struct_memory_alloc(t_map *map);
 
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_validation_manager(char **av, t_map *map);
