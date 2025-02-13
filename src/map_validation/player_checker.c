@@ -34,7 +34,7 @@ bool	player_detected(t_map *map)
 				player_found++;
 		}
 	}
-	ft_putstr_fd(RED"Player not found "
+	ft_putstr_fd(YEL"Player not found "
 		"OR more than one player found", STDERR_FILENO);
 	return (false);
 }
@@ -108,6 +108,6 @@ bool	player_free_to_go(t_map *map)
 	}
 	if (corners < 4)
 		return (true);
-	ft_putstr_fd(RED"Player is NOT free to go.", STDERR_FILENO);
+	ft_putstr_fd(YEL"Player is NOT free to go.", STDERR_FILENO);
 	return (false);
 }
