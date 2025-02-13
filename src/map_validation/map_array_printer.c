@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:14:30 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/21 08:31:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:34:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,31 @@ void	map_array_printer(char **array, char *array_name)
 	int	x_id;
 
 	y_id = 0;
-	fprintf(stderr, YELLOW"\\ Printing Array from: "CYAN"   %s\n", array_name);
+	fprintf(stderr, YEL"\\ Printing Array from: "CYA"   %s\n", array_name);
 	while (array[y_id])
 	{
-		fprintf(stderr, YELLOW"\\ ");
-		fprintf(stderr, CYAN"[ %p ] ", *array);
-		fprintf(stderr, YELLOW"%2d ", y_id);
+		fprintf(stderr, YEL"\\ ");
+		fprintf(stderr, CYA"[ %p ] ", *array);
+		fprintf(stderr, YEL"%2d ", y_id);
 		fprintf(stderr, RESET" = ");
 		if (array[y_id][0] == '\0' && array[y_id + 1][0] == '\0')
 		{
-			fprintf(stderr, PURPLE"\\0\n");
+			fprintf(stderr, PUR"\\0\n");
 			break ;
 		}
 		x_id = 0;
 		while (array[y_id][x_id])
 		{	
 			if (array[y_id][x_id] == '\0')
-				fprintf(stderr, PURPLE"\\0");
+				fprintf(stderr, PUR"\\0");
 			else if (array[y_id][x_id] == '\n')
-				fprintf(stderr, PURPLE"\\n");
+				fprintf(stderr, PUR"\\n");
 			else
-				fprintf(stderr, BLUE"%c", array[y_id][x_id]);
+				fprintf(stderr, BLU"%c", array[y_id][x_id]);
 			x_id++;
 		}
 		fprintf(stderr, RESET"\n");
 		y_id++;
 	}
-	fprintf(stderr, YELLOW"\\ End of Array Printing_______________________\n");
+	fprintf(stderr, YEL"\\ End of Array Printing_______________________\n");
 }
