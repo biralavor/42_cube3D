@@ -50,23 +50,26 @@ LIBS					= $(LIBFT) $(MLX42)
 NAME					= cub3d
 
 SRC_FILES				= 01.main.c
-SRC_FILES				+= 02.mem_struct_init.c
+SRC_FILES				+= 02.struct_mem_alloc.c
 SRC_FILES				+= clear_all.c
-SRC_FILES				+= map_validation/map_validation.c
+SRC_FILES				+= map_validation/map_validation_part1.c
+SRC_FILES				+= map_validation/map_validation_part2.c
 SRC_FILES				+= map_validation/invalid_extension.c
 SRC_FILES				+= map_validation/map_opener.c
 SRC_FILES				+= map_validation/map_reader.c
 SRC_FILES				+= map_validation/map_printer.c
 SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
-SRC_FILES				+= map_validation/no_garbage_checker.c
+SRC_FILES				+= map_validation/no_garbage_manager.c
 SRC_FILES				+= map_validation/nothing_aftermap.c
 SRC_FILES				+= map_validation/map_array_printer.c
 SRC_FILES				+= map_validation/map_struct_init.c
 SRC_FILES				+= map_validation/map_struct_skippers.c
 SRC_FILES				+= map_validation/map_colors.c
 SRC_FILES				+= map_validation/texture_path_validation.c
-SRC_FILES				+= map_validation/closed_wall_manager.c
+SRC_FILES				+= map_validation/closed_wall_bottomwall.c
+SRC_FILES				+= map_validation/closed_wall_middlewall.c
+SRC_FILES				+= map_validation/closed_wall_topwall.c
 SRC_FILES				+= map_validation/player_checker.c
 
 

@@ -6,10 +6,9 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/12 19:58:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:19:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
@@ -34,7 +33,6 @@
 # define CYA	"\033[0;36m"
 # define RESET	"\033[0m"
 
-
 typedef struct s_map
 {
 	char	**gamemap;
@@ -47,7 +45,7 @@ typedef struct s_map
 	int		player_pos_x;
 }			t_map;
 
-void	memory_struct_init(t_map *map);
+void	struct_memory_alloc(t_map *map);
 
 bool	map_opener(int ac, char **argv, t_map *map);
 bool	map_validation_manager(char **av, t_map *map);
@@ -63,17 +61,18 @@ bool	south_compass_datafinder(t_map *map, int *already_found);
 bool	west_compass_datafinder(t_map *map, int *already_found);
 bool	east_compass_datafinder(t_map *map, int *already_found);
 
-bool	map_colors_manager(t_map *map);
-bool	no_garbage_checker(t_map *map);
-bool	no_garbage_at_color_values(char **arr, int *color_digits, int id);
-bool	no_garbage_at_gamemap(t_map *map);
+bool	map_colors_manager(char **arr);
+bool	no_garbage_manager(t_map *map);
+bool	no_garbage_at_color_values(char **arr, int digit,
+			int *color_digits, int id);
+bool	no_garbage_at_gamemap(char **arr);
 void	gamegraph_into_array(t_map *map);
-bool	no_garbage_at_texture(t_map *map);
+bool	no_garbage_at_texture(char **arr);
 int		skipping_all_except_colors(t_map *map);
 int		skipping_all_except_gamemap(t_map *map);
 void	colorsmap_into_array(t_map *map);
 void	convert_color_digits_id_to_int(char actual_char, int *rgbrgb, int *id,
-		 char *one_value);
+			char *one_value);
 void	gamemap_into_array(t_map *map);
 void	color_digits_counter(char **arr, int *color_digits);
 bool	color_digits_quantity_checker(int *color_digits);
@@ -84,22 +83,22 @@ void	map_array_printer(char **array, char *array_name);
 bool	texture_path_manager(t_map *map);
 bool	texture_path_tester(char *path, char *cwd);
 
-bool	nothing_aftermap(t_map *map);
+bool	nothing_aftermap(char **arr);
 bool	linebreak_reader(char **arr, int y, int x);
 
-bool	map_player_checker(t_map *map);
+bool	map_player_manager(t_map *map);
 bool	player_detected(t_map *map);
 void	player_position_into_struct(t_map *map);
 bool	player_free_to_go(t_map *map);
 int		player_boundary_finder(t_map *map, char **arr, int y, int x);
 
 bool	closed_wall_manager(t_map *map);
-bool	top_wall_finder(t_map *map, char tofind);
-bool	middle_wall_finder(t_map *map, char tofind);
+bool	top_wall_finder(char **arr, char tofind);
+bool	middle_wall_finder(char **arr, char tofind);
 bool	goto_arr_bondary(char **arr, int *y, int *x, char tofind);
 bool	middle_last_line_checker(char **arr, int y, int x, char tofind);
 bool	middle_max_boundary(char **arr, int y, int x, char tofind);
-bool	bottom_wall_finder(t_map *map, char tofind);
+bool	bottom_wall_finder(char **arr, char tofind);
 
 void	clear_all_exit_smoothly(t_map *map);
 

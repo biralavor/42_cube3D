@@ -12,15 +12,15 @@
 
 #include "cube3d.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_map	*map;
 
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		ft_error_msg("Map Memory Allocation failed\n");
-	memory_struct_init(map);
-	if(map_opener(ac, av, map)
+	struct_memory_alloc(map);
+	if (map_opener(ac, av, map)
 		&& map_validation_manager(av, map))
 	{
 		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);

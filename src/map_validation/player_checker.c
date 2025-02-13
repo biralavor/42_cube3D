@@ -72,7 +72,7 @@ int	player_boundary_finder(t_map *map, char **arr, int y, int x)
 		corners++;
 	else if (y - 1 == map->player_pos_y && arr[y][x + 1] == '1')
 		corners++;
-	while(y == map->player_pos_y && x < (map->player_pos_x + 2))
+	while (y == map->player_pos_y && x < (map->player_pos_x + 2))
 	{
 		if (arr[y][x] == '1')
 			corners++;
@@ -100,7 +100,7 @@ bool	player_free_to_go(t_map *map)
 	y = map->player_pos_y - 1;
 	corners = 0;
 	arr = map->gamemap;
-	while(arr[y] && (y < (map->player_pos_y + 2)))
+	while (arr[y] && (y < (map->player_pos_y + 2)))
 	{
 		x = map->player_pos_x - 1;
 		corners += player_boundary_finder(map, arr, y, x);

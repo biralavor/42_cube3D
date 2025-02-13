@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 14:28:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:36:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		ft_error_msg("Map Memory Allocation failed\n");
-	memory_struct_init(map);
+	struct_memory_alloc(map);
 	if(map_opener(ac, av, map)
 		&& map_validation_manager(av, map))
 	{

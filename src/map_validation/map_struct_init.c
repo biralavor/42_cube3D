@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:05:54 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/11 16:37:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:13:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	map_structs_init(t_map *map)
 {
 	gamegraph_into_array(map);
-	gamemap_into_array(map);
 	colorsmap_into_array(map);
+	gamemap_into_array(map);
 	map_array_printer(map->ggraph, "map->gamegraph");
 	map_array_printer(map->colors, "map->colors");
 	map_array_printer(map->gamemap, "map->gamemap");

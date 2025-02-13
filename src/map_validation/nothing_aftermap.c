@@ -6,19 +6,17 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:57:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 14:20:03 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:19:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool	nothing_aftermap(t_map *map)
+bool	nothing_aftermap(char **arr)
 {
-	char	**arr;
-	int		y;
-	int		x;
+	int	y;
+	int	x;
 
-	arr = map->gamemap;
 	y = -1;
 	while (arr[++y][0] != '\0')
 	{
@@ -39,15 +37,13 @@ bool	nothing_aftermap(t_map *map)
 			}
 		}
 	}
-	ft_putstr_fd(YEL"Your should have nothing after the gamemap :(", \
-		STDERR_FILENO);
+	ft_putstr_fd(YEL"Invalid data after the gamemap", STDERR_FILENO);
 	return (false);
 }
 
 bool	linebreak_reader(char **arr, int y, int x)
 {
 	(void)x;
-	
 	while (arr[++y][0] == '\n')
 	{
 		if (!arr[y][1] && !arr[y + 1][0] && !arr[y + 1][1])
