@@ -1,4 +1,4 @@
-# 42_cube3D
+  # 42_cube3D
 | ![cub3de](https://github.com/user-attachments/assets/1cfe735e-9574-4941-8bcf-4694896f40b5) | This project is inspired by the world-famous Wolfenstein 3D game,<br> which was the first FPS ever, to explore ray-casting.<br> Yes, this game repository is being built with NO GAME ENGINE. |
 | :-: | :-: |
 
@@ -27,18 +27,21 @@ The majority functions of `map_validation_manager` was built in boolean type. Th
     - Top Wall Finder
     - Middle Wall Finder
     - Bottom Wall Finder
+  - No Garbage Manager
+    - No Garbage at Texture
+    - No Garbage at Gamemap
   - Map Colors Manager
     - Color Digit Counter
     - Color Digit Quantity Checker
     - No Garbage at Color Values
     - Color Values into Array
     - Color with Min and Max Values
-  - No Garbage
-    - In GameMap
-  - $\color{BurntOrange}{Map Graphics Checker <--- We-are-Here!!}$
+  
+  This means that our $\color{BurntOrange}{Map Validation}$ is ready to go \o/
 
 
-![image](https://github.com/user-attachments/assets/effee62f-6b31-4a09-a036-86428f2d6cd1)
+![image](https://github.com/user-attachments/assets/b3675c28-1094-4b77-859a-0839f642d644)
+
 
 
 
