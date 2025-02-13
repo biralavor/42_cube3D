@@ -12,7 +12,7 @@
 
 #include "cube3d.h"
 
-void	memory_struct_init(t_map *map)
+void	struct_memmory_alloc(t_map *map)
 {
 	int	idx;
 
