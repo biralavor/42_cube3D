@@ -14,16 +14,15 @@
 
 static bool	garbage_inside_gamemap_detected(char **arr, int x, int y);
 
-bool	no_garbage_at_color_values(char **arr, int *color_digits, int id)
+bool	no_garbage_at_color_values(char **arr, int digit,
+			int *color_digits, int id)
 {
 	int		y;
 	int		x;
-	int		digit;
 
 	y = -1;
 	while (arr[++y][0])
 	{
-		digit = 0;
 		x = 1;
 		while (digit++ <= color_digits[id] && ++x)
 		{
@@ -84,13 +83,11 @@ static bool	garbage_inside_gamemap_detected(char **arr, int x, int y)
 	return (false);
 }
 
-bool	no_garbage_at_texture(t_map *map)
+bool	no_garbage_at_texture(char **arr)
 {
-	char	**arr;
-	int		y;
-	int		x;
+	int	y;
+	int	x;
 
-	arr = map->ggraph;
 	y = 0;
 	x = 0;
 	while (arr[y][x] != '\0')
