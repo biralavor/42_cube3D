@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/13 16:17:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:35:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool	east_compass_datafinder(t_map *map, int *already_found);
 bool	map_colors_manager(t_map *map);
 bool	no_garbage_checker(t_map *map);
 bool	no_garbage_at_color_values(char **arr, int *color_digits, int id);
-bool	no_garbage_at_gamemap(t_map *map);
+bool	no_garbage_at_gamemap(char **arr);
 void	gamegraph_into_array(t_map *map);
 bool	no_garbage_at_texture(t_map *map);
 int		skipping_all_except_colors(t_map *map);
