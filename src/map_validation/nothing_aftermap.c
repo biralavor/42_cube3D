@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:57:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/11 15:15:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:20:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	nothing_aftermap(t_map *map)
 			}
 		}
 	}
-	ft_putstr_fd(RED"Your should have nothing after the gamemap :(", \
+	ft_putstr_fd(YEL"Your should have nothing after the gamemap :(", \
 		STDERR_FILENO);
 	return (false);
 }

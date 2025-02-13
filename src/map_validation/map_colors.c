@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/10 18:06:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:59:13 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	color_digits_quantity_checker(int *color_digits)
 				return (true);
 		}
 	}
-	ft_putstr_fd(RED"Invalid number of digits at Color Map", STDERR_FILENO);
+	ft_putstr_fd(YEL"Invalid number of digits at Color Map", STDERR_FILENO);
 	return (false);
 }
 
@@ -83,7 +83,7 @@ bool	color_values_into_array(char **arr, int *color_digits, int *rgbrgb)
 	}
 	if (!arr[y][0])
 		return (true);
-	ft_putstr_fd(RED"Couldn't convert values of Color Map", STDERR_FILENO);
+	ft_putstr_fd(YEL"Couldn't convert values of Color Map", STDERR_FILENO);
 	return (false);
 }
 
@@ -119,6 +119,6 @@ bool	colors_with_min_max_values(int *rgbrgb)
 		else
 			break ;
 	}
-	ft_putstr_fd(RED"Color value in ColorMap out of range", STDERR_FILENO);
+	ft_putstr_fd(YEL"Color value in ColorMap out of range", STDERR_FILENO);
 	return (false);
 }

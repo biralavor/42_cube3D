@@ -59,7 +59,7 @@ bool	no_garbage_at_gamemap(t_map *map)
 				&& arr[y][x] != 'S' && arr[y][x] != 'W' && arr[y][x] != 'E'
 				&& arr[y][x] != '2')
 			{
-				ft_putstr_fd(RED"Garbage inside GameMap "
+				ft_putstr_fd(YEL"Garbage inside GameMap "
 					"detected", STDERR_FILENO);
 				return (false);
 			}
@@ -73,7 +73,7 @@ bool	no_garbage_at_gamemap(t_map *map)
 				break ;
 		}
 	}
-	ft_putstr_fd(RED"Garbage inside GameMap detected", STDERR_FILENO);
+	ft_putstr_fd(YEL"Garbage inside GameMap detected", STDERR_FILENO);
 	return (false);
 }
 
@@ -100,6 +100,6 @@ bool	no_garbage_at_texture(t_map *map)
 		else
 			break ;
 	}
-	ft_putstr_fd(RED"Garbage inside Textures detected", STDERR_FILENO);
+	ft_putstr_fd(YEL"Garbage inside Textures detected", STDERR_FILENO);
 	return (false);
 }
