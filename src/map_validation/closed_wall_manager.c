@@ -6,19 +6,17 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/19 18:57:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:07:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool	top_wall_finder(t_map *map, char w)
+bool	top_wall_finder(char **arr, char w)
 {
 	int		x;
-	char	**arr;
 
 	x = 0;
-	arr = map->gamemap;
 	if (arr[0][x] == w)
 	{
 		while (arr[0][++x] && arr[0][x] == w)
@@ -31,15 +29,13 @@ bool	top_wall_finder(t_map *map, char w)
 	return (false);
 }
 
-bool	middle_wall_finder(t_map *map, char w)
+bool	middle_wall_finder(char **arr, char w)
 {
 	int		y;
 	int		x;
-	char	**arr;
 
 	y = 1;
 	x = 0;
-	arr = map->gamemap;
 	while (arr[y][x] && arr[y][x] == w && arr[y + 2]
 		&& goto_arr_bondary(arr, &y, &x, w))
 	{
@@ -104,15 +100,13 @@ bool	middle_max_boundary(char **arr, int y, int x, char w)
 	return (false);
 }
 
-bool	bottom_wall_finder(t_map *map, char w)
+bool	bottom_wall_finder(char **arr, char w)
 {
 	int		y;
 	int		x;
-	char	**arr;
 
 	y = 0;
 	x = 0;
-	arr = map->gamemap;
 	while (arr[y][x] && arr[y + 1][x] && arr[y + 1][x] != '\n')
 		y++;
 	if (arr[y][x] == w)
