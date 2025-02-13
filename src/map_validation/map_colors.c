@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/12 19:59:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:49:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	color_digits_quantity_checker(int *color_digits)
 {
-	int	id;
+	int			id;
 	static int	quant_approved[6];
 
 	id = -1;
@@ -88,7 +88,7 @@ bool	color_values_into_array(char **arr, int *color_digits, int *rgbrgb)
 }
 
 void	convert_color_digits_id_to_int(char actual_char, int *rgbrgb, int *id,
-		 char *one_value)
+			char *one_value)
 {
 	if (actual_char == ',' || actual_char == '\n' || !actual_char)
 	{

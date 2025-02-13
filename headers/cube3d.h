@@ -6,10 +6,9 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/12 19:58:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:49:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
@@ -33,7 +32,6 @@
 # define PUR	"\033[0;35m"
 # define CYA	"\033[0;36m"
 # define RESET	"\033[0m"
-
 
 typedef struct s_map
 {
@@ -73,7 +71,7 @@ int		skipping_all_except_colors(t_map *map);
 int		skipping_all_except_gamemap(t_map *map);
 void	colorsmap_into_array(t_map *map);
 void	convert_color_digits_id_to_int(char actual_char, int *rgbrgb, int *id,
-		 char *one_value);
+			char *one_value);
 void	gamemap_into_array(t_map *map);
 void	color_digits_counter(char **arr, int *color_digits);
 bool	color_digits_quantity_checker(int *color_digits);

@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 14:28:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:51:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	map_validation_manager(char **av, t_map *map)
 		map_printer(map);
 		return (true);
 	}
-	return(false);
+	return (false);
 }
 
 bool	map_file_checker(char **av, t_map *map)
@@ -38,7 +38,7 @@ bool	map_file_checker(char **av, t_map *map)
 			&& nothing_aftermap(map))
 			return (true);
 	}
-	return(false);
+	return (false);
 }
 
 bool	map_player_checker(t_map *map)
@@ -79,7 +79,7 @@ bool	map_colors_manager(t_map *map)
 			return (false);
 		}
 		if (color_values_into_array(arr, color_digits, rgbrgb)
-		&& colors_with_min_max_values(rgbrgb))
+			&& colors_with_min_max_values(rgbrgb))
 		{
 			printf(GRE"✅ Color Map \t\tapproved!\n");
 			return (true);

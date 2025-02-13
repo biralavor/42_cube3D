@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02.memory_struct_init.c                               :+:      :+:    :+:   */
+/*   02.mem_struct_init.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/12 13:23:56 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/12 13:23:56 by umeneses         ###   ########.fr       */
+/*   Created: 2025/02/13 14:54:40 by umeneses          #+#    #+#             */
+/*   Updated: 2025/02/13 14:54:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	memory_struct_init(t_map *map)
 	map->gamemap = (char **)ft_calloc(MAX_MAP_HEIGHT + 1, sizeof(char *));
 	map->ggraph = (char **)ft_calloc(MAX_TEXTURE_PATH, sizeof(char *));
 	map->colors = (char **)ft_calloc(MAX_COLOR_DIGIT, sizeof(char *));
-	if (!map->gamemap || !map->ggraph  || !map->colors)
+	if (!map->gamemap || !map->ggraph || !map->colors)
 		ft_error_msg("Malloc failed at memory struct init\n");
 	idx = -1;
 	while (++idx < MAX_MAP_HEIGHT)

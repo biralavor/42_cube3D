@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:14:30 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 14:34:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:52:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	map_array_printer(char **array, char *array_name)
 		}
 		x_id = 0;
 		while (array[y_id][x_id])
-		{	
+		{
 			if (array[y_id][x_id] == '\0')
 				fprintf(stderr, PUR"\\0");
 			else if (array[y_id][x_id] == '\n')
