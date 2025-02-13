@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 14:51:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:31:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	map_file_checker(char **av, t_map *map)
 	{
 		map_structs_init(map);
 		if (unique_def_compass(map)
-			&& nothing_aftermap(map))
+			&& nothing_aftermap(map->gamemap))
 			return (true);
 	}
 	return (false);

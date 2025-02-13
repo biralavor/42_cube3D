@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/13 15:36:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:17:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	map_array_printer(char **array, char *array_name);
 bool	texture_path_manager(t_map *map);
 bool	texture_path_tester(char *path, char *cwd);
 
-bool	nothing_aftermap(t_map *map);
+bool	nothing_aftermap(char **arr);
 bool	linebreak_reader(char **arr, int y, int x);
 
 bool	map_player_checker(t_map *map);
