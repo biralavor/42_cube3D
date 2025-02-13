@@ -52,14 +52,15 @@ NAME					= cub3d
 SRC_FILES				= 01.main.c
 SRC_FILES				+= 02.struct_mem_alloc.c
 SRC_FILES				+= clear_all.c
-SRC_FILES				+= map_validation/map_validation.c
+SRC_FILES				+= map_validation/map_validation_part1.c
+SRC_FILES				+= map_validation/map_validation_part2.c
 SRC_FILES				+= map_validation/invalid_extension.c
 SRC_FILES				+= map_validation/map_opener.c
 SRC_FILES				+= map_validation/map_reader.c
 SRC_FILES				+= map_validation/map_printer.c
 SRC_FILES				+= map_validation/map_compass_datafinder.c
 SRC_FILES				+= map_validation/unique_def_compass.c
-SRC_FILES				+= map_validation/no_garbage_checker.c
+SRC_FILES				+= map_validation/no_garbage_manager.c
 SRC_FILES				+= map_validation/nothing_aftermap.c
 SRC_FILES				+= map_validation/map_array_printer.c
 SRC_FILES				+= map_validation/map_struct_init.c
@@ -162,7 +163,7 @@ define					bonus
 endef
 
 define					map_for_test
-						maps/invalid_wall_breach_middle_1.cub
+						maps/default.cub
 endef
 
 define					function_for_debug

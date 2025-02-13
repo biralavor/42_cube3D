@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/13 17:07:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:19:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ bool	west_compass_datafinder(t_map *map, int *already_found);
 bool	east_compass_datafinder(t_map *map, int *already_found);
 
 bool	map_colors_manager(char **arr);
-bool	no_garbage_checker(t_map *map);
+bool	no_garbage_manager(t_map *map);
 bool	no_garbage_at_color_values(char **arr, int digit,
 			int *color_digits, int id);
 bool	no_garbage_at_gamemap(char **arr);
@@ -86,7 +86,7 @@ bool	texture_path_tester(char *path, char *cwd);
 bool	nothing_aftermap(char **arr);
 bool	linebreak_reader(char **arr, int y, int x);
 
-bool	map_player_checker(t_map *map);
+bool	map_player_manager(t_map *map);
 bool	player_detected(t_map *map);
 void	player_position_into_struct(t_map *map);
 bool	player_free_to_go(t_map *map);
