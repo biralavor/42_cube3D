@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/12 13:12:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:28:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int ac, char **av)
 	if(map_opener(ac, av, map)
 		&& map_validation_manager(av, map))
 	{
-		printf(GREEN"\n\n>>>>>> Hello, Cube3D!\n"RESET);
+		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
 	}
 	else
 	{

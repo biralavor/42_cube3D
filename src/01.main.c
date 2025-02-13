@@ -23,7 +23,7 @@ int main(int ac, char **av)
 	if(map_opener(ac, av, map)
 		&& map_validation_manager(av, map))
 	{
-		printf(GREEN"\n\n>>>>>> Hello, Cube3D!\n"RESET);
+		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
 	}
 	else
 	{
