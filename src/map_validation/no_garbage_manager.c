@@ -14,6 +14,14 @@
 
 static bool	garbage_inside_gamemap_detected(char **arr, int x, int y);
 
+bool	no_garbage_manager(t_map *map)
+{
+	if (no_garbage_at_texture(map->ggraph)
+		&& no_garbage_at_gamemap(map->gamemap))
+		return (true);
+	return (false);
+}
+
 bool	no_garbage_at_texture(char **arr)
 {
 	int	y;
