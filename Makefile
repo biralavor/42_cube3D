@@ -51,7 +51,6 @@ NAME					= cub3d
 
 SRC_FILES				= 01.main.c
 SRC_FILES				+= 02.struct_mem_alloc.c
-SRC_FILES				+= clear_all.c
 SRC_FILES				+= map_validation/map_validation.c
 SRC_FILES				+= map_validation/invalid_extension.c
 SRC_FILES				+= map_validation/map_opener.c
@@ -71,6 +70,7 @@ SRC_FILES				+= map_validation/closed_wall_bottomwall.c
 SRC_FILES				+= map_validation/closed_wall_middlewall.c
 SRC_FILES				+= map_validation/closed_wall_topwall.c
 SRC_FILES				+= map_validation/player_checker.c
+SRC_FILES				+= clear_all.c
 
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
@@ -167,7 +167,7 @@ define					map_for_test
 endef
 
 define					function_for_debug
-						color_digits_counter
+						color_values_into_array
 endef
 
 # **************************************************************************** #
