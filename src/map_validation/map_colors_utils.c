@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/18 15:43:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:50:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static char	*copy_digits_to_str(char **arr, int y, int *x, int *color_digits)
 		free(old_digit);
 		free(another_digit);
 	}
-	free(first_digit);
 	return (str_digit);
 }
 
