@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   garbage_manager.h                                  :+:      :+:    :+:   */
+/*   map_no_garbage_manager.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 18:30:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/17 18:57:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:06:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GARBAGE_MANAGER_H
-# define GARBAGE_MANAGER_H
+#ifndef MAP_NO_GARBAGE_MANAGER_H
+# define MAP_NO_GARBAGE_MANAGER_H
 
 /**
  * @brief Check if there is no garbage inside the entire map file. To do so,

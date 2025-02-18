@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   closed_wall_manager.h                              :+:      :+:    :+:   */
+/*   map_closed_wall_manager.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/17 17:49:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:05:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLOSED_WALL_MANAGER_H
-# define CLOSED_WALL_MANAGER_H
+#ifndef MAP_CLOSED_WALL_MANAGER_H
+# define MAP_CLOSED_WALL_MANAGER_H
 
 /**
  * @brief Check if the map is closed by walls, by dividing the map in 3 parts

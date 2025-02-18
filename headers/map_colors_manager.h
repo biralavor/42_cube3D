@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:41:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/17 22:29:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:00:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ bool	color_values_into_array(char **arr, int *color_values, int *rgbrgb);
  * @param  actual_char current char value
  * @param  rgbrgb array with the color values
  * @param  id current color value position
- * @param  one_value current color value
+ * @param  str_digit current color value
  */
-void	convert_color_digits_id_to_int(char actual_char, int *rgbrgb, int *id,
-			char *one_value);
+void	convert_str_digit_to_int(int *rgbrgb, int *id,
+			char *str_digit);
 
 /**
 * @brief Check if the color values are within the range of 0 to 255.

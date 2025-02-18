@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_path_manager.h                             :+:      :+:    :+:   */
+/*   map_texture_path_manager.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:04:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/17 19:29:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:06:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_PATH_MANAGER_H
-# define TEXTURE_PATH_MANAGER_H
+#ifndef MAP_TEXTURE_PATH_MANAGER_H
+# define MAP_TEXTURE_PATH_MANAGER_H
 
 /**
  * @brief Check if the texture path is valid, by testing the path and counting
