@@ -86,32 +86,3 @@ static bool	garbage_inside_gamemap_detected(char **arr, int x, int y)
 	}
 	return (false);
 }
-
-bool	no_garbage_at_color_values(char **arr, int digit,
-			int *color_digits, int id)
-{
-	int	y;
-	int	x;
-
-	y = -1;
-	while (arr[++y][0])
-	{
-		x = 1;
-		while (digit++ <= color_digits[id] && ++x)
-		{
-			if (ft_isdigit(arr[y][x]) && id == 5 && (arr[y][x + 1] == '\n'
-				|| !arr[y][x + 1]))
-				return (true);
-			if (arr[y][x] == ',' || arr[y][x] == '\n' || !arr[y][x])
-			{
-				id++;
-				digit = 0;
-				if (arr[y][x] == '\n' || !arr[y][x])
-					break ;
-			}
-			else if (!ft_isdigit(arr[y][x]))
-				return (false);
-		}
-	}
-	return (false);
-}

@@ -1,65 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_colors.c                                       :+:      :+:    :+:   */
+/*   map_colors_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/18 15:37:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:43:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
 static char	*copy_digits_to_str(char **arr, int y, int *x, int *color_digits);
-
-void	color_digits_counter(char **arr, int *color_digits)
-{
-	int	y;
-	int	x;
-	int	id;
-	int	comma_counter;
-
-	y = -1;
-	id = 0;
-	while (arr[++y][0])
-	{
-		comma_counter = 0;
-		x = 1;
-		while (comma_counter < 3)
-		{
-			while (arr[y][++x] && arr[y][x] != ','
-				&& arr[y][x] != '\n')
-				color_digits[id]++;
-			comma_counter++;
-			id++;
-			if (arr[y][x + 1] == '\n')
-				break ;
-		}
-	}
-}
-
-bool	color_digits_quantity_checker(int *color_digits)
-{
-	int			id;
-	static int	quant_approved[6];
-
-	id = -1;
-	while (++id < 6)
-	{
-		if (color_digits[id] >= 1 && color_digits[id] <= 3)
-		{
-			quant_approved[id]++;
-			if (quant_approved[0] == 1 && quant_approved[1] == 1
-				&& quant_approved[2] == 1 && quant_approved[3] == 1
-				&& quant_approved[4] == 1 && quant_approved[5] == 1)
-				return (true);
-		}
-	}
-	ft_putstr_fd(YEL"Invalid number of digits at Color Map", STDERR_FILENO);
-	return (false);
-}
 
 bool	color_values_into_array(char **arr, int *color_digits, int *rgbrgb)
 {
