@@ -12,7 +12,7 @@
 
 #include "cube3d.h"
 
-static void	inside_ptrs_alloc(char **array, int idx, int size,
+static void	inside_ptrs_alloc(char **array, int idx, int max_alloc,
 				int alloc_nitems);
 
 void	struct_memory_alloc(t_map *map)
@@ -21,7 +21,8 @@ void	struct_memory_alloc(t_map *map)
 
 	map->gamemap = (char **)ft_calloc(MAX_MAP_HEIGHT + 1, sizeof(char *));
 	map->ggraph = (char **)ft_calloc(MAX_TEXTURE_PATH, sizeof(char *));
-	map->colors = (char **)ft_calloc(MAX_TOTAL_COLOR_DIGIT, sizeof(char *));
+	map->colors = (char **)ft_calloc(TOTAL_COLOR_DIGIT, sizeof(char *));
+	map->buffer = NULL;
 	if (!map->gamemap || !map->ggraph || !map->colors)
 		ft_error_msg("Malloc failed at memory struct init\n");
 	idx = -1;
@@ -29,8 +30,7 @@ void	struct_memory_alloc(t_map *map)
 	idx = -1;
 	inside_ptrs_alloc(map->ggraph, idx, MAX_INSIDE_ALLOC, MAX_TEXTURE_PATH);
 	idx = -1;
-	inside_ptrs_alloc(map->colors, idx, MAX_INSIDE_ALLOC,
-		MAX_TOTAL_COLOR_DIGIT);
+	inside_ptrs_alloc(map->colors, idx, MAX_INSIDE_ALLOC, TOTAL_COLOR_DIGIT);
 }
 
 static void	inside_ptrs_alloc(char **array, int idx, int max_alloc,

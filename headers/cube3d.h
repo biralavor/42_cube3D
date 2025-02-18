@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/17 22:03:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:47:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@
 # include "cube3d_structures.h"
 # include "map_file_manager.h"
 # include "map_player_manager.h"
-# include "closed_wall_manager.h"
-# include "garbage_manager.h"
-# include "texture_path_manager.h"
+# include "map_closed_wall_manager.h"
+# include "map_no_garbage_manager.h"
+# include "map_texture_path_manager.h"
 # include "map_colors_manager.h"
+# include "clear_all.h"
 
 /* ************************************************************************** */
 /*                            CONSTANT DEFINITIONS                            */
@@ -45,8 +46,8 @@
 # define MAX_MAP_HEIGHT 200
 # define MAX_TEXTURE_PATH 200
 # define MAX_TEXTURE_FILES 4
-# define MAX_TOTAL_COLOR_DIGIT 15
 # define MAX_INSIDE_ALLOC 4
+# define TOTAL_COLOR_DIGIT 15
 # define RED	"\033[0;31m"
 # define GRE	"\033[0;32m"
 # define YEL	"\033[0;33m"
@@ -90,13 +91,5 @@ void	map_array_printer(char **array, char *array_name);
  * @return `void`
  */
 void	map_printer(t_map *map);
-
-/**
- * @brief Free the memory allocated for the entire struct (map->gamemap,
- * 			map->ggraph, map->colors).
- * @param  map struct with all map data
- * @return `void`
- */
-void	clear_all_exit_smoothly(t_map *map);
 
 #endif
