@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:41:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/18 14:00:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:56:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,11 @@ bool	color_values_into_array(char **arr, int *color_values, int *rgbrgb);
 /**
  * @brief Convert the color values from char, stored at `arr`, to int,
  * 			by calling `ft_atoi` function
- * @param  actual_char current char value
  * @param  rgbrgb array with the color values
  * @param  id current color value position
- * @param  str_digit current color value
+ * @param  str_digit string to store the color value
  */
-void	convert_str_digit_to_int(int *rgbrgb, int *id,
-			char *str_digit);
+void	convert_str_digit_to_int(int *rgbrgb, int *id, char *str_digit);
 
 /**
 * @brief Check if the color values are within the range of 0 to 255.
