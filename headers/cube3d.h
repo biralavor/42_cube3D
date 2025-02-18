@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/18 11:47:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:51:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define MAX_TEXTURE_PATH 200
 # define MAX_TEXTURE_FILES 4
 # define MAX_INSIDE_ALLOC 4
+# define MAX_RGB_SLOTS 6
 # define TOTAL_COLOR_DIGIT 15
 # define RED	"\033[0;31m"
 # define GRE	"\033[0;32m"

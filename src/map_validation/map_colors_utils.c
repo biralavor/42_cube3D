@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/18 15:50:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:51:13 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	convert_str_digit_to_int(int *rgbrgb, int *id,
 bool	colors_with_min_max_values(int *rgbrgb)
 {
 	int			id;
-	static int	approved_color[6];
+	static int	approved_color[MAX_RGB_SLOTS];
 
 	id = 0;
 	while (rgbrgb)

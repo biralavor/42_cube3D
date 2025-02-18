@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/18 15:45:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:52:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 bool	map_colors_manager(char **arr)
 {
-	static int	color_digits[6];
-	static int	rgbrgb[6];
+	static int	color_digits[MAX_RGB_SLOTS];
+	static int	rgbrgb[MAX_RGB_SLOTS];
 	int			digit;
 	int			id;
 
@@ -52,7 +52,7 @@ void	color_digits_counter(char **arr, int *color_digits)
 	{
 		comma_counter = 0;
 		x = 1;
-		while (comma_counter < 3)
+		while (comma_counter < (MAX_RGB_SLOTS / 2))
 		{
 			while (arr[y][++x] && arr[y][x] != ','
 				&& arr[y][x] != '\n')
@@ -68,10 +68,10 @@ void	color_digits_counter(char **arr, int *color_digits)
 bool	color_digits_quantity_checker(int *color_digits)
 {
 	int			id;
-	static int	quant_approved[6];
+	static int	quant_approved[MAX_RGB_SLOTS];
 
 	id = -1;
-	while (++id < 6)
+	while (++id < MAX_RGB_SLOTS)
 	{
 		if (color_digits[id] >= 1 && color_digits[id] <= 3)
 		{
