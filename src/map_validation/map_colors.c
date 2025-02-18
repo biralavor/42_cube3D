@@ -6,11 +6,13 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/17 22:10:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:37:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static char	*copy_digits_to_str(char **arr, int y, int *x, int *color_digits);
 
 void	color_digits_counter(char **arr, int *color_digits)
 {
@@ -64,21 +66,19 @@ bool	color_values_into_array(char **arr, int *color_digits, int *rgbrgb)
 	int		y;
 	int		x;
 	int		id;
-	char	*one_value;
+	char	*str_digit;
 
 	y = -1;
 	id = 0;
-	one_value = NULL;
 	while (arr[++y][0])
 	{
 		x = 1;
 		while (color_digits[id] && arr[y][1] == ' ' && x++)
 		{
-			while (color_digits[--id] > 0 && arr[y][x] != ',')
-				one_value = ft_strjoin(one_value, ft_substr(arr[y], x++, 1));
-			convert_color_digits_id_to_int(arr[y][x], rgbrgb, &id, one_value);
-			if (arr[y][x] == '\n' || !arr[y][x])
+			if (!arr[y][x] || arr[y][x] == '\n')
 				break ;
+			str_digit = copy_digits_to_str(arr, y, &x, &color_digits[id]);
+			convert_str_digit_to_int(rgbrgb, &id, str_digit);
 		}
 	}
 	if (!arr[y][0])
@@ -87,16 +87,41 @@ bool	color_values_into_array(char **arr, int *color_digits, int *rgbrgb)
 	return (false);
 }
 
-void	convert_color_digits_id_to_int(char actual_char, int *rgbrgb, int *id,
-			char *one_value)
+static char	*copy_digits_to_str(char **arr, int y, int *x, int *color_digits)
 {
-	if (actual_char == ',' || actual_char == '\n' || !actual_char)
+	char	*str_digit;
+	char	*first_digit;
+	char	*another_digit;
+	char	*old_digit;
+
+	str_digit = NULL;
+	first_digit = NULL;
+	another_digit = NULL;
+	old_digit = NULL;
+	if (arr[y][*x] == ',' || arr[y][*x] == '\n')
+		(*x)++;
+	first_digit = ft_substr(arr[y], *x, 1);
+	if (!str_digit)
+		str_digit = first_digit;
+	while (--(*color_digits) > 0 && arr[y][*x] != ',')
 	{
-		rgbrgb[*id] = ft_atoi(one_value);
-		free(one_value);
-		one_value = NULL;
-		*id = *id + 1;
+		another_digit = ft_substr(arr[y], (*x)++, 1);
+		old_digit = str_digit;
+		str_digit = ft_strjoin(old_digit, another_digit);
+		free(old_digit);
+		free(another_digit);
 	}
+	free(first_digit);
+	return (str_digit);
+}
+
+void	convert_str_digit_to_int(int *rgbrgb, int *id,
+			char *str_digit)
+{
+	rgbrgb[*id] = ft_atoi(str_digit);
+	*id = *id + 1;
+	free(str_digit);
+	str_digit = NULL;
 }
 
 bool	colors_with_min_max_values(int *rgbrgb)
