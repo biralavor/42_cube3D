@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:42:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 14:28:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:20:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	texture_path_manager(t_map *map)
 {
 	char		*path;
 	int			idx;
-	static int	approved_texture[4];
+	static int	approved_texture[MAX_TEXTURE_FILES];
 	static char	cwd[MAX_TEXTURE_PATH];
 
 	idx = -1;

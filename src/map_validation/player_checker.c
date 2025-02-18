@@ -39,6 +39,29 @@ bool	player_detected(t_map *map)
 	return (false);
 }
 
+bool	player_free_to_go(t_map *map)
+{
+	int		y;
+	int		x;
+	int		corners;
+	char	**arr;
+
+	player_position_into_struct(map);
+	y = map->player_pos_y - 1;
+	corners = 0;
+	arr = map->gamemap;
+	while (arr[y] && (y < (map->player_pos_y + 2)))
+	{
+		x = map->player_pos_x - 1;
+		corners += player_boundary_finder(map, arr, y, x);
+		y++;
+	}
+	if (corners < 4)
+		return (true);
+	ft_putstr_fd(YEL"Player is NOT free to go.", STDERR_FILENO);
+	return (false);
+}
+
 void	player_position_into_struct(t_map *map)
 {
 	int		y;
@@ -87,27 +110,4 @@ int	player_boundary_finder(t_map *map, char **arr, int y, int x)
 		x++;
 	}
 	return (corners);
-}
-
-bool	player_free_to_go(t_map *map)
-{
-	int		y;
-	int		x;
-	int		corners;
-	char	**arr;
-
-	player_position_into_struct(map);
-	y = map->player_pos_y - 1;
-	corners = 0;
-	arr = map->gamemap;
-	while (arr[y] && (y < (map->player_pos_y + 2)))
-	{
-		x = map->player_pos_x - 1;
-		corners += player_boundary_finder(map, arr, y, x);
-		y++;
-	}
-	if (corners < 4)
-		return (true);
-	ft_putstr_fd(YEL"Player is NOT free to go.", STDERR_FILENO);
-	return (false);
 }

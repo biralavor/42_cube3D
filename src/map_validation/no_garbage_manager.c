@@ -14,32 +14,36 @@
 
 static bool	garbage_inside_gamemap_detected(char **arr, int x, int y);
 
-bool	no_garbage_at_color_values(char **arr, int digit,
-			int *color_digits, int id)
+bool	no_garbage_manager(t_map *map)
 {
-	int		y;
-	int		x;
+	if (no_garbage_at_texture(map->ggraph)
+		&& no_garbage_at_gamemap(map->gamemap))
+		return (true);
+	return (false);
+}
 
-	y = -1;
-	while (arr[++y][0])
+bool	no_garbage_at_texture(char **arr)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	x = 0;
+	while (arr[y][x] != '\0')
 	{
-		x = 1;
-		while (digit++ <= color_digits[id] && ++x)
+		if ((arr[y][x] == 'N' && arr[y][x + 1] == 'O')
+			|| (arr[y][x] == 'S' && arr[y][x + 1] == 'O')
+			|| (arr[y][x] == 'W' && arr[y][x + 1] == 'E')
+			|| (arr[y][x] == 'E' && arr[y][x + 1] == 'A'))
 		{
-			if (ft_isdigit(arr[y][x]) && id == 5 && (arr[y][x + 1] == '\n'
-				|| !arr[y][x + 1]))
+			if (y == 3)
 				return (true);
-			if (arr[y][x] == ',' || arr[y][x] == '\n' || !arr[y][x])
-			{
-				id++;
-				digit = 0;
-				if (arr[y][x] == '\n' || !arr[y][x])
-					break ;
-			}
-			else if (!ft_isdigit(arr[y][x]))
-				return (false);
+			y++;
 		}
+		else
+			break ;
 	}
+	ft_putstr_fd(YEL"Garbage inside Textures detected", STDERR_FILENO);
 	return (false);
 }
 
@@ -80,30 +84,5 @@ static bool	garbage_inside_gamemap_detected(char **arr, int x, int y)
 			"detected", STDERR_FILENO);
 		return (true);
 	}
-	return (false);
-}
-
-bool	no_garbage_at_texture(char **arr)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	x = 0;
-	while (arr[y][x] != '\0')
-	{
-		if ((arr[y][x] == 'N' && arr[y][x + 1] == 'O')
-			|| (arr[y][x] == 'S' && arr[y][x + 1] == 'O')
-			|| (arr[y][x] == 'W' && arr[y][x + 1] == 'E')
-			|| (arr[y][x] == 'E' && arr[y][x + 1] == 'A'))
-		{
-			if (y == 3)
-				return (true);
-			y++;
-		}
-		else
-			break ;
-	}
-	ft_putstr_fd(YEL"Garbage inside Textures detected", STDERR_FILENO);
 	return (false);
 }

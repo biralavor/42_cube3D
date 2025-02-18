@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:05:54 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 16:13:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:59:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,28 @@ void	map_structs_init(t_map *map)
 	map_array_printer(map->ggraph, "map->gamegraph");
 	map_array_printer(map->colors, "map->colors");
 	map_array_printer(map->gamemap, "map->gamemap");
+}
+
+void	gamegraph_into_array(t_map *map)
+{
+	int	idx;
+	int	x;
+	int	y;
+
+	x = -1;
+	y = 0;
+	idx = 0;
+	while (map->buffer[idx] && y < 4)
+	{
+		map->ggraph[y][++x] = map->buffer[idx];
+		idx++;
+		if (map->buffer[idx] == '\n')
+		{
+			y++;
+			x = -1;
+			idx++;
+		}
+	}
 }
 
 void	colorsmap_into_array(t_map *map)
@@ -71,28 +93,6 @@ void	gamemap_into_array(t_map *map)
 				x = -1;
 				idx++;
 			}
-		}
-	}
-}
-
-void	gamegraph_into_array(t_map *map)
-{
-	int	idx;
-	int	x;
-	int	y;
-
-	x = -1;
-	y = 0;
-	idx = 0;
-	while (map->buffer[idx] && y < 4)
-	{
-		map->ggraph[y][++x] = map->buffer[idx];
-		idx++;
-		if (map->buffer[idx] == '\n')
-		{
-			y++;
-			x = -1;
-			idx++;
 		}
 	}
 }

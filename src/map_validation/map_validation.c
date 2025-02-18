@@ -6,7 +6,7 @@
 /*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 17:24:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:35:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	map_validation_manager(char **av, t_map *map)
 {
-	if (map_file_checker(av, map)
+	if (map_file_manager(av, map)
 		&& map_player_manager(map)
 		&& closed_wall_manager(map)
 		&& no_garbage_manager(map)
@@ -28,7 +28,7 @@ bool	map_validation_manager(char **av, t_map *map)
 	return (false);
 }
 
-bool	map_file_checker(char **av, t_map *map)
+bool	map_file_manager(char **av, t_map *map)
 {
 	if (valid_extension_checker(av, map)
 		&& map_reader(map))
