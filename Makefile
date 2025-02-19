@@ -20,6 +20,8 @@ YELLOW			:= \033[0;33m
 BLUE			:= \033[0;34m
 PURPLE			:= \033[0;35m
 CYAN			:= \033[0;36m
+ORANGE			:= \033[0;91m
+MAGENT			:= \033[0;95m
 RESET			:= \033[0m
 
 # **************************************************************************** #
@@ -140,8 +142,10 @@ define	project_title_bonus
 endef
 
 define					instructions
-						@echo "Welcome to our version of Cube3D!"
-						@echo "Hit ./$(NAME) and call any map to start"
+						@echo "$(YELLOW)Welcome to our version of Cube3D!"
+						@echo "Hit $(PURPLE)./$(NAME)$(YELLOW) and call any map to start"
+						@echo "All maps are stored at $(PURPLE)'maps/'$(YELLOW) folder"
+						@echo "If we're in a $(MAGENT)hurry$(YELLOW), use $(GREEN)'make go'$(YELLOW) to call the $(MAGENT)default$(YELLOW) map"
 
 endef
 
@@ -236,6 +240,9 @@ fclean:				clean
 					@$(RM) $(NAME)
 					@$(RM) $(NAME_BONUS)
 					@printf "$(RESET)"
+
+help:				all
+					$(call instructions)
 
 re:					fclean all
 
