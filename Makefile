@@ -188,17 +188,14 @@ endif
 
 define				debug_mode_on
 					@echo "$(PURPLE)\nDebug mode is $(YELLOW)ON$(RESET)\n"
-					$(MAKE) IN_DEBUG_MODE=TRUE --no-print-directory
-endef
-
-define				sanitize_thread
-					@echo "$(PURPLE)\nDebug with $(YELLOW)SANITIZE=THREAD$(RESET)\n"
-					$(MAKE) WITH_SANITIZE_THREAD=TRUE --no-print-directory
+					@echo "$(ORANGE)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+					@$(MAKE) IN_DEBUG_MODE=TRUE --no-print-directory
 endef
 
 define				sanitize_address
 					@echo "$(PURPLE)\nDebug with $(YELLOW)SANITIZE=ADDRESS$(RESET)\n"
-					$(MAKE) WITH_SANITIZE_ADDRESS=TRUE --no-print-directory
+					@echo "$(ORANGE)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+					@$(MAKE) WITH_SANITIZE_ADDRESS=TRUE --no-print-directory
 endef
 
 # **************************************************************************** #
@@ -288,7 +285,8 @@ gdb:				all
 					-ex 'info inferiors' ./$(NAME)
 
 val:				re
-					valgrind --leak-check=full \
+					valgrind \
+					--leak-check=full \
 					--track-origins=yes \
 					--trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*' \
 					--trace-children=yes \
@@ -297,4 +295,12 @@ val:				re
 					--suppressions=mlx_suppressions.sup \
 					./$(NAME)  $(call map_for_test)
 
-.PHONY:				all clean fclean re bonus min val gdb
+sani_a:				fclean
+					$(call sanitize_address)
+					./$(NAME) $(call map_for_test)
+
+debug:				fclean
+					$(call debug_mode_on)
+					./$(NAME) $(call map_for_test)
+
+.PHONY:				all bonus clean fclean help re go gdb val sani_a debug
