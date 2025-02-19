@@ -273,8 +273,8 @@ help:				all
 
 re:					fclean all
 
-run:				all
-					./$(NAME)
+#run:				all
+#					./$(NAME)
 
 go:					all
 					./$(NAME) $(call map_for_test)
