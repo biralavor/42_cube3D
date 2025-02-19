@@ -204,12 +204,17 @@ endef
 
 AUTHOR		= gigardin && umeneses
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g3
-CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
-LDLIBS		= $(addprefix -L, $(dir $(LIBS)))
-LDFLAGS		= -lft -ldl -lglfw -pthread -lm
-COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(LDFLAGS) $(LDLIBS) -o $(NAME)
+DEBUGFLAGS	= -Wall -Wextra -Werror -g3				# Debug
+CFLAGS		= -Wall -Wextra -Werror -g -pedantic	# ISO C and C++ standards
+CPUARCH		= -march=native							# User's CPU Architecture Optimization
+CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP	# Track Changes in User Dependencies
+LDLIBS		= $(addprefix -L, $(dir $(LIBS)))		# Add All Libraries
+LDFLAGS		= -lft -ldl -lglfw -lm					# Link Libraries
+PTHREAD		= -pthread								# POSIX Threads
+OPTIMIZE	= -Ofast -flto							# Maximum Optimization
+NOWRITEFLAG	= -Wno-unused-result					# Ignore Unused Return Values of write()
+COMP_OBJS	= $(CC) $(CFLAGS) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(NOWRITEFLAG) -c $< -o $@
+COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(CPUARCH) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
