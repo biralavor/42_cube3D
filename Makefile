@@ -176,6 +176,8 @@ endef
 
 ifdef				IN_DEBUG_MODE
 CFLAGS				= $(DEBUGFLAGS)
+OPTIMIZE			= 
+CPUARCH				= 
 endif
 
 ifdef				WITH_SANITIZE_THREAD
@@ -189,7 +191,8 @@ endif
 define				debug_mode_on
 					@echo "$(PURPLE)\nDebug mode is $(YELLOW)ON$(RESET)\n"
 					@echo "$(ORANGE)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-					@$(MAKE) IN_DEBUG_MODE=TRUE --no-print-directory
+					@IN_DEBUG_MODE=TRUE
+					@+$(MAKE) --no-print-directory
 endef
 
 define				sanitize_address
@@ -213,7 +216,7 @@ LDFLAGS		= -lft -ldl -lglfw -lm					# Link Libraries
 PTHREAD		= -pthread								# POSIX Threads
 OPTIMIZE	= -Ofast -flto							# Maximum Optimization
 NOWRITEFLAG	= -Wno-unused-result					# Ignore Unused Return Values of write()
-COMP_OBJS	= $(CC) $(CFLAGS) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(NOWRITEFLAG) -c $< -o $@
+COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) $(PTHREAD) $(NOWRITEFLAG) -c $< -o $@
 COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(CPUARCH) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
@@ -281,7 +284,8 @@ re:					fclean all
 go:					all
 					./$(NAME) $(call map_for_test)
 
-gdb:				all
+gdb:				fclean
+					$(call debug_mode_on)
 					gdb --tui \
 					-ex 'b main' \
 					-ex 'b $(call function_for_debug)' \
@@ -300,12 +304,15 @@ val:				re
 					--suppressions=mlx_suppressions.sup \
 					./$(NAME)  $(call map_for_test)
 
+sani_t:				fclean
+					$(call sanitize_thread)
+					./$(NAME) $(call map_for_test)
+
 sani_a:				fclean
 					$(call sanitize_address)
 					./$(NAME) $(call map_for_test)
 
 debug:				fclean
 					$(call debug_mode_on)
-					./$(NAME) $(call map_for_test)
 
-.PHONY:				all bonus clean fclean help re go gdb val sani_a debug
+.PHONY:				all bonus clean fclean help re go gdb val sani_t sani_a debug
