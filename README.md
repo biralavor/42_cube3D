@@ -63,7 +63,7 @@ Or, you can go faster by calling the `default.cub` map by typing:
 make go
 ```
 
-## Do you want to stress the executble?
+## Do you want to stress the executable?
 We can help you with that!
 We have a `Makefile` prepared to assist you with your curiosity:
 ### Run `valgrind` to verify memory leaks and invalid read/write at memory:
