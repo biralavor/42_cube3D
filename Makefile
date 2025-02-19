@@ -216,7 +216,7 @@ LDFLAGS		= -lft -ldl -lglfw -lm					# Link Libraries
 PTHREAD		= -pthread								# POSIX Threads
 OPTIMIZE	= -Ofast -flto							# Maximum Optimization
 NOWRITEFLAG	= -Wno-unused-result					# Ignore Unused Return Values of write()
-COMP_OBJS	= $(CC) $(CFLAGS) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(NOWRITEFLAG) -c $< -o $@
+COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) $(PTHREAD) $(NOWRITEFLAG) -c $< -o $@
 COMP_EXE	= $(CC) $(CFLAGS) $(OBJS_ALL) $(OPTIMIZE) $(CPPFLAGS) $(PTHREAD) $(CPUARCH) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
