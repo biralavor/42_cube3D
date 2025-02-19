@@ -39,9 +39,45 @@ The majority functions of `map_validation_manager` was built in boolean type. Th
   
   This means that our $\color{BurntOrange}{Map Validation}$ is ready to go \o/
 
-
 ![image](https://github.com/user-attachments/assets/b3675c28-1094-4b77-859a-0839f642d644)
 
+## How to run it:
+### Cloning this repository:
+```
+mkdir 42_cube3D && cd 42_cube3D && git clone https://github.com/biralavor/42_cube3D.git .
+```
+### Compiling the executable file with `Makefile`.
+It will generate a `cub3d` file
+```
+make
+```
+### Calling the executable `cub3d` with a map file attached.
+This executable needs a map file. You can check all map files already created at the folder `maps/`.
+There is more than 20 maps that could be added to the executable file.
+To do so, you need to:
+```
+./cub3d maps/{add_the_map_filename_here}
+```
+Or, you can go faster by calling the `default.cub` map by typing:
+```
+make go
+```
 
+## Do you want to stress the executble?
+We can help you with that!
+We have a `Makefile` prepared to assist you with your curiosity:
+### Run `valgrind` to verify memory leaks and invalid read/write at memory:
+```
+make val
+```
+### Run `gdb` to debug
+```
+make gdb
+```
+### Run `game instructions`
+```
+make help
+```
 
-
+> [!WARNING]
+> **cub3d** is a WIP Project. Maybe the Game isn't fully ready yet as expected. Please check our [Releases](https://github.com/biralavor/42_cube3D/releases) and what we're doing now at [Github Projects](https://github.com/users/biralavor/projects/10)
