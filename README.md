@@ -81,3 +81,6 @@ make help
 
 > [!WARNING]
 > **cub3d** is a WIP Project. Maybe the Game isn't fully ready yet as expected. Please check our [Releases](https://github.com/biralavor/42_cube3D/releases) and what we're doing now at [Github Projects](https://github.com/users/biralavor/projects/10)
+
+
+> All 42 Badges -- the astronomer Human Coder -- were done by Larissa Cristina [@mewmewdevart](https://github.com/mewmewdevart/42Badges)
