@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_map	*map;
+	t_game	game;
 
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
@@ -24,6 +25,15 @@ int	main(int ac, char **av)
 		&& map_validation_manager(av, map))
 	{
 		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
+				// Aqui conectamos o mapa validado à struct gráfica
+		game.map = *map;
+
+		// Inicializa a parte gráfica
+		if (setup_init(&game) == -1)
+		{
+			clear_all_exit_smoothly(map);
+			ft_error_msg("Erro na inicialização gráfica");
+		}
 	}
 	else
 	{

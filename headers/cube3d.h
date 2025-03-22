@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/02/18 15:51:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/03/21 21:54:14 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@
 # include "map_texture_path_manager.h"
 # include "map_colors_manager.h"
 # include "clear_all.h"
+# include <math.h>
 
 /* ************************************************************************** */
 /*                            CONSTANT DEFINITIONS                            */
 /* ************************************************************************** */
-# define MAX_MAP_WIDTH 200
-# define MAX_MAP_HEIGHT 200
+# define MAX_MAP_WIDTH 800
+# define MAX_MAP_HEIGHT 600
 # define MAX_TEXTURE_PATH 200
 # define MAX_TEXTURE_FILES 4
 # define MAX_INSIDE_ALLOC 4
@@ -56,6 +57,35 @@
 # define PUR	"\033[0;35m"
 # define CYA	"\033[0;36m"
 # define RESET	"\033[0m"
+# define MOVE_SPEED 5.0
+# define ROTATE_SPEED 0.1
+
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
+
+void	draw_background(mlx_image_t *image);
+void	draw_player(t_game *game);
+
+float	cast_single_ray(t_game *game, float ray_angle);
+void	cast_rays(t_game *game);
+void	render(void *param);
+void	loop_hook(t_game *game);
+
+void	set_player_position(t_game *game);
+void	move_player(t_game *game, float move_x, float move_y);
+void	rotate_player(t_game *game, float rotation_speed);
+
+void	handle_movement(mlx_key_data_t keydata, t_game *game);
+void	handle_keypress(mlx_key_data_t keydata, void *param);
+void	handle_close(void *param);
+
+void	setup_hooks(t_game *game);
+void	set_player_position(t_game *game);
+
+void	game_loop(t_game *game);
+void	cleanup(t_game *game);
+int		setup_init(t_game *game);
 
 /**
  * @brief Allocate memory for the entire struct (map->gamemap,
