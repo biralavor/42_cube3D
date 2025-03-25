@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 21:53:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/03/22 18:51:41 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:59:29 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,34 @@ typedef struct s_ray_info
 	int   steps;
 }	t_ray_info;
 
+typedef struct s_ray
+{
+	int		map_x;
+	int		map_y;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side; // 0 para X, 1 para Y
+}	t_ray;
+
+typedef struct s_player
+{
+	double	x;			// posição X no mapa (ponto flutuante)
+	double	y;			// posição Y no mapa (ponto flutuante)
+	double	dir_x;		// direção X do jogador
+	double	dir_y;		// direção Y do jogador
+	double	plane_x;	// plano da câmera X (perpendicular à direção)
+	double	plane_y;	// plano da câmera Y
+}	t_player;
+
 typedef struct s_game
 {
     mlx_t       *mlx;          // Ponteiro para a MLX42
@@ -72,6 +100,18 @@ typedef struct s_game
     float       dir_x;         // Direção X do jogador
     float       dir_y;         // Direção Y do jogador
 }   t_game;
+
+// typedef struct s_game
+// {
+// 	char		**map;
+// 	int			map_width;
+// 	int			map_height;
+// 	t_player	player;
+// 	t_ray		ray;
+// 	void		*mlx;
+// 	void		*win;
+// }	t_game;
+
 /**
  * @brief Structure for mlx data
  * @param mlx pointer to the mlx struct

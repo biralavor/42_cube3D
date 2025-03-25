@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 23:39:37 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/22 18:56:04 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:09:16 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ void draw_background(mlx_image_t *image)
 	}
 }
 
+// void    print_matrix(char **m)
+// {
+//     while (*m)
+//     {
+//         printf("%s\n", *m++);
+//     }
+// }
+
 void draw_player(t_game *game)
 {
     int size = 15; // Tamanho do jogador
@@ -56,8 +64,10 @@ void draw_player(t_game *game)
     // Verifica se a imagem foi criada corretamente antes de desenhar
     if (!game->mlx_image)
         return;
-
-    printf("Desenhando jogador na posição X=%d, Y=%d\n", px, py);
+    // static bool maps;
+    // if (!maps)
+    //     print_matrix(game->map.gamemap), maps++;
+    //printf("Desenhando jogador na posição X=%d, Y=%d\n", px, py);
 
     y = -size / 2;
     while (y < size / 2)
@@ -77,27 +87,42 @@ void draw_player(t_game *game)
 }
 
 
-void game_loop(t_game *game)
-{
-    mlx_key_hook(game->mlx, handle_keypress, game);
-    mlx_close_hook(game->mlx, handle_close, game);
+// void game_loop(t_game *game)
+// {
+//     mlx_key_hook(game->mlx, handle_keypress, game);
+//     mlx_close_hook(game->mlx, handle_close, game);
     
-    while (1)
-    {
-        // Aqui você pode adicionar sua lógica de atualização do jogo
-        draw_background(game->mlx_image);
-        mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
+//     while (1)
+//     {
+//         // Aqui você pode adicionar sua lógica de atualização do jogo
+//         draw_background(game->mlx_image);
+//         mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
         
-        printf("Entrando no loop da MLX...\n");
-        mlx_loop(game->mlx);
-        printf("Saindo do loop da MLX...\n"); // Se este print nunca aparecer, significa que o jogo foi encerrado abruptamente.
-    }
-}
-void render(void *param)
-{
-	t_game *game;
+//         printf("Entrando no loop da MLX...\n");
+//         mlx_loop(game->mlx);
+//         printf("Saindo do loop da MLX...\n"); // Se este print nunca aparecer, significa que o jogo foi encerrado abruptamente.
+//     }
+// }
 
-	game = (t_game *)param;
+void render(t_game *game)
+{
+
+	if (!game->mlx_image)
+		return;
+
+	// Limpa tela
+	memset(game->mlx_image->pixels, 0,
+		game->mlx_image->width * game->mlx_image->height * sizeof(int));
+
+	// Desenha fundo e jogador
+	draw_background(game->mlx_image);
+	draw_player(game);
+
+	// NOVO: Raycasting render
+	cast_rays(game);
+}
+void render_init(t_game *game)
+{
 
 	if (!game->mlx_image)
 		return;

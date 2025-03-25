@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/21 21:56:36 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:05:21 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,19 @@ void handle_movement(mlx_key_data_t keydata, t_game *game)
 	{
 		if (keydata.key == MLX_KEY_W)
 		{
-			move_x = game->dir_x * MOVE_SPEED;
 			move_y = game->dir_y * MOVE_SPEED;
 		}
 		else if (keydata.key == MLX_KEY_S)
 		{
-			move_x = -game->dir_x * MOVE_SPEED;
 			move_y = -game->dir_y * MOVE_SPEED;
 		}
 		else if (keydata.key == MLX_KEY_A)
 		{
 			move_x = game->dir_y * MOVE_SPEED;
-			move_y = -game->dir_x * MOVE_SPEED;
 		}
 		else if (keydata.key == MLX_KEY_D)
 		{
 			move_x = -game->dir_y * MOVE_SPEED;
-			move_y = game->dir_x * MOVE_SPEED;
 		}
 		else if (keydata.key == MLX_KEY_LEFT)
 		{
@@ -104,6 +100,7 @@ void	handle_keypress(mlx_key_data_t keydata, void *param)
     }
 
     handle_movement(keydata, game);
+	render(game);
 }
 
 void handle_close(void *param)

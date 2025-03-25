@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/21 21:54:14 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:07:13 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	draw_player(t_game *game);
 
 float	cast_single_ray(t_game *game, float ray_angle);
 void	cast_rays(t_game *game);
-void	render(void *param);
+void	render_init(t_game *game);
+void	render(t_game *game);
 void	loop_hook(t_game *game);
 
 void	set_player_position(t_game *game);

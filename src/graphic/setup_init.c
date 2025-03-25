@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/21 21:21:06 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:07:59 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ int setup_init(t_game *game)
 
     // Adiciona a imagem à janela
     mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
-
+	render_init(game);
     // Registra a função de renderização contínua
-    mlx_loop_hook(game->mlx, render, game);
+    //mlx_loop_hook(game->mlx, render, game);
 
     // Registra os hooks de teclado
     setup_hooks(game);
