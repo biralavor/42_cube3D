@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 23:39:37 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/25 19:09:16 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:18:58 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void render(t_game *game)
 
 	// NOVO: Raycasting render
 	cast_rays(game);
+	draw_minimap(game);
 }
 void render_init(t_game *game)
 {
@@ -137,4 +138,5 @@ void render_init(t_game *game)
 
 	// NOVO: Raycasting render
 	cast_rays(game);
+	draw_minimap(game);
 }

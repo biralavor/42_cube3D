@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/25 19:07:13 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:24:10 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@
 # define PUR	"\033[0;35m"
 # define CYA	"\033[0;36m"
 # define RESET	"\033[0m"
-# define MOVE_SPEED 5.0
+# define TILE_SIZE 8
+# define MINIMAP_OFFSET_X 10
+# define MINIMAP_OFFSET_Y 10
+# define MOVE_SPEED 1.0
 # define ROTATE_SPEED 0.1
 
 # ifndef M_PI
@@ -67,7 +70,12 @@
 void	draw_background(mlx_image_t *image);
 void	draw_player(t_game *game);
 
-float	cast_single_ray(t_game *game, float ray_angle);
+float	cast_single_ray_dda(t_game *g, float ray_angle);
+// float	cast_single_ray(t_game *game, float ray_angle);
+void	draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
+void	draw_minimap_player(t_game *game);
+void	draw_minimap(t_game *game);
+
 void	cast_rays(t_game *game);
 void	render_init(t_game *game);
 void	render(t_game *game);

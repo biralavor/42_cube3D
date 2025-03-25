@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 21:53:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/03/25 18:59:29 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:24:40 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,24 @@ typedef struct s_ray_info
 	float step_size;
 	int   steps;
 }	t_ray_info;
+//----------------------------------------
+typedef struct s_vec
+{
+	float	x;
+	float	y;
+}	t_vec;
 
 typedef struct s_ray
 {
-	int		map_x;
-	int		map_y;
-	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	perp_wall_dist;
-	int		step_x;
-	int		step_y;
-	int		hit;
-	int		side; // 0 para X, 1 para Y
+	t_vec	dir;            // Direção do raio
+	t_vec	map;            // Posição atual no mapa (grid)
+	t_vec	delta_dist;     // Distância entre cruzamentos de grid
+	t_vec	dist_side;      // Distância até o próximo lado (x ou y)
+	t_vec	step;           // Passos do DDA (+1 ou -1)
+	float	plane_multiplier; // Usado pra espalhar os raios na tela
+	t_vec	camera_pixel;   // Ajuste da direção do raio
+	float	perp_dist;      // Distância perpendicular à parede
+	int		hit_side;       // 0 se bateu em eixo x, 1 em y
 }	t_ray;
 
 typedef struct s_player
