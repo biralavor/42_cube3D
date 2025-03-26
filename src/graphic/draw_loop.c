@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 23:39:37 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/25 20:18:58 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:35:51 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,6 @@ void draw_player(t_game *game)
 }
 
 
-// void game_loop(t_game *game)
-// {
-//     mlx_key_hook(game->mlx, handle_keypress, game);
-//     mlx_close_hook(game->mlx, handle_close, game);
-    
-//     while (1)
-//     {
-//         // Aqui você pode adicionar sua lógica de atualização do jogo
-//         draw_background(game->mlx_image);
-//         mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
-        
-//         printf("Entrando no loop da MLX...\n");
-//         mlx_loop(game->mlx);
-//         printf("Saindo do loop da MLX...\n"); // Se este print nunca aparecer, significa que o jogo foi encerrado abruptamente.
-//     }
-// }
-
 void render(t_game *game)
 {
 
@@ -134,6 +117,7 @@ void render_init(t_game *game)
 
 	// Desenha fundo e jogador
 	draw_background(game->mlx_image);
+	load_textures(game);
 	draw_player(game);
 
 	// NOVO: Raycasting render

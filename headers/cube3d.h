@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/25 20:24:10 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:43:21 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 /* ************************************************************************** */
 # define MAX_MAP_WIDTH 800
 # define MAX_MAP_HEIGHT 600
+# define WIDTH 800
+# define HEIGHT 600
 # define MAX_TEXTURE_PATH 200
 # define MAX_TEXTURE_FILES 4
 # define MAX_INSIDE_ALLOC 4
@@ -67,34 +69,44 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-void	draw_background(mlx_image_t *image);
-void	draw_player(t_game *game);
+void			free_textures(t_game *g);
 
-float	cast_single_ray_dda(t_game *g, float ray_angle);
-// float	cast_single_ray(t_game *game, float ray_angle);
-void	draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
-void	draw_minimap_player(t_game *game);
-void	draw_minimap(t_game *game);
+void			load_textures(t_game *game);
+mlx_texture_t	*get_texture_for_ray(t_game *game, t_ray *ray);
+int				get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t);
+void			draw_texture_line(t_game *g, mlx_texture_t *t, t_ray *r, int col, int tex_x);
+void			draw_textured_wall(t_game *g, t_ray *r, int col);
 
-void	cast_rays(t_game *game);
-void	render_init(t_game *game);
-void	render(t_game *game);
-void	loop_hook(t_game *game);
+void			draw_background(mlx_image_t *image);
+void			draw_player(t_game *game);
 
-void	set_player_position(t_game *game);
-void	move_player(t_game *game, float move_x, float move_y);
-void	rotate_player(t_game *game, float rotation_speed);
 
-void	handle_movement(mlx_key_data_t keydata, t_game *game);
-void	handle_keypress(mlx_key_data_t keydata, void *param);
-void	handle_close(void *param);
+void			draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
+void			draw_minimap_player(t_game *game);
+void			draw_minimap(t_game *game);
 
-void	setup_hooks(t_game *game);
-void	set_player_position(t_game *game);
+void			setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos);
+void			perform_dda(t_game *g, t_ray *r, t_vec pos);
+void			cast_ray_dda(t_game *g, float angle, t_ray *r);
+void			cast_rays(t_game *game);
+void			render_init(t_game *game);
+void			render(t_game *game);
+void			loop_hook(t_game *game);
 
-void	game_loop(t_game *game);
-void	cleanup(t_game *game);
-int		setup_init(t_game *game);
+void			set_player_position(t_game *game);
+void			move_player(t_game *game, float move_x, float move_y);
+void			rotate_player(t_game *game, float rotation_speed);
+
+void			handle_movement(mlx_key_data_t keydata, t_game *game);
+void			handle_keypress(mlx_key_data_t keydata, void *param);
+void			handle_close(void *param);
+
+void			setup_hooks(t_game *game);
+void			set_player_position(t_game *game);
+
+void			game_loop(t_game *game);
+void			cleanup(t_game *game);
+int				setup_init(t_game *game);
 
 /**
  * @brief Allocate memory for the entire struct (map->gamemap,
@@ -103,7 +115,7 @@ int		setup_init(t_game *game);
  * @param  map struct with all map data
  * @return `void`
  */
-void	struct_memory_alloc(t_map *map);
+void			struct_memory_alloc(t_map *map);
 
 /**
  * @brief Open the map file and check if it exists
@@ -112,9 +124,9 @@ void	struct_memory_alloc(t_map *map);
  * @param  map struct with all map data
  * @return `bool` true if the file exists, false otherwise
  */
-bool	map_opener(int ac, char **av, t_map *map);
+bool			map_opener(int ac, char **av, t_map *map);
 
-bool	linebreak_reader(char **arr, int y, int x);
+bool			linebreak_reader(char **arr, int y, int x);
 
 /**
  * @brief Print the specif array from the map in the terminal
@@ -123,13 +135,13 @@ bool	linebreak_reader(char **arr, int y, int x);
  * @param  array_name name of the array to be printed
  * @return `void`
  */
-void	map_array_printer(char **array, char *array_name);
+void			map_array_printer(char **array, char *array_name);
 
 /**
  * @brief Print the map in the terminal
  * @param  map struct with all map data
  * @return `void`
  */
-void	map_printer(t_map *map);
+void			map_printer(t_map *map);
 
 #endif

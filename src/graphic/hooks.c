@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/25 20:11:29 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:53:36 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,22 @@ void	handle_keypress(mlx_key_data_t keydata, void *param)
 	t_game *game;
 	game = (t_game *)param;
 
-    // DEBUG: Verificar se a função está capturando as teclas
-    printf("Tecla pressionada: %d\n", keydata.key);
+	// DEBUG: Verificar se a função está capturando as teclas
+	printf("Tecla pressionada: %d\n", keydata.key);
 
-    if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-    {
-        mlx_close_window(game->mlx);
-        return ;
-    }
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
+		mlx_close_window(game->mlx);
+		return ;
+	}
 
-    handle_movement(keydata, game);
+	handle_movement(keydata, game);
 	render(game);
 }
 
 void handle_close(void *param)
 {
-    t_game *game = (t_game *)param;
-    cleanup(game);
-    exit(0);
+	t_game *game = (t_game *)param;
+	cleanup(game);
+	exit(0);
 }

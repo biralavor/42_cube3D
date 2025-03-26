@@ -6,26 +6,12 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/25 19:07:59 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:46:29 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-// int	close_window(t_game *game)
-// {
-// 	mlx_terminate(game->mlx);
-// 	exit(0);
-// }
-
-void cleanup(t_game *game)
-{
-    if (game->mlx_image)
-        mlx_delete_image(game->mlx, game->mlx_image);
-    
-    if (game->mlx)
-        mlx_terminate(game->mlx);
-}
 void setup_hooks(t_game *game)
 {
     if (!game->mlx)
@@ -98,13 +84,11 @@ int setup_init(t_game *game)
     // Adiciona a imagem à janela
     mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
 	render_init(game);
-    // Registra a função de renderização contínua
-    //mlx_loop_hook(game->mlx, render, game);
-
     // Registra os hooks de teclado
     setup_hooks(game);
 
     // 📌 Aqui é onde a janela permanece aberta
     mlx_loop(game->mlx);
+	cleanup(game);
     return (EXIT_SUCCESS);
 }
