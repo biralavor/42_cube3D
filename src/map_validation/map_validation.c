@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation_part1.c                             :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/17 12:35:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:27:43 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool	map_validation_manager(char **av, t_map *map)
+bool	map_validation_manager(char **av, t_map *map, t_game *game)
 {
 	if (map_file_manager(av, map)
 		&& map_player_manager(map)
 		&& closed_wall_manager(map)
 		&& no_garbage_manager(map)
 		&& texture_path_manager(map)
-		&& map_colors_manager(map->colors))
+		&& map_colors_manager(map->colors, game))
 	{
 		printf(GRE"✅ Game Map \t\tapproved!\n");
 		map_printer(map);

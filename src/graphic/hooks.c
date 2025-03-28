@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/26 20:53:36 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:26:54 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	handle_keypress(mlx_key_data_t keydata, void *param)
 		mlx_close_window(game->mlx);
 		return ;
 	}
+	// if (keydata.key == MLX_KEY_E && keydata.action == MLX_PRESS)
+	// 	try_open_door(game);
 
 	handle_movement(keydata, game);
 	render(game);

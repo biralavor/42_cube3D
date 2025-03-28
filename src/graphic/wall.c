@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/26 20:42:37 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:25:19 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void load_textures(t_game *game)
 	game->tex_south = mlx_load_png("textures/wall.png");
 	game->tex_east  = mlx_load_png("textures/wall.png");
 	game->tex_west  = mlx_load_png("textures/wall.png");
+	//game->tex_door = mlx_load_png("textures/door.png");
 
-	if (!game->tex_north || !game->tex_south || !game->tex_east || !game->tex_west)
+	if (!game->tex_north || !game->tex_south || !game->tex_east
+			|| !game->tex_west)
 	{
 		printf("Erro ao carregar texturas.\n");
 		free_textures(game);
@@ -81,15 +83,15 @@ void	draw_texture_line(t_game *g, mlx_texture_t *t, t_ray *r, int col, int tex_x
 	float		corrected;
 
 	corrected = r->perp_dist * cos(r->angle - g->player_angle); 
-	h = HEIGHT / (corrected + 0.0001f);
+	h = g->mlx_image->height / (corrected + 0.0001f);
 
-	y = -h / 2 + HEIGHT / 2;
+	y = -h / 2 + g->mlx_image->height / 2;
 	if (y < 0)
 		y = 0;
 
-	while (y < (h / 2 + HEIGHT / 2) && y < HEIGHT)
+	while (y < (h / 2 + (int)g->mlx_image->height / 2) && y < (int)g->mlx_image->height)
 	{
-		d = y * 256 - HEIGHT * 128 + h * 128;
+		d = y * 256 - g->mlx_image->height * 128 + h * 128;
 		tex_y = (d * t->height / h) / 256;
 		if (tex_y >= 0 && tex_y < (int)t->height)
 			mlx_put_pixel(g->mlx_image, col, y,
@@ -104,9 +106,15 @@ void	draw_textured_wall(t_game *g, t_ray *r, int col)
 	mlx_texture_t	*t;
 	int				tex_x;
 
-	t = get_texture_for_ray(g, r);
+	t = NULL;
+	if (r->hit_door)
+		t = g->tex_door;
+	else
+		t = get_texture_for_ray(g, r);
+
 	if (!t)
 		return ;
+
 	tex_x = get_tex_x(g, r, t);
 	draw_texture_line(g, t, r, col, tex_x);
 }

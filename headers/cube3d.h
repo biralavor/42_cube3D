@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/26 20:43:21 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:31:56 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@
 # define MAX_MAP_HEIGHT 600
 # define WIDTH 800
 # define HEIGHT 600
-# define MAX_TEXTURE_PATH 200
-# define MAX_TEXTURE_FILES 4
+# define MAX_TEXTURE_PATH 400
+# define MAX_TEXTURE_FILES 6
 # define MAX_INSIDE_ALLOC 4
 # define MAX_RGB_SLOTS 6
 # define TOTAL_COLOR_DIGIT 15
@@ -69,6 +69,8 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
+void			try_open_door(t_game *g);
+
 void			free_textures(t_game *g);
 
 void			load_textures(t_game *game);
@@ -77,7 +79,7 @@ int				get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t);
 void			draw_texture_line(t_game *g, mlx_texture_t *t, t_ray *r, int col, int tex_x);
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
 
-void			draw_background(mlx_image_t *image);
+void			draw_background(t_game *game);
 void			draw_player(t_game *game);
 
 

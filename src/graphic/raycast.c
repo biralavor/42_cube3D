@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:44:24 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/26 20:31:46 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:04:43 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,23 @@ void	cast_rays(t_game *game)
 {
 	t_render_info	r;
 	t_ray			ray;
+	float			fov;
+	int				screen_width;
 
-	r.num_rays = WIDTH;
-	r.angle_step = (M_PI / 3) / r.num_rays;
+	screen_width = game->mlx_image->width;
+	fov = M_PI / 3; // 60 graus, padrão de Wolfenstein
+
+	r.num_rays = screen_width;
+	r.angle_step = fov / r.num_rays;
 	r.ray = 0;
+
 	while (r.ray < r.num_rays)
 	{
-		r.ray_angle = game->player_angle - (M_PI / 6) + (r.ray * r.angle_step);
-		cast_ray_dda(game, r.ray_angle, &ray); // ✅ já armazena o ângulo
-		draw_textured_wall(game, &ray, r.ray); // ✅ altura agora calculada dentro da função
+		r.ray_angle = game->player_angle - (fov / 2.0f)
+			+ (r.ray * r.angle_step);
+		cast_ray_dda(game, r.ray_angle, &ray);
+		ray.angle = r.ray_angle; // para usar na correção do fish-eye
+		draw_textured_wall(game, &ray, r.ray);
 		r.ray++;
 	}
 }

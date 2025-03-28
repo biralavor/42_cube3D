@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/21 20:04:33 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:14:32 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @param  map struct with all map data
  * @return `bool` true if the map is valid, false otherwise
  */
-bool	map_validation_manager(char **av, t_map *map);
+bool	map_validation_manager(char **av, t_map *map, t_game *game);
 
 /**
  * @brief Call a few functions to valide the map as a file, like:

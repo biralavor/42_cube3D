@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:41:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/03/21 20:04:25 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:12:43 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @param  arr map array
  * @return true if the color values are valid, false otherwise
  */
-bool	map_colors_manager(char **arr);
+bool	map_colors_manager(char **arr, t_game *game);
 
 /**
  * @brief Count the number of digits in the color values.

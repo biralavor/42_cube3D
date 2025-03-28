@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 20:41:46 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/26 20:53:56 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:21:17 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,18 @@ void cleanup(t_game *game)
 		mlx_terminate(game->mlx);
 	printf("Saindo do jogo...\n");
 	exit(EXIT_SUCCESS);
+}
+void	free_array(char **arr)
+{
+	int	i;
+
+	if (!arr)
+		return;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

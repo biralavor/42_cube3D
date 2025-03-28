@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 23:39:37 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/26 20:35:51 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:29:34 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,28 @@ void draw_pixel(t_game *game, int x, int y, uint32_t color)
         mlx_put_pixel(game->mlx_image, x, y, color);
 }
 
-void draw_background(mlx_image_t *image)
+void draw_background(t_game *game)
 {
 	uint32_t x;
 	uint32_t y;
 	uint32_t sky_color;
 	uint32_t ground_color;
 
-	if (!image)
+	if (!game->mlx_image)
 		return;
 
-	sky_color = 0x87CEEBFF;    // Azul claro (céu)
-	ground_color = 0x228B22FF; // Verde (chão)
+	sky_color = game->ceiling_color;
+	ground_color = game->floor_color;
 	y = 0;
-	while (y < image->height)
+	while (y < game->mlx_image->height)
 	{
 		x = 0;
-		while (x < image->width)
+		while (x < game->mlx_image->width)
 		{
-			if (y < image->height / 2)
-				mlx_put_pixel(image, x, y, sky_color);
+			if (y < game->mlx_image->height / 2)
+				mlx_put_pixel(game->mlx_image, x, y, sky_color);
 			else
-				mlx_put_pixel(image, x, y, ground_color);
+				mlx_put_pixel(game->mlx_image, x, y, ground_color);
 			x++;
 		}
 		y++;
@@ -98,7 +98,7 @@ void render(t_game *game)
 		game->mlx_image->width * game->mlx_image->height * sizeof(int));
 
 	// Desenha fundo e jogador
-	draw_background(game->mlx_image);
+	draw_background(game);
 	draw_player(game);
 
 	// NOVO: Raycasting render
@@ -116,7 +116,7 @@ void render_init(t_game *game)
 		game->mlx_image->width * game->mlx_image->height * sizeof(int));
 
 	// Desenha fundo e jogador
-	draw_background(game->mlx_image);
+	draw_background(game);
 	load_textures(game);
 	draw_player(game);
 

@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 21:53:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/03/26 20:37:20 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:12:27 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map
 	char	*buffer;
 	int32_t	bytes_read;
 	int32_t	fd;
+	int		floor_color;   // cor do chão em formato 0xRRGGBBAA
+	int		ceiling_color; // cor do teto em formato 0xRRGGBBAA
 	int		player_pos_y;
 	int		player_pos_x;
 }			t_map;
@@ -89,6 +91,7 @@ typedef struct s_ray
 	float	perp_dist;
 	int		hit_side;
 	float	angle; // ✅ NOVO: para armazenar o ângulo do raio
+	bool	hit_door;
 }	t_ray;
 
 typedef struct s_player
@@ -118,6 +121,7 @@ typedef struct s_game
 	mlx_texture_t	*tex_south;
 	mlx_texture_t	*tex_east;
 	mlx_texture_t	*tex_west;
+	mlx_texture_t	*tex_door;
 }   t_game;
 
 // typedef struct s_game
