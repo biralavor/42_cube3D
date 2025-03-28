@@ -19,12 +19,12 @@ void load_textures(t_game *game)
 	int		id;
 	char	**texture;
 
-	id = 0;
+	id = -1;
 	texture = populate_texture_path(&game->map);
 	game->tex_north = mlx_load_png(texture[++id]);
 	game->tex_south = mlx_load_png(texture[++id]);
 	game->tex_east  = mlx_load_png(texture[++id]);
-	game->tex_west  = mlx_load_png(texture[id]);
+	game->tex_west  = mlx_load_png(texture[++id]);
 	ft_free_array(texture);
 	if (!game->tex_north || !game->tex_south || !game->tex_east
 			|| !game->tex_west)
