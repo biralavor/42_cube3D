@@ -1,7 +1,7 @@
-NO ./textures/testing/test_1.png
-SO ./textures/testing/test_2.png
-WE ./textures/testing/test_3.png
-EA ./textures/testing/test_4.png
+NO ./textures/testing/wall.png
+SO ./textures/testing/wall.png
+WE ./textures/testing/wall.png
+EA ./textures/testing/wall.png
 F 240,233,133
 C 225,100,200
 
