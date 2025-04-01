@@ -12,23 +12,49 @@
 
 #include "cube3d.h"
 
+static char	**populate_texture_path(t_map *map);
+
 void load_textures(t_game *game)
 {
-	game->tex_north = mlx_load_png("textures/wall.png");
-	game->tex_south = mlx_load_png("textures/wall.png");
-	game->tex_east  = mlx_load_png("textures/wall.png");
-	game->tex_west  = mlx_load_png("textures/wall.png");
-	//game->tex_door = mlx_load_png("textures/door.png");
+	int		id;
+	char	**texture;
 
+	id = -1;
+	texture = populate_texture_path(&game->map);
+	game->tex_north = mlx_load_png(texture[++id]);
+	game->tex_south = mlx_load_png(texture[++id]);
+	game->tex_east  = mlx_load_png(texture[++id]);
+	game->tex_west  = mlx_load_png(texture[++id]);
+	ft_free_array(texture);
 	if (!game->tex_north || !game->tex_south || !game->tex_east
 			|| !game->tex_west)
 	{
 		printf("Erro ao carregar texturas.\n");
 		free_textures(game);
 		exit(EXIT_FAILURE);
-		exit(1);
 	}
 }
+
+static char	**populate_texture_path(t_map *map)
+{
+	int		idx;
+	int		id;
+	char	**texture;
+	char	**temp;
+
+	id = -1;
+	idx = -1;
+	texture = ft_calloc(ft_strlen(map->ggraph[0]), sizeof(char*));
+	temp = ft_calloc(ft_strlen(map->ggraph[0]), sizeof(char*));
+	while (++idx <= 3)
+	{
+		temp = ft_split(map->ggraph[idx], ' ');
+		texture[++id] = ft_strdup(temp[1]);
+		ft_free_array(temp);
+	}
+	return (texture);
+}
+
 mlx_texture_t *get_texture_for_ray(t_game *game, t_ray *ray)
 {
 	if (ray->hit_side == 0)
