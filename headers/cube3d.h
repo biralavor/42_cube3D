@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/27 21:31:56 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/05 16:02:01 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void			free_textures(t_game *g);
 void			load_textures(t_game *game);
 mlx_texture_t	*get_texture_for_ray(t_game *game, t_ray *ray);
 int				get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t);
-void			draw_texture_line(t_game *g, mlx_texture_t *t, t_ray *r, int col, int tex_x);
+void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
+			int col, int tex_x, int y, int h);
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
 
 void			draw_background(t_game *game);

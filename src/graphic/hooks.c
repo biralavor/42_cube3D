@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/27 21:26:54 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/05 16:12:53 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,34 +54,24 @@ void handle_movement(mlx_key_data_t keydata, t_game *game)
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
 		if (keydata.key == MLX_KEY_W)
-		{
 			move_y = game->dir_y * MOVE_SPEED;
-		}
 		else if (keydata.key == MLX_KEY_S)
-		{
 			move_y = -game->dir_y * MOVE_SPEED;
-		}
 		else if (keydata.key == MLX_KEY_A)
-		{
 			move_x = game->dir_y * MOVE_SPEED;
-		}
 		else if (keydata.key == MLX_KEY_D)
-		{
 			move_x = -game->dir_y * MOVE_SPEED;
-		}
-		else if (keydata.key == MLX_KEY_LEFT)
+		else if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
 		{
 			rotate_angle = -ROTATE_SPEED;
 			rotate_player(game, rotate_angle);
 		}
-		else if (keydata.key == MLX_KEY_RIGHT)
+		else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
 		{
 			rotate_angle = ROTATE_SPEED;
 			rotate_player(game, rotate_angle);
 		}
-
-		if (move_x != 0 || move_y != 0)
-			move_player(game, move_x, move_y);
+		move_player(game, move_x, move_y);
 	}
 }
 

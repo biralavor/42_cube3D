@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/27 21:25:19 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/05 16:03:19 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,32 +100,59 @@ int	get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t)
 	return (tex_x);
 }
 
+int	calculate_tex_y(t_game *g, int y, int h, int tex_height)
+{
+	int	d;
+	int	tex_y;
+
+	d = y * 256 - g->mlx_image->height * 128 + h * 128;
+	tex_y = (d * tex_height / h) / 256;
+	return (tex_y);
+}
+
+void	draw_texture_pixel(t_game *g, mlx_texture_t *t,
+	int col, int tex_x, int y, int h)
+{
+	int			tex_y;
+	uint32_t	color;
+	uint8_t		r_c;
+	uint8_t		g_c;
+	uint8_t		b_c;
+	uint8_t		a_c;
+
+	tex_y = calculate_tex_y(g, y, h, t->height);
+	if (tex_y < 0 || tex_y >= (int)t->height)
+	return ;
+	color = ((uint32_t *)t->pixels)[tex_y * t->width + tex_x];
+	r_c = (color >> 24) & 0xFF;
+	g_c = (color >> 16) & 0xFF;
+	b_c = (color >> 8) & 0xFF;
+	a_c = color & 0xFF;
+	mlx_put_pixel(g->mlx_image, col, y,
+	(r_c << 24 | g_c << 16 | b_c << 8 | a_c));
+}
+
 void	draw_texture_line(t_game *g, mlx_texture_t *t, t_ray *r, int col, int tex_x)
 {
-	int			h;
-	int			y;
-	int			d;
-	int			tex_y;
-	float		corrected;
+	int		h;
+	int		y;
+	float	corrected;
+	int		draw_end;
 
-	corrected = r->perp_dist * cos(r->angle - g->player_angle); 
+	corrected = r->perp_dist * cos(r->angle - g->player_angle);
 	h = g->mlx_image->height / (corrected + 0.0001f);
-
 	y = -h / 2 + g->mlx_image->height / 2;
 	if (y < 0)
 		y = 0;
-
-	while (y < (h / 2 + (int)g->mlx_image->height / 2) && y < (int)g->mlx_image->height)
+	draw_end = h / 2 + g->mlx_image->height / 2;
+	if (draw_end > (int)g->mlx_image->height)
+		draw_end = g->mlx_image->height;
+	while (y < draw_end)
 	{
-		d = y * 256 - g->mlx_image->height * 128 + h * 128;
-		tex_y = (d * t->height / h) / 256;
-		if (tex_y >= 0 && tex_y < (int)t->height)
-			mlx_put_pixel(g->mlx_image, col, y,
-				((uint32_t *)t->pixels)[tex_y * t->width + tex_x]);
+		draw_texture_pixel(g, t, col, tex_x, y, h);
 		y++;
 	}
 }
-
 
 void	draw_textured_wall(t_game *g, t_ray *r, int col)
 {
@@ -137,10 +164,8 @@ void	draw_textured_wall(t_game *g, t_ray *r, int col)
 		t = g->tex_door;
 	else
 		t = get_texture_for_ray(g, r);
-
 	if (!t)
 		return ;
-
 	tex_x = get_tex_x(g, r, t);
 	draw_texture_line(g, t, r, col, tex_x);
 }
