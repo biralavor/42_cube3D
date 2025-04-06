@@ -6,7 +6,7 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/05 16:02:01 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/06 16:08:54 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
 
 void			draw_background(t_game *game);
-void			draw_player(t_game *game);
-
 
 void			draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
 void			draw_minimap_player(t_game *game);
