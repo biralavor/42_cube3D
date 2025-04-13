@@ -12,6 +12,25 @@
 
 #include "cube3d.h"
 
+/**
+ * @brief This function prepares the ste[ direction and delta distance values
+ * for the ray.
+ * @param r The ray struct
+ * @return `void`
+ * @note Lets go a little deeper:
+ * If the ray direction is left (dir.x < 0), the step will be backwards
+ * in the step.x (-1).
+ * If the ray direction is right (dir.x > 0), the step will be forwards
+ * in the step.x (1).
+ * The delta distance is the distance between the player and the next grid line
+ * in the direction of the ray. So:
+ * If the ray direction is up (dir.y < 0), the delta will be the distance
+ * between the player and the next horizontal grid line (delta.y), and the step
+ * will be backwards (step.y = -1).
+ * If the ray direction is down (dir.y > 0), the delta will be the distance
+ * between the player and the next horizontal grid line (delta.y), and the step
+ * will be forwards (step.y = 1).
+ */
 static void	setup_step_and_delta(t_ray *r)
 {
 	if (r->dir.x < 0)
