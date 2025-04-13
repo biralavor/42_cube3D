@@ -110,11 +110,13 @@ typedef struct s_game
 	mlx_image_t *mlx_image;    // Imagem onde desenhamos o jogo
 	t_map       map;           // Estrutura que armazena o mapa
 
-	int				player_x;      // Posição X do jogador no mapa
-	int				player_y;      // Posição Y do jogador no mapa
+	float				player_x;      // Posição X do jogador no mapa
+	float				player_y;      // Posição Y do jogador no mapa
 	int				floor_color;   // cor do chão em formato 0xRRGGBBAA
 	int				ceiling_color; // cor do teto em formato 0xRRGGBBAA
 	float			player_angle;  // Ângulo de visão do jogador
+	float			plane_x;      // Plano da câmera X (perpendicular à direção)
+	float			plane_y;      // Plano da câmera Y
 	float			dir_x;         // Direção X do jogador
 	float			dir_y;         // Direção Y do jogador
 	mlx_texture_t	*tex_north;
