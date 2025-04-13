@@ -64,7 +64,7 @@ void handle_movement(mlx_key_data_t keydata, t_game *game)
         {
             move_x = -game->plane_x * MOVE_SPEED;
             move_y = -game->plane_y * MOVE_SPEED;
-			printf("D Key: move_x=%.2f, move_y=%.2f, plane_x=%.2f, plane_y=%.2f\n",
+			printf("A Key: move_x=%.2f, move_y=%.2f, plane_x=%.2f, plane_y=%.2f\n",
 				move_x, move_y, game->plane_x, game->plane_y);
         }
         else if (keydata.key == MLX_KEY_D)
