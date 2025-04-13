@@ -58,9 +58,6 @@ void set_player_position(t_game *game)
 		game->plane_y = -0.66;
 		game->player_angle = M_PI;
 	}
-	// Debug output to verify
-	printf("Player initialized as: %c - angle=%.2f, dir_x=%.2f, dir_y=%.2f\n", 
-		mapdir, game->player_angle, game->dir_x, game->dir_y);
 }
 
 int setup_init(t_game *game)
@@ -75,15 +72,10 @@ int setup_init(t_game *game)
 		exit(EXIT_FAILURE);
 	}
 	printf("Imagem MLX criada com sucesso!\n");
-	// 📌 Define a posição inicial do jogador
 	set_player_position(game);
-
-	// Adiciona a imagem à janela
 	mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
 	render_init(game);
-	// Registra os hooks de teclado
 	setup_hooks(game);
-	// 📌 Aqui é onde a janela permanece aberta
 	mlx_loop(game->mlx);
 	cleanup(game);
 	return (EXIT_SUCCESS);
