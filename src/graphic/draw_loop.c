@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   draw_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 23:39:37 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/06 16:09:16 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/15 20:38:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
@@ -21,9 +21,8 @@ void draw_background(t_game *game)
 
 	if (!game->mlx_image)
 		return;
-
-	sky_color = game->ceiling_color;
-	ground_color = game->floor_color;
+	sky_color = game->map.ceiling_color;
+	ground_color = game->map.floor_color;
 	y = 0;
 	while (y < game->mlx_image->height)
 	{

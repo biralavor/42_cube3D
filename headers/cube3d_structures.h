@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cube3d_structures.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 21:53:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/03/27 21:12:27 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/15 20:43:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CUBE3D_STRUCTURES_H
 # define CUBE3D_STRUCTURES_H
@@ -112,8 +112,6 @@ typedef struct s_game
 
 	float				player_x;      // Posição X do jogador no mapa
 	float				player_y;      // Posição Y do jogador no mapa
-	int				floor_color;   // cor do chão em formato 0xRRGGBBAA
-	int				ceiling_color; // cor do teto em formato 0xRRGGBBAA
 	float			player_angle;  // Ângulo de visão do jogador
 	float			plane_x;      // Plano da câmera X (perpendicular à direção)
 	float			plane_y;      // Plano da câmera Y
