@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_file_manager.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/27 20:14:32 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/15 20:25:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef MAP_FILE_MANAGER_H
 # define MAP_FILE_MANAGER_H
@@ -21,7 +21,7 @@
  * @param  map struct with all map data
  * @return `bool` true if the map is valid, false otherwise
  */
-bool	map_validation_manager(char **av, t_map *map, t_game *game);
+bool	map_validation_manager(char **av, t_map *map);
 
 /**
  * @brief Call a few functions to valide the map as a file, like:
