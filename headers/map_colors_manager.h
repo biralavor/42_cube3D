@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_colors_manager.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:41:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/03/27 20:12:43 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/15 20:35:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef MAP_COLORS_MANAGER_H
 # define MAP_COLORS_MANAGER_H
@@ -21,7 +21,7 @@
  * @param  arr map array
  * @return true if the color values are valid, false otherwise
  */
-bool	map_colors_manager(char **arr, t_game *game);
+bool	map_colors_manager(t_map *map);
 
 /**
  * @brief Count the number of digits in the color values.

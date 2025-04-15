@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   01.main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:13:28 by umeneses          #+#    #+#             */
-/*   Updated: 2025/01/06 13:13:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/15 20:25:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 		ft_error_msg("Map Memory Allocation failed\n");
 	struct_memory_alloc(map);
 	if (map_opener(ac, av, map)
-		&& map_validation_manager(av, map, game))
+		&& map_validation_manager(av, map))
 	{
 		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
 		// Aqui conectamos o mapa validado à struct gráfica

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/06 16:08:54 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/15 20:53:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
+# include <math.h>
 
 /* ************************************************************************** */
 /*                            ADDITIONAL LIBRARIES                            */
@@ -38,7 +39,6 @@
 # include "map_texture_path_manager.h"
 # include "map_colors_manager.h"
 # include "clear_all.h"
-# include <math.h>
 
 /* ************************************************************************** */
 /*                            CONSTANT DEFINITIONS                            */
@@ -70,22 +70,17 @@
 # endif
 
 void			try_open_door(t_game *g);
-
 void			free_textures(t_game *g);
-
 void			load_textures(t_game *game);
 mlx_texture_t	*get_texture_for_ray(t_game *game, t_ray *ray);
 int				get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t);
 void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
 			int col, int tex_x, int y, int h);
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
-
 void			draw_background(t_game *game);
-
 void			draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
 void			draw_minimap_player(t_game *game);
 void			draw_minimap(t_game *game);
-
 void			setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos);
 void			perform_dda(t_game *g, t_ray *r, t_vec pos);
 void			cast_ray_dda(t_game *g, float angle, t_ray *r);
@@ -93,7 +88,6 @@ void			cast_rays(t_game *game);
 void			render_init(t_game *game);
 void			render(t_game *game);
 void			loop_hook(t_game *game);
-
 /**
  * @brief Sets the player position at game startup. It also initilizes the player direction
  * 	(dix_x and dir_y), camera plane direction (plane_x and plane_y) and player angle.
@@ -106,8 +100,8 @@ void			loop_hook(t_game *game);
  * @return `void`
  */
 void			set_player_position(t_game *game);
-void			move_player(t_game *game, float move_x, float move_y);
 
+void			move_player(t_game *game, float move_x, float move_y);
 /**
  * @brief Rotate the player direction and camera plane based on the rotation speed.
  * 	- The rotation speed is defined by the ROTATE_SPEED constant.
@@ -125,14 +119,11 @@ void			rotate_player(t_game *game, float rotation_speed);
 void			handle_movement(mlx_key_data_t keydata, t_game *game);
 void			handle_keypress(mlx_key_data_t keydata, void *param);
 void			handle_close(void *param);
-
 void			setup_hooks(t_game *game);
 void			set_player_position(t_game *game);
-
 void			game_loop(t_game *game);
 void			cleanup(t_game *game);
 int				setup_init(t_game *game);
-
 /**
  * @brief Allocate memory for the entire struct (map->gamemap,
  * 			map->ggraph, map->colors).
@@ -152,7 +143,6 @@ void			struct_memory_alloc(t_map *map);
 bool			map_opener(int ac, char **av, t_map *map);
 
 bool			linebreak_reader(char **arr, int y, int x);
-
 /**
  * @brief Print the specif array from the map in the terminal
  * @param  map struct with all map data
