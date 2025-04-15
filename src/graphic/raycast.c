@@ -12,6 +12,25 @@
 
 #include "cube3d.h"
 
+/**
+ * @brief This function prepares the ste[ direction and delta distance values
+ * for the ray.
+ * @param r The ray struct
+ * @return `void`
+ * @note Lets go a little deeper:
+ * If the ray direction is left (dir.x < 0), the step will be backwards
+ * in the step.x (-1).
+ * If the ray direction is right (dir.x > 0), the step will be forwards
+ * in the step.x (1).
+ * The delta distance is the distance between the player and the next grid line
+ * in the direction of the ray. So:
+ * If the ray direction is up (dir.y < 0), the delta will be the distance
+ * between the player and the next horizontal grid line (delta.y), and the step
+ * will be backwards (step.y = -1).
+ * If the ray direction is down (dir.y > 0), the delta will be the distance
+ * between the player and the next horizontal grid line (delta.y), and the step
+ * will be forwards (step.y = 1).
+ */
 static void	setup_step_and_delta(t_ray *r)
 {
 	if (r->dir.x < 0)
@@ -22,7 +41,6 @@ static void	setup_step_and_delta(t_ray *r)
 		r->step.y = -1;
 	if (r->dir.y >= 0)
 		r->step.y = 1;
-
 	if (r->dir.x == 0)
 		r->delta.x = 1e30;
 	if (r->dir.x != 0)
@@ -50,7 +68,6 @@ static void	calculate_initial_side(t_ray *r, t_vec pos)
 		r->side.x = (pos.x - r->map.x) * r->delta.x;
 	else
 		r->side.x = (r->map.x + 1.0 - pos.x) * r->delta.x;
-
 	if (r->dir.y < 0)
 		r->side.y = (pos.y - r->map.y) * r->delta.y;
 	else
@@ -60,7 +77,8 @@ static void	calculate_initial_side(t_ray *r, t_vec pos)
 void	perform_dda(t_game *g, t_ray *r, t_vec pos)
 {
 	calculate_initial_side(r, pos);
-	while (1)
+	while (g->map.gamemap[(int)r->map.y]
+			&& g->map.gamemap[(int)r->map.y][(int)r->map.x] != '1')
 	{
 		if (r->side.x < r->side.y)
 		{
@@ -74,9 +92,6 @@ void	perform_dda(t_game *g, t_ray *r, t_vec pos)
 			r->map.y += r->step.y;
 			r->hit_side = 1;
 		}
-		if (g->map.gamemap[(int)r->map.y] &&
-			g->map.gamemap[(int)r->map.y][(int)r->map.x] == '1')
-			break ;
 	}
 }
 

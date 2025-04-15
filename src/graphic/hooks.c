@@ -14,65 +14,78 @@
 
 void move_player(t_game *game, float move_x, float move_y)
 {
-	int new_x;
-	int new_y;
-
-	if (!game->map.gamemap)
-	{
-		printf("Erro: mapa não carregado\n");
-		return;
-	}
+    int new_x;
+    int new_y;
 
 	new_x = (int)(game->player_x + move_x);
 	new_y = (int)(game->player_y + move_y);
+    float current_x = game->player_x;
+    float current_y = game->player_y;
+    printf("Trying to move: Current(%.2f, %.2f) Delta(%.2f, %.2f) New(%d, %d)\n", 
+           current_x, current_y, move_x, move_y, new_x, new_y);
 
-	if (new_y >= 0 && new_y < MAX_MAP_HEIGHT && new_x >= 0 && new_x < MAX_MAP_WIDTH)
-	{
-		if (game->map.gamemap[new_y][new_x] != '1')
-		{
-			game->player_x += move_x;
-			game->player_y += move_y;
-			printf("Jogador andou para X=%.2f, Y=%.2f\n", (float)game->player_x, (float)game->player_y);
-		}
-		else
-			printf("Colidiu com parede!\n");
-	}
-	else
-		printf("Tentou sair dos limites do mapa!\n");
+    if (new_y >= 0 && new_y < MAX_MAP_HEIGHT && new_x >= 0 && new_x < MAX_MAP_WIDTH)
+    {
+        if (game->map.gamemap[new_y][new_x] != '1')
+        {
+            game->player_x += move_x;
+            game->player_y += move_y;
+            printf("Player moved to X=%.2f, Y=%.2f\n", game->player_x, game->player_y);
+        }
+        else
+            printf("Collision with wall at (%d, %d)!\n", new_x, new_y);
+    }
+    else
+        printf("Tried to move out of map bounds!\n");
 }
 
 void handle_movement(mlx_key_data_t keydata, t_game *game)
 {
-	float move_x;
-	float move_y;
-	float rotate_angle;
+    float	move_x;
+    float	move_y;
+    float	rotate_angle;
 
 	move_x = 0;
-	move_y = 0;
-	rotate_angle = 0;
-
-	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
-	{
-		if (keydata.key == MLX_KEY_W)
-			move_y = game->dir_y * MOVE_SPEED;
-		else if (keydata.key == MLX_KEY_S)
-			move_y = -game->dir_y * MOVE_SPEED;
-		else if (keydata.key == MLX_KEY_A)
-			move_x = game->dir_y * MOVE_SPEED;
-		else if (keydata.key == MLX_KEY_D)
-			move_x = -game->dir_y * MOVE_SPEED;
-		else if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
-		{
+    move_y = 0;
+    rotate_angle = 0;
+    if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
+    {
+        if (keydata.key == MLX_KEY_W)
+        {
+            move_x = game->dir_x * MOVE_SPEED;
+            move_y = game->dir_y * MOVE_SPEED;
+        }
+        else if (keydata.key == MLX_KEY_S)
+        {
+            move_x = -game->dir_x * MOVE_SPEED;
+            move_y = -game->dir_y * MOVE_SPEED;
+        }
+        else if (keydata.key == MLX_KEY_A)
+        {
+            move_x = -game->plane_x * MOVE_SPEED;
+            move_y = -game->plane_y * MOVE_SPEED;
+			printf("A Key: move_x=%.2f, move_y=%.2f, plane_x=%.2f, plane_y=%.2f\n",
+				move_x, move_y, game->plane_x, game->plane_y);
+        }
+        else if (keydata.key == MLX_KEY_D)
+        {
+            move_x = game->plane_x * MOVE_SPEED;
+            move_y = game->plane_y * MOVE_SPEED;
+            printf("D Key Debug: move_x=%.2f, move_y=%.2f, plane_x=%.2f, plane_y=%.2f\n",
+                   move_x, move_y, game->plane_x, game->plane_y);
+        }
+        else if (keydata.key == MLX_KEY_LEFT)
+        {
 			rotate_angle = -ROTATE_SPEED;
-			rotate_player(game, rotate_angle);
-		}
-		else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
-		{
+            rotate_player(game, rotate_angle);
+        }
+        else if (keydata.key == MLX_KEY_RIGHT)
+        {
 			rotate_angle = ROTATE_SPEED;
-			rotate_player(game, rotate_angle);
-		}
-		move_player(game, move_x, move_y);
-	}
+            rotate_player(game, rotate_angle);
+        }
+        move_player(game, move_x, move_y);
+    }
 }
 
 void	handle_keypress(mlx_key_data_t keydata, void *param)

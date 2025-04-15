@@ -94,8 +94,32 @@ void			render_init(t_game *game);
 void			render(t_game *game);
 void			loop_hook(t_game *game);
 
+/**
+ * @brief Sets the player position at game startup. It also initilizes the player direction
+ * 	(dix_x and dir_y), camera plane direction (plane_x and plane_y) and player angle.
+ * 	The payer angle is set to 0 degrees (facing right) by default.
+ * 	- N = North (up) = 270 degrees
+ * 	- S = South (down) = 90 degrees
+ * 	- E = East (right) = 0 degrees
+ * 	- W = West (left) = 180 degrees
+ * @param  game struct with all game data
+ * @return `void`
+ */
 void			set_player_position(t_game *game);
 void			move_player(t_game *game, float move_x, float move_y);
+
+/**
+ * @brief Rotate the player direction and camera plane based on the rotation speed.
+ * 	- The rotation speed is defined by the ROTATE_SPEED constant.
+ * 	- The calculation is done using cosine and sine functions.
+ * 	- The direction vector (dir_x and dir_y) is rotated to match the new direction.
+ * 	- The camera plane is rotated to match the new direction.
+ * 	- The player angle is updated to keep track of the current direction.
+ * 	- The player angle is normalized to be between 0 and 2 * PI.
+ * * @param  game struct with all game data
+ * @param  rotation_speed rotation speed in radians
+ * @return `void`
+ */
 void			rotate_player(t_game *game, float rotation_speed);
 
 void			handle_movement(mlx_key_data_t keydata, t_game *game);
