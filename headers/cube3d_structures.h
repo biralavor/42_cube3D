@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 21:53:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/15 20:47:53 by umeneses         ###   ########.fr       */
+/*   Created: 2025/04/15 21:18:32 by umeneses          #+#    #+#             */
+/*   Updated: 2025/04/15 21:18:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -97,6 +97,6 @@ typedef struct s_game
 	mlx_texture_t	*tex_east;
 	mlx_texture_t	*tex_west;
 	mlx_texture_t	*tex_door;
-}   t_game;
+}	t_game;
 
 #endif

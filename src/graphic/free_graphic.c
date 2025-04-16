@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   free_graphic.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 20:41:46 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/27 20:21:17 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/16 00:55:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
@@ -22,13 +22,13 @@ void	free_textures(t_game *g)
 		mlx_delete_texture(g->tex_east);
 	if (g->tex_west)
 		mlx_delete_texture(g->tex_west);
-
 	g->tex_north = NULL;
 	g->tex_south = NULL;
 	g->tex_east = NULL;
 	g->tex_west = NULL;
 }
-void cleanup(t_game *game)
+
+void	cleanup(t_game *game)
 {
 	free_textures(game);
 	if (game->mlx_image)
@@ -38,6 +38,7 @@ void cleanup(t_game *game)
 	printf("Saindo do jogo...\n");
 	exit(EXIT_SUCCESS);
 }
+
 void	free_array(char **arr)
 {
 	int	i;
