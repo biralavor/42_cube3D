@@ -1,18 +1,26 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/25 20:20:47 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/16 00:39:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
-static void draw_player_direction_line(t_game *game, int px, int py);
+/**
+ * @brief Draws a line on the minimap at the specified coordinates,
+ * that represents the player's direction, using Bresenham's line algorithm
+ * @param game The game structure containing the minimap
+ * @param px The x coordinate of the player
+ * @param py The y coordinate of the player
+ * @return `void`
+ */
+static void	draw_player_direction_line(t_game *game, int px, int py);
 
 void	draw_minimap_tile(t_game *game, int x, int y, uint32_t color)
 {
@@ -31,11 +39,11 @@ void	draw_minimap_tile(t_game *game, int x, int y, uint32_t color)
 	}
 }
 
-void draw_minimap_player(t_game *game)
+void	draw_minimap_player(t_game *game)
 {
-	int px;
-	int py;
-	int dy;
+	int	px;
+	int	py;
+	int	dy;
 
 	px = MINIMAP_OFFSET_X + (int)(game->player_x * TILE_SIZE);
 	py = MINIMAP_OFFSET_Y + (int)(game->player_y * TILE_SIZE);
@@ -56,14 +64,12 @@ void draw_minimap_player(t_game *game)
 	draw_player_direction_line(game, px, py);
 }
 
-static void draw_player_direction_line(t_game *game, int px, int py)
+static void	draw_player_direction_line(t_game *game, int px, int py)
 {
-	// Draw a line representing the player's direction
-	float line_length = 20.0f; // Length of the direction line
-	float line_x = px + cos(game->player_angle) * line_length;
-	float line_y = py + sin(game->player_angle) * line_length;
+	float	line_length = 20.0f;
+	float	line_x = px + cos(game->player_angle) * line_length;
+	float	line_y = py + sin(game->player_angle) * line_length;
 
-	// Bresenham's line algorithm for drawing the direction line
 	int x0 = px;
 	int y0 = py;
 	int x1 = (int)line_x;
@@ -73,7 +79,6 @@ static void draw_player_direction_line(t_game *game, int px, int py)
 	int sx = (x0 < x1) ? 1 : -1;
 	int sy = (y0 < y1) ? 1 : -1;
 	int err = dx - dy;
-
 	while (x0 != x1 || y0 != y1)
 	{
 		if (x0 >= 0 && y0 >= 0)
@@ -92,7 +97,7 @@ static void draw_player_direction_line(t_game *game, int px, int py)
 	}
 }
 
-void draw_minimap(t_game *game)
+void	draw_minimap(t_game *game)
 {
 	int y;
 	uint32_t color;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/15 20:53:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/16 00:33:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -75,7 +75,7 @@ void			load_textures(t_game *game);
 mlx_texture_t	*get_texture_for_ray(t_game *game, t_ray *ray);
 int				get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t);
 void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
-			int col, int tex_x, int y, int h);
+					int col, int tex_x, int y, int h);
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
 void			draw_background(t_game *game);
 void			draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
@@ -86,11 +86,20 @@ void			perform_dda(t_game *g, t_ray *r, t_vec pos);
 void			cast_ray_dda(t_game *g, float angle, t_ray *r);
 void			cast_rays(t_game *game);
 void			render_init(t_game *game);
+/**
+ * @brief Render the game screen. To do so, it clears the screen,
+ * 			draws the background, loads the textures, and calls
+ * 			the function to `cast_rays()` and `draw_minimap()`.
+ * @param  game struct with all game data
+ * @return `void`
+ */
 void			render(t_game *game);
 void			loop_hook(t_game *game);
 /**
- * @brief Sets the player position at game startup. It also initilizes the player direction
- * 	(dix_x and dir_y), camera plane direction (plane_x and plane_y) and player angle.
+ * @brief Sets the player position at game startup.
+ * 	It also initilizes the player direction
+ * 	(dix_x and dir_y), camera plane direction
+ * 	(plane_x and plane_y) and player angle.
  * 	The payer angle is set to 0 degrees (facing right) by default.
  * 	- N = North (up) = 270 degrees
  * 	- S = South (down) = 90 degrees
@@ -103,10 +112,11 @@ void			set_player_position(t_game *game);
 
 void			move_player(t_game *game, float move_x, float move_y);
 /**
- * @brief Rotate the player direction and camera plane based on the rotation speed.
+ * @brief Rotate the player direction and camera plane
+ * 	based on the rotation speed.
  * 	- The rotation speed is defined by the ROTATE_SPEED constant.
  * 	- The calculation is done using cosine and sine functions.
- * 	- The direction vector (dir_x and dir_y) is rotated to match the new direction.
+ * 	- The direction vector (dir_x and dir_y) is rotated to match the new dir.
  * 	- The camera plane is rotated to match the new direction.
  * 	- The player angle is updated to keep track of the current direction.
  * 	- The player angle is normalized to be between 0 and 2 * PI.

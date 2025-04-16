@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01.main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:13:28 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/15 20:25:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/16 00:27:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,9 +26,7 @@ int	main(int ac, char **av)
 		&& map_validation_manager(av, map))
 	{
 		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
-		// Aqui conectamos o mapa validado à struct gráfica
 		game->map = *map;
-		// Inicializa a parte gráfica
 		if (setup_init(game) == -1)
 		{
 			clear_all_exit_smoothly(map);
@@ -40,6 +38,5 @@ int	main(int ac, char **av)
 		clear_all_exit_smoothly(map);
 		ft_error_msg("Map validation failed\n");
 	}
-	clear_all_exit_smoothly(map);
 	exit(EXIT_SUCCESS);
 }
