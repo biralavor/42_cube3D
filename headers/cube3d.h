@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 00:33:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/16 00:45:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -72,6 +72,16 @@
 void			try_open_door(t_game *g);
 void			free_textures(t_game *g);
 void			load_textures(t_game *game);
+/**
+ * @brief Get the texture for the ray based on the hit side.
+ * If the ray hits a horizontal wall, it returns the
+ * texture for the east or west wall.
+ * If the ray hits a vertical wall,
+ * it returns the texture for the north or south wall.
+ * @param  game struct with all game data
+ * @param  ray struct with the ray data
+ * @return `mlx_texture_t*` pointer to the texture
+ */
 mlx_texture_t	*get_texture_for_ray(t_game *game, t_ray *ray);
 int				get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t);
 void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
