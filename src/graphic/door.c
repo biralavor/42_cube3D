@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_all.h                                        :+:      :+:    :+:   */
+/*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 10:08:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/03/21 20:05:17 by gigardin         ###   ########.fr       */
+/*   Created: 2025/03/27 21:10:27 by gigardin          #+#    #+#             */
+/*   Updated: 2025/03/27 21:26:35 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLEAR_ALL_H
-# define CLEAR_ALL_H
+#include "cube3d.h"
 
-/**
- * @brief Free the memory allocated for the entire struct (map->gamemap,
- * 			map->ggraph, map->colors).
- * @param  map struct with all map data
- * @return `void`
- */
-void	clear_all_exit_smoothly(t_map *map);
+// void	try_open_door(t_game *g)
+// {
+// 	int		check_x;
+// 	int		check_y;
 
-#endif
+// 	check_x = (int)(g->player_x + g->dir_x);
+// 	check_y = (int)(g->player_y + g->dir_y);
+// 	if (g->map.gamemap[check_y][check_x] == 'D')
+// 		g->map.gamemap[check_y][check_x] = '0'; // Abrir porta
+// }

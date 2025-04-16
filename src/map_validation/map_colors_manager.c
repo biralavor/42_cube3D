@@ -1,18 +1,18 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_colors_manager.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/18 15:52:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/15 20:39:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
-bool	map_colors_manager(char **arr)
+bool	map_colors_manager(t_map *map)
 {
 	static int	color_digits[MAX_RGB_SLOTS];
 	static int	rgbrgb[MAX_RGB_SLOTS];
@@ -21,17 +21,21 @@ bool	map_colors_manager(char **arr)
 
 	id = 0;
 	digit = 0;
-	color_digits_counter(arr, color_digits);
+	color_digits_counter(map->colors, color_digits);
 	if (color_digits_quantity_checker(color_digits))
 	{
-		if (!no_garbage_at_color_values(arr, digit, color_digits, id))
+		if (!no_garbage_at_color_values(map->colors, digit, color_digits, id))
 		{
 			ft_putstr_fd(YEL"Garbage inside MapColors detected", STDERR_FILENO);
 			return (false);
 		}
-		if (color_values_into_array(arr, color_digits, rgbrgb)
+		if (color_values_into_array(map->colors, color_digits, rgbrgb)
 			&& colors_with_min_max_values(rgbrgb))
 		{
+			map->floor_color = (rgbrgb[0] << 24) | (rgbrgb[1] << 16)
+				| (rgbrgb[2] << 8) | 0xFF;
+			map->ceiling_color = (rgbrgb[3] << 24) | (rgbrgb[4] << 16)
+				| (rgbrgb[5] << 8) | 0xFF;
 			printf(GRE"✅ Color Map \t\tapproved!\n");
 			return (true);
 		}

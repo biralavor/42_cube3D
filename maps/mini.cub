@@ -1,0 +1,12 @@
+NO ./textures/testing/wall.png
+SO ./textures/testing/wall.png
+WE ./textures/testing/wall.png
+EA ./textures/testing/wall.png
+F 240,233,133
+C 225,100,200
+
+11111111111
+10000000001
+10000N00001
+10000000001
+11111111111

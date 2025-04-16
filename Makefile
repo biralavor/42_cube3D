@@ -73,7 +73,15 @@ SRC_FILES			+= map_validation/closed_wall_middlewall.c
 SRC_FILES			+= map_validation/closed_wall_topwall.c
 SRC_FILES			+= map_validation/player_checker.c
 SRC_FILES			+= clear_all.c
-
+SRC_FILES			+= graphic/setup_init.c
+SRC_FILES			+= graphic/raycast.c
+SRC_FILES			+= graphic/draw_loop.c
+SRC_FILES			+= graphic/hooks.c
+SRC_FILES			+= graphic/rotate_player.c
+SRC_FILES			+= graphic/minimap.c
+SRC_FILES			+= graphic/wall.c
+SRC_FILES			+= graphic/door.c
+SRC_FILES			+= graphic/free_graphic.c
 
 SRC_FILES_ALL		= $(addprefix $(SRC_D), $(SRC_FILES))
 
@@ -212,7 +220,7 @@ CFLAGS		= -Wall -Wextra -Werror -g -pedantic	# ISO C and C++ standards
 CPUARCH		= -march=native							# User's CPU Architecture Optimization
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP	# Track Changes in User Dependencies
 LDLIBS		= $(addprefix -L, $(dir $(LIBS)))		# Add All Libraries
-LDFLAGS		= -lft -ldl -lglfw -lm					# Link Libraries
+LDFLAGS		= -lmlx42 -ldl -lglfw -lm -lft			# Link Libraries
 PTHREAD		= -pthread								# POSIX Threads
 OPTIMIZE	= -Ofast -flto							# Maximum Optimization
 NOWRITEFLAG	= -Wno-unused-result					# Ignore Unused Return Values of write()

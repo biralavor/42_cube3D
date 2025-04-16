@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cube3d_structures.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 21:53:55 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/17 22:06:02 by umeneses         ###   ########.fr       */
+/*   Created: 2025/04/15 21:18:32 by umeneses          #+#    #+#             */
+/*   Updated: 2025/04/15 21:18:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CUBE3D_STRUCTURES_H
 # define CUBE3D_STRUCTURES_H
@@ -32,19 +32,71 @@ typedef struct s_map
 	char	*buffer;
 	int32_t	bytes_read;
 	int32_t	fd;
+	int		floor_color;
+	int		ceiling_color;
 	int		player_pos_y;
 	int		player_pos_x;
 }			t_map;
 
-/**
- * @brief Structure for mlx data
- * @param mlx pointer to the mlx struct
- * @param map pointer to the map struct
- */
-typedef struct s_data
+typedef struct s_render_info
 {
-	mlx_t	*mlx;
-	t_map	*map;
-}			t_data;
+	int		ray;
+	int		num_rays;
+	float	ray_angle;
+	float	angle_step;
+	float	distance;
+	float	corrected_dist;
+	int		col_height;
+	int		col_top;
+	int		screen_y;
+}	t_render_info;
+
+typedef struct s_vec
+{
+	float	x;
+	float	y;
+}	t_vec;
+
+typedef struct s_ray
+{
+	t_vec	dir;
+	t_vec	map;
+	t_vec	delta;
+	t_vec	side;
+	t_vec	step;
+	float	perp_dist;
+	int		hit_side;
+	float	angle;
+	bool	hit_door;
+}	t_ray;
+
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_player;
+
+typedef struct s_game
+{
+	mlx_t			*mlx;
+	mlx_image_t		*mlx_image;
+	t_map			map;
+	float			player_x;
+	float			player_y;
+	float			player_angle;
+	float			plane_x;
+	float			plane_y;
+	float			dir_x;
+	float			dir_y;
+	mlx_texture_t	*tex_north;
+	mlx_texture_t	*tex_south;
+	mlx_texture_t	*tex_east;
+	mlx_texture_t	*tex_west;
+	mlx_texture_t	*tex_door;
+}	t_game;
 
 #endif

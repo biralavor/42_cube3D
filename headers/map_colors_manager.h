@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_colors_manager.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 19:41:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/18 15:56:55 by umeneses         ###   ########.fr       */
+/*   Created: 2025/04/15 21:18:19 by umeneses          #+#    #+#             */
+/*   Updated: 2025/04/15 21:18:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef MAP_COLORS_MANAGER_H
 # define MAP_COLORS_MANAGER_H
@@ -21,7 +21,7 @@
  * @param  arr map array
  * @return true if the color values are valid, false otherwise
  */
-bool	map_colors_manager(char **arr);
+bool	map_colors_manager(t_map *map);
 
 /**
  * @brief Count the number of digits in the color values.
