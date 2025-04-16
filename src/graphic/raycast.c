@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:44:24 by gigardin          #+#    #+#             */
-/*   Updated: 2025/03/27 21:04:43 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/16 00:54:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
@@ -78,7 +78,7 @@ void	perform_dda(t_game *g, t_ray *r, t_vec pos)
 {
 	calculate_initial_side(r, pos);
 	while (g->map.gamemap[(int)r->map.y]
-			&& g->map.gamemap[(int)r->map.y][(int)r->map.x] != '1')
+		&& g->map.gamemap[(int)r->map.y][(int)r->map.x] != '1')
 	{
 		if (r->side.x < r->side.y)
 		{
@@ -116,18 +116,16 @@ void	cast_rays(t_game *game)
 	int				screen_width;
 
 	screen_width = game->mlx_image->width;
-	fov = M_PI / 3; // 60 graus, padrão de Wolfenstein
-
+	fov = M_PI / 3;
 	r.num_rays = screen_width;
 	r.angle_step = fov / r.num_rays;
 	r.ray = 0;
-
 	while (r.ray < r.num_rays)
 	{
 		r.ray_angle = game->player_angle - (fov / 2.0f)
 			+ (r.ray * r.angle_step);
 		cast_ray_dda(game, r.ray_angle, &ray);
-		ray.angle = r.ray_angle; // para usar na correção do fish-eye
+		ray.angle = r.ray_angle;
 		draw_textured_wall(game, &ray, r.ray);
 		r.ray++;
 	}
