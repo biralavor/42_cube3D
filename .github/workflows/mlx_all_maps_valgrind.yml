@@ -67,8 +67,8 @@ jobs:
         COUNTER=0
         echo "Waiting for game window to appear..."
         while [ $COUNTER -lt $TIMEOUT ]; do
-          if xdotool search --name "Cube3D"; then
-            WINDOW_ID=$(xdotool search --name "Cube3D" | head -1)
+          if xdotool search --name "Cub3D"; then
+            WINDOW_ID=$(xdotool search --name "Cub3D" | head -1)
             echo "Found window with ID: $WINDOW_ID"
             break
           fi
