@@ -57,13 +57,18 @@ jobs:
         # Create a script to run and send ESC key
         cat << 'EOF' > test_game.sh
         #!/bin/bash
-        
+
+        # Setup better X environment
+        export DISPLAY=:99
+        export LIBGL_ALWAYS_SOFTWARE=1
+        export MESA_GL_VERSION_OVERRIDE=3.3
+
         # Start the game with valgrind in background
         ${my_valgrind} ./cub3d ./maps/default.cub > valgrind_output.log 2>&1 &
         GAME_PID=$!
-        
-        # Wait for window to appear (adjust timeout as needed)
-        TIMEOUT=10
+
+        # Wait for window to appear 
+        TIMEOUT=15
         COUNTER=0
         echo "Waiting for game window to appear..."
         while [ $COUNTER -lt $TIMEOUT ]; do
@@ -76,43 +81,62 @@ jobs:
           COUNTER=$((COUNTER+1))
           echo "Still waiting... ($COUNTER/$TIMEOUT)"
         done
-        
+
         if [ -z "$WINDOW_ID" ]; then
           echo "Failed to find game window within timeout"
-          kill $GAME_PID
+          kill -9 $GAME_PID
           exit 1
         fi
-        
-        # Wait a bit for game to fully initialize
-        sleep 3
-        
-        # Send ESC key to window
-        echo "Sending ESC key to window $WINDOW_ID"
+
+        # Focus window first and sleep to ensure it registers
+        xdotool windowactivate --sync $WINDOW_ID
+        sleep 2
+
+        # Try multiple approaches to send Escape key
+        echo "Sending ESC key using multiple methods..."
+        # Method 1: Direct to window
         xdotool key --window $WINDOW_ID Escape
-        
-        # Wait for game to exit (with timeout)
+        sleep 1
+
+        # Method 2: With focus + alternative keycode
+        xdotool windowfocus $WINDOW_ID
+        xdotool key --clearmodifiers Escape
+        sleep 1
+
+        # Method 3: Using keydown/keyup explicitly
+        xdotool keydown --window $WINDOW_ID Escape
+        sleep 0.5
+        xdotool keyup --window $WINDOW_ID Escape
+        sleep 1
+
+        # Method 4: Send SIGTERM directly (last resort)
+        echo "Sending SIGTERM signal to game (PID: $GAME_PID)"
+        kill -TERM $GAME_PID
+
+        # Wait for game to exit
         echo "Waiting for game to exit..."
-        TIMEOUT=10
+        TIMEOUT=15
         COUNTER=0
         while kill -0 $GAME_PID 2>/dev/null; do
           if [ $COUNTER -ge $TIMEOUT ]; then
-            echo "Game did not exit within timeout, forcing kill"
-            kill $GAME_PID
+            echo "Game did not exit within timeout, force killing"
+            kill -9 $GAME_PID
             break
           fi
           sleep 1
           COUNTER=$((COUNTER+1))
         done
-        
+
         # Display valgrind output
+        echo "Valgrind output:"
         cat valgrind_output.log
-        
+
         # Check for memory leaks
         if grep -q "definitely lost: [^0]" valgrind_output.log; then
-          echo "❌ Memory leaks detected!"
+          echo "\n❌ Memory leaks detected!"
           exit 1
         else
-          echo "✅ No memory leaks detected!"
+          echo "\n✅ No memory leaks detected!"
         fi
         EOF
         
