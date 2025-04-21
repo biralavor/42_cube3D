@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:44:24 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 00:54:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:27:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -77,8 +77,8 @@ static void	calculate_initial_side(t_ray *r, t_vec pos)
 void	perform_dda(t_game *g, t_ray *r, t_vec pos)
 {
 	calculate_initial_side(r, pos);
-	while (g->map.gamemap[(int)r->map.y]
-		&& g->map.gamemap[(int)r->map.y][(int)r->map.x] != '1')
+	while (g->map->gamemap[(int)r->map.y]
+		&& g->map->gamemap[(int)r->map.y][(int)r->map.x] != '1')
 	{
 		if (r->side.x < r->side.y)
 		{

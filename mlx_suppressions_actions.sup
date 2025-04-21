@@ -1,0 +1,113 @@
+# MLX/OpenGL/X11 related leaks
+{
+   MLX_GLFW_X11_Leak
+   Memcheck:Leak
+   ...
+   obj:*/libglfw.so*
+   ...
+}
+
+{
+   Mesa_LLVM_Leak
+   Memcheck:Leak
+   ...
+   obj:*/libLLVM*.so*
+   ...
+}
+
+{
+   Mesa_Gallium_Leak
+   Memcheck:Leak
+   ...
+   obj:*/libgallium-*.so*
+   ...
+}
+
+{
+   X11_XCB_Leak
+   Memcheck:Leak
+   ...
+   obj:*/libX11.so*
+   ...
+}
+
+{
+   X11_XCB_Leak2
+   Memcheck:Leak
+   ...
+   obj:*/libxcb*.so*
+   ...
+}
+
+{
+   GLX_Mesa_Leak
+   Memcheck:Leak
+   ...
+   obj:*/libGLX_mesa.so*
+   ...
+}
+
+{
+   <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_dl_catch_exception
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:mlx_init
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:XrmGetStringDatabase
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_XrmInitParseInfo
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:__tls_get_addr
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:__pthread_once_slow
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:glfwInit
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_dl_init
+   ...
+}

@@ -1,35 +1,39 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main_for_actions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 17:40:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:57:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
 int	main(int ac, char **av)
 {
-	t_map	*map;
+	t_game	*game;
 
-	map = ft_calloc(1, sizeof(t_map));
-	if (!map)
+	game = (t_game *)ft_calloc(1, sizeof(t_game));
+	game->map = (t_map *)ft_calloc(1, sizeof(t_map));
+	if (!game->map)
+	{
+		free(game);
 		ft_error_msg("Map Memory Allocation failed\n");
-	struct_memory_alloc(map);
-	if (map_opener(ac, av, map)
-		&& map_validation_manager(av, map))
+	}
+	struct_memory_alloc(game->map);
+	if (map_opener(ac, av, game->map)
+		&& map_validation_manager(av, game->map))
 	{
 		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
 	}
 	else
 	{
-		clear_all_exit_smoothly(map);
+		clear_all_exit_smoothly(game);
 		ft_error_msg("Map validation failed\n");
 	}
-	clear_all_exit_smoothly(map);
+	clear_all_exit_smoothly(game);
 	exit(EXIT_SUCCESS);
 }

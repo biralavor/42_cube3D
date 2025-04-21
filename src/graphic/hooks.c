@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 00:52:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:42:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,7 +21,7 @@ void move_player(t_game *game, float move_x, float move_y)
 	new_y = (int)(game->player_y + move_y);
 	if (new_y >= 0 && new_y < MAX_MAP_HEIGHT && new_x >= 0 && new_x < MAX_MAP_WIDTH)
 	{
-		if (game->map.gamemap[new_y][new_x] != '1')
+		if (game->map->gamemap[new_y][new_x] != '1')
 		{
 			game->player_x += move_x;
 			game->player_y += move_y;
@@ -94,13 +94,4 @@ void	handle_keypress(mlx_key_data_t keydata, void *param)
 	// 	try_open_door(game);
 	handle_movement(keydata, game);
 	render(game);
-}
-
-void	handle_close(void *param)
-{
-	t_game	*game;
-
-	game = (t_game *)param;
-	cleanup(game);
-	exit(EXIT_SUCCESS);
 }

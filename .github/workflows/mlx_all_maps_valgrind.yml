@@ -1,0 +1,155 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    all_maps_valgrind.yml                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/14 16:00:54 by umeneses          #+#    #+#              #
+#    Updated: 2025/01/05 08:39:23 by umeneses         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+name: Cub3D with MLX - testing all maps with valgrind
+
+on: [push, pull_request]
+
+jobs:
+  cub3d-mlx-valgrind-escape:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    env:
+      my_valgrind: >
+        valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*'
+        --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=mlx_suppressions_actions.sup
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.4
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential
+        sudo apt-get install -y aptitude
+        sudo aptitude install -y valgrind
+        sudo aptitude install -y libglfw3 libglfw3-dev libglfw3-doc
+        sudo apt-get install -y xvfb x11-utils xdotool
+
+
+    - name: Compile Cube3D with make
+      run: make
+
+    - name: Print working directory and list files and directories
+      run: |
+        pwd
+        ls -la
+
+    - name: Check map file permissions
+      run: ls -la ./maps
+
+    - name: Create virtual display and test with ESC key
+      run: |
+        # Start virtual display
+        Xvfb :99 -screen 0 1024x768x24 &
+        export DISPLAY=:99
+        sleep 2  # Give Xvfb time to start
+        
+        # Create a script to run and send ESC key
+        cat << 'EOF' > test_game.sh
+        #!/bin/bash
+
+        # Setup better X environment
+        export DISPLAY=:99
+        export LIBGL_ALWAYS_SOFTWARE=1
+        export MESA_GL_VERSION_OVERRIDE=3.3
+
+        # Start the game with valgrind in background
+        ${my_valgrind} ./cub3d ./maps/default.cub > valgrind_output.log 2>&1 &
+        GAME_PID=$!
+
+        # Wait for window to appear 
+        TIMEOUT=15
+        COUNTER=0
+        echo "Waiting for game window to appear..."
+        while [ $COUNTER -lt $TIMEOUT ]; do
+          if xdotool search --name "Cub3D"; then
+            WINDOW_ID=$(xdotool search --name "Cub3D" | head -1)
+            echo "Found window with ID: $WINDOW_ID"
+            break
+          fi
+          sleep 1
+          COUNTER=$((COUNTER+1))
+          echo "Still waiting... ($COUNTER/$TIMEOUT)"
+        done
+
+        if [ -z "$WINDOW_ID" ]; then
+          echo "Failed to find game window within timeout"
+          kill -9 $GAME_PID
+          exit 1
+        fi
+
+        # Focus window first and sleep to ensure it registers
+        xdotool windowactivate --sync $WINDOW_ID
+        sleep 2
+
+        # Try multiple approaches to send Escape key
+        echo "Sending ESC key using multiple methods..."
+        # Method 1: Direct to window
+        xdotool key --window $WINDOW_ID Escape
+        sleep 1
+
+        # Method 2: With focus + alternative keycode
+        xdotool windowfocus $WINDOW_ID
+        xdotool key --clearmodifiers Escape
+        sleep 1
+
+        # Method 3: Using keydown/keyup explicitly
+        xdotool keydown --window $WINDOW_ID Escape
+        sleep 0.5
+        xdotool keyup --window $WINDOW_ID Escape
+        sleep 1
+
+        # Method 4: Send SIGTERM directly (last resort)
+        echo "Sending SIGTERM signal to game (PID: $GAME_PID)"
+        kill -TERM $GAME_PID
+
+        # Wait for game to exit
+        echo "Waiting for game to exit..."
+        TIMEOUT=15
+        COUNTER=0
+        while kill -0 $GAME_PID 2>/dev/null; do
+          if [ $COUNTER -ge $TIMEOUT ]; then
+            echo "Game did not exit within timeout, force killing"
+            kill -9 $GAME_PID
+            break
+          fi
+          sleep 1
+          COUNTER=$((COUNTER+1))
+        done
+
+        # Display valgrind output
+        echo "Valgrind output:"
+        cat valgrind_output.log
+
+        # Check for memory leaks
+        if grep -q "definitely lost: [^0]" valgrind_output.log || 
+          grep -q "indirectly lost: [^0]" valgrind_output.log || 
+          grep -q "possibly lost: [^0]" valgrind_output.log || 
+          grep -q "still reachable: [^0]" valgrind_output.log; then
+          echo ""
+          echo "❌ Memory leaks detected!"
+          cat valgrind_output.log | grep -A 5 "LEAK SUMMARY"
+          exit 1
+        else
+          echo ""
+          echo "✅ No memory leaks detected!"
+        fi
+        EOF
+        
+        # Make script executable and run it
+        chmod +x test_game.sh
+        ./test_game.sh
+
