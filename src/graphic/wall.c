@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 15:55:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:30:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -25,13 +25,13 @@ void	load_textures(t_game *game)
 	game->tex_south = mlx_load_png(textures[++id]);
 	game->tex_east = mlx_load_png(textures[++id]);
 	game->tex_west = mlx_load_png(textures[++id]);
-	ft_free_array(textures);
 	if (!game->tex_north || !game->tex_south
 		|| !game->tex_east || !game->tex_west)
 	{
 		clear_all_exit_smoothly(game);
 		ft_error_msg("Error loading textures.\n");
 	}
+	ft_free_array(textures);
 }
 
 static char	**populate_texture_path(t_map *map)
@@ -41,15 +41,20 @@ static char	**populate_texture_path(t_map *map)
 	char	**textures;
 	char	**temp;
 
-	id = -1;
+	id = 0;
 	idx = -1;
-	textures = ft_calloc(ft_strlen(map->ggraph[0]), sizeof(char *));
-	temp = ft_calloc(ft_strlen(map->ggraph[0]), sizeof(char *));
+	textures = (char **)ft_calloc(ft_strlen(map->ggraph[0]), sizeof(char *));
+	temp = NULL;
 	while (++idx < MAX_INSIDE_ALLOC)
 	{
 		temp = ft_split(map->ggraph[idx], ' ');
-		textures[++id] = ft_strdup(temp[1]);
-		ft_free_array(temp);
+		textures[id] = ft_strdup(temp[1]);
+		// ft_free_array(temp);
+		free(temp[1]);
+		free(temp[0]);
+		free(temp);
+		temp = NULL;
+		id++;
 	}
 	return (textures);
 }
