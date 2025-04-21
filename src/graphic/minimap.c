@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 19:45:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:50:13 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -106,7 +106,7 @@ static void	draw_player_direction_line(t_game *game, int px, int py)
 	}
 }
 
-void	draw_minimap(t_game *game)
+void	minimap_manager(t_game *game)
 {
 	int			y;
 	int			x;

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 23:39:37 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 14:27:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:50:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -47,7 +47,7 @@ void	render(t_game *game)
 		game->mlx_image->width * game->mlx_image->height * sizeof(int));
 	draw_background(game);
 	cast_rays(game);
-	draw_minimap(game);
+	minimap_manager(game);
 }
 
 void	render_init(t_game *game)
@@ -59,5 +59,5 @@ void	render_init(t_game *game)
 	draw_background(game);
 	load_textures(game);
 	cast_rays(game);
-	draw_minimap(game);
+	minimap_manager(game);
 }
