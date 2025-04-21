@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:08:51 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/21 14:34:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:14:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,5 +20,8 @@
  * @return `void`
  */
 void	clear_all_exit_smoothly(t_game *game);
+
+void	free_textures(t_game *g);
+void	cleanup(t_game *game);
 
 #endif
