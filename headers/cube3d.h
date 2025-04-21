@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 00:45:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:42:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -138,7 +138,6 @@ void			rotate_player(t_game *game, float rotation_speed);
 
 void			handle_movement(mlx_key_data_t keydata, t_game *game);
 void			handle_keypress(mlx_key_data_t keydata, void *param);
-void			handle_close(void *param);
 void			setup_hooks(t_game *game);
 void			set_player_position(t_game *game);
 void			game_loop(t_game *game);

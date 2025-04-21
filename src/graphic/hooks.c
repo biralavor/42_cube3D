@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 14:28:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:42:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -94,13 +94,4 @@ void	handle_keypress(mlx_key_data_t keydata, void *param)
 	// 	try_open_door(game);
 	handle_movement(keydata, game);
 	render(game);
-}
-
-void	handle_close(void *param)
-{
-	t_game	*game;
-
-	game = (t_game *)param;
-	cleanup(game);
-	exit(EXIT_SUCCESS);
 }
