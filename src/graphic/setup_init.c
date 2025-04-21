@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 14:26:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:31:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -68,8 +68,8 @@ int setup_init(t_game *game)
 	game->mlx_image = mlx_new_image(game->mlx, MAX_MAP_WIDTH, MAX_MAP_HEIGHT);
 	if (!game->mlx_image)
 	{
-		printf("Erro ao criar a imagem MLX!\n");
-		exit(EXIT_FAILURE);
+		clear_all_exit_smoothly(game);
+		ft_error_msg("Erro ao criar a imagem MLX\n");
 	}
 	printf("Imagem MLX criada com sucesso!\n");
 	set_player_position(game);
@@ -77,6 +77,5 @@ int setup_init(t_game *game)
 	render_init(game);
 	setup_hooks(game);
 	mlx_loop(game->mlx);
-	cleanup(game);
 	return (EXIT_SUCCESS);
 }
