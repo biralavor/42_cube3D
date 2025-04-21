@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 14:28:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:35:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -64,7 +64,7 @@ void	draw_minimap_player(t_game *game)
 			draw_x = px + dx;
 			draw_y = py + dy;
 			if (draw_x >= 0 && draw_y >= 0)
-				mlx_put_pixel(game->mlx_image, draw_x, draw_y, 0xFF0000FF);
+				mlx_put_pixel(game->mlx_image, draw_x, draw_y, PLAYER_POSITION_COLOR);
 			dx++;
 		}
 		dy++;
@@ -126,11 +126,11 @@ void	draw_minimap(t_game *game)
 		x = 0;
 		while (game->map->gamemap[y][x])
 		{
-			color = 0x000000FF;
+			color = BACKGROUND_COLOR;
 			if (game->map->gamemap[y][x] == '1')
-				color = 0xFFFFFFFF;
+				color = WALLS_COLOR;
 			else if (game->map->gamemap[y][x] == '0')
-				color = 0x555555FF;
+				color = EMPTY_SPACE_COLOR;
 			draw_minimap_tile(game, x, y, color);
 			x++;
 		}

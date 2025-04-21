@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 15:14:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:34:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -59,6 +59,11 @@
 # define PUR	"\033[0;35m"
 # define CYA	"\033[0;36m"
 # define RESET	"\033[0m"
+# define EMPTY_SPACE_COLOR 0x555555FF
+# define WALLS_COLOR 0xFFFFFFFF
+# define BACKGROUND_COLOR 0x000000FF
+# define PLAYER_DIRECTION_COLOR 0xFFFF00FF
+# define PLAYER_POSITION_COLOR 0xFF0000FF
 # define TILE_SIZE 8
 # define MINIMAP_OFFSET_X 10
 # define MINIMAP_OFFSET_Y 10
