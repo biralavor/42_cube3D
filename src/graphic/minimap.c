@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 19:35:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:45:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -74,42 +74,34 @@ void	draw_minimap_player(t_game *game)
 
 static void	draw_player_direction_line(t_game *game, int px, int py)
 {
-	float	line_length;
-	float	line_x;
-	float	line_y;
-	int		x1;
-	int		y1;
-	int		dx;
-	int		dy;
-	int		sx;
-	int		sy;
-	int		err;
-	int		e2;
+	float	dx;
+	float	dy;
+	float	x;
+	float	y;
 
-	line_length = 20.0f;
-	line_x = px + cos(game->player_angle) * line_length;
-	line_y = py + sin(game->player_angle) * line_length;
-	x1 = (int)line_x;
-	y1 = (int)line_y;
-	dx = abs(x1 - px);
-	dy = abs(y1 - py);
-	sx = (px < x1) ? 1 : -1;
-	sy = (py < y1) ? 1 : -1;
-	err = dx - dy;
-	while (px != x1 || py != y1)
+	dx = cos(game->player_angle) * 5.0f; // Direction vector x
+	dy = sin(game->player_angle) * 5.0f; // Direction vector y
+	x = px;
+	y = py;
+	// Draw 4 small boxes in player's direction
+	for (int i = 0; i < 4; i++)
 	{
-		if (px >= 0 && py >= 0)
-			mlx_put_pixel(game->mlx_image, px, py, 0xFFFF00FF);
-		e2 = 2 * err;
-		if (e2 > -dy)
+		// Move to next position
+		x += dx;
+		y += dy;
+		// Draw a 2x2 yellow box at this position
+		for (int box_y = -1; box_y <= 0; box_y++)
 		{
-			err -= dy;
-			px += sx;
-		}
-		if (e2 < dx)
-		{
-			err += dx;
-			py += sy;
+			for (int box_x = -1; box_x <= 0; box_x++)
+			{
+				int draw_x = (int)x + box_x;
+				int draw_y = (int)y + box_y;
+				if (draw_x >= 0 && draw_y >= 0 && 
+					draw_x < MAX_MAP_WIDTH && draw_y < MAX_MAP_HEIGHT)
+				{
+					mlx_put_pixel(game->mlx_image, draw_x, draw_y, PLAYER_DIRECTION_COLOR);
+				}
+			}
 		}
 	}
 }

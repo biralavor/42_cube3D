@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 19:34:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:44:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -69,7 +69,6 @@
 # define MINIMAP_OFFSET_Y 10
 # define MOVE_SPEED 1.0
 # define ROTATE_SPEED 0.1
-
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
