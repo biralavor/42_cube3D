@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 14:29:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:32:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -29,9 +29,8 @@ void	load_textures(t_game *game)
 	if (!game->tex_north || !game->tex_south
 		|| !game->tex_east || !game->tex_west)
 	{
-		printf("Error loading textures.\n");
-		free_textures(game);
-		exit(EXIT_FAILURE);
+		clear_all_exit_smoothly(game);
+		ft_error_msg("Error loading textures.\n");
 	}
 }
 
