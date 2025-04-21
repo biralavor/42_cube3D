@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 16:33:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:07:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -49,7 +49,7 @@ static char	**populate_texture_path(t_map *map)
 	{
 		temp = ft_split(map->ggraph[idx], ' ');
 		textures[id] = ft_strdup(temp[1]);
-		ft_free_array(temp);
+		// ft_free_array(temp);
 		temp = NULL;
 		id++;
 	}
