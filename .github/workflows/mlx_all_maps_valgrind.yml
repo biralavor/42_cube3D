@@ -135,12 +135,15 @@ jobs:
         cat valgrind_output.log
 
         # Check for memory leaks
-        if grep -q "definitely lost: [^0]" valgrind_output.log || grep -q "indirectly lost: [^0]" valgrind_output.log; then
+        if grep -q "definitely lost: [^0]" valgrind_output.log || 
+          grep -q "indirectly lost: [^0]" valgrind_output.log || 
+          grep -q "possibly lost: [^0]" valgrind_output.log || 
+          grep -q "still reachable: [^0]" valgrind_output.log; then
           echo ""
           echo "❌ Memory leaks detected!"
-          cat valgrind_output.log | grep -A 20 "definitely lost\|indirectly lost"
+          cat valgrind_output.log | grep -A 5 "LEAK SUMMARY"
           exit 1
-          else
+        else
           echo ""
           echo "✅ No memory leaks detected!"
         fi
