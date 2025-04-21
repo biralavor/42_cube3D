@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 20:25:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 20:33:30 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -22,7 +22,7 @@
  */
 static void	player_line_direction_manager(t_game *game, int px, int py);
 
-static void player_line_direction_designer(t_game *game, int px, int py);
+static void	player_line_direction_designer(t_game *game, int px, int py);
 
 void	minimap_tile_render(t_game *game, int x, int y, uint32_t color)
 {
@@ -62,7 +62,7 @@ void	minimap_player_render(t_game *game)
 		while (dx <= 2)
 		{
 			if ((px + dx) >= 0 && (py + dy) >= 0)
-				mlx_put_pixel(game->mlx_image, \
+				mlx_put_pixel(game->mlx_image,\
 					(px + dx), (py + dy), PLAYER_POSITION_COLOR);
 			dx++;
 		}
@@ -86,7 +86,7 @@ static void	player_line_direction_manager(t_game *game, int px, int py)
 }
 
 // Draw a 2x2 yellow box at this position
-static void player_line_direction_designer(t_game *game, int px, int py)
+static void	player_line_direction_designer(t_game *game, int px, int py)
 {
 	int	draw_x;
 	int	draw_y;
@@ -101,8 +101,8 @@ static void player_line_direction_designer(t_game *game, int px, int py)
 		{
 			draw_x = px + box_x;
 			draw_y = py + box_y;
-			if (draw_x >= 0 && draw_y >= 0 && 
-				draw_x < MAX_MAP_WIDTH && draw_y < MAX_MAP_HEIGHT)
+			if (draw_x >= 0 && draw_y >= 0 \
+				&& draw_x < MAX_MAP_WIDTH && draw_y < MAX_MAP_HEIGHT)
 			{
 				mlx_put_pixel(game->mlx_image, draw_x, draw_y, PLAYER_DIRECTION_COLOR);
 			}
