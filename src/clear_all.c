@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:00:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/21 15:31:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:37:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -39,7 +39,7 @@ void	free_textures(t_game *g)
 	g->tex_west = NULL;
 }
 
-void	C(t_game *game)
+void	cleanup(t_game *game)
 {
 	free_textures(game);
 	if (game->mlx_image)
