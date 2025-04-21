@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   setup_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/06 16:08:10 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:31:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
@@ -27,9 +27,9 @@ void set_player_position(t_game *game)
 {
 	char	mapdir;
 
-	mapdir = game->map.gamemap[game->map.player_pos_y][game->map.player_pos_x];
-	game->player_x = game->map.player_pos_x;
-	game->player_y = game->map.player_pos_y;
+	mapdir = game->map->gamemap[game->map->player_pos_y][game->map->player_pos_x];
+	game->player_x = game->map->player_pos_x;
+	game->player_y = game->map->player_pos_y;
 	game->dir_x = 0;
 	game->dir_y = 0;
 	game->plane_y = 0;
@@ -68,8 +68,8 @@ int setup_init(t_game *game)
 	game->mlx_image = mlx_new_image(game->mlx, MAX_MAP_WIDTH, MAX_MAP_HEIGHT);
 	if (!game->mlx_image)
 	{
-		printf("Erro ao criar a imagem MLX!\n");
-		exit(EXIT_FAILURE);
+		clear_all_exit_smoothly(game);
+		ft_error_msg("Erro ao criar a imagem MLX\n");
 	}
 	printf("Imagem MLX criada com sucesso!\n");
 	set_player_position(game);
@@ -77,6 +77,5 @@ int setup_init(t_game *game)
 	render_init(game);
 	setup_hooks(game);
 	mlx_loop(game->mlx);
-	cleanup(game);
 	return (EXIT_SUCCESS);
 }

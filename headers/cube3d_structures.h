@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d_structures.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 21:18:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/15 21:18:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:22:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -84,7 +84,7 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t		*mlx_image;
-	t_map			map;
+	t_map			*map;
 	float			player_x;
 	float			player_y;
 	float			player_angle;
