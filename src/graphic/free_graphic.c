@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 20:41:46 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 00:55:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:37:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,7 +36,6 @@ void	cleanup(t_game *game)
 	if (game->mlx)
 		mlx_terminate(game->mlx);
 	printf("Saindo do jogo...\n");
-	exit(EXIT_SUCCESS);
 }
 
 void	free_array(char **arr)
