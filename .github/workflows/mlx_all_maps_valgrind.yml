@@ -16,6 +16,9 @@ on: [push, pull_request]
 
 jobs:
   cub3d-mlx-valgrind-escape:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     env:
       my_valgrind: >
