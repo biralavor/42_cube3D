@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:00:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/21 14:34:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:05:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,4 +20,30 @@ void	clear_all_exit_smoothly(t_game *game)
 	free(game->map->buffer);
 	free(game->map);
 	free(game);
+}
+
+void	free_textures(t_game *g)
+{
+	if (g->tex_north)
+		mlx_delete_texture(g->tex_north);
+	if (g->tex_south)
+		mlx_delete_texture(g->tex_south);
+	if (g->tex_east)
+		mlx_delete_texture(g->tex_east);
+	if (g->tex_west)
+		mlx_delete_texture(g->tex_west);
+	g->tex_north = NULL;
+	g->tex_south = NULL;
+	g->tex_east = NULL;
+	g->tex_west = NULL;
+}
+
+void	cleanup(t_game *game)
+{
+	free_textures(game);
+	if (game->mlx_image)
+		mlx_delete_image(game->mlx, game->mlx_image);
+	if (game->mlx)
+		mlx_terminate(game->mlx);
+	printf("Saindo do jogo...\n");
 }
