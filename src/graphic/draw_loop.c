@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 23:39:37 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 01:04:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:27:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,8 +21,8 @@ void	draw_background(t_game *game)
 
 	if (!game->mlx_image)
 		return ;
-	sky_color = game->map.ceiling_color;
-	ground_color = game->map.floor_color;
+	sky_color = game->map->ceiling_color;
+	ground_color = game->map->floor_color;
 	y = 0;
 	while (y < game->mlx_image->height)
 	{

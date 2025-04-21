@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   setup_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/06 16:08:10 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:26:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "cube3d.h"
 
@@ -27,9 +27,9 @@ void set_player_position(t_game *game)
 {
 	char	mapdir;
 
-	mapdir = game->map.gamemap[game->map.player_pos_y][game->map.player_pos_x];
-	game->player_x = game->map.player_pos_x;
-	game->player_y = game->map.player_pos_y;
+	mapdir = game->map->gamemap[game->map->player_pos_y][game->map->player_pos_x];
+	game->player_x = game->map->player_pos_x;
+	game->player_y = game->map->player_pos_y;
 	game->dir_x = 0;
 	game->dir_y = 0;
 	game->plane_y = 0;

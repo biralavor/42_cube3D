@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 00:49:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:29:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,7 +20,7 @@ void	load_textures(t_game *game)
 	char	**texture;
 
 	id = -1;
-	texture = populate_texture_path(&game->map);
+	texture = populate_texture_path(game->map);
 	game->tex_north = mlx_load_png(texture[++id]);
 	game->tex_south = mlx_load_png(texture[++id]);
 	game->tex_east = mlx_load_png(texture[++id]);

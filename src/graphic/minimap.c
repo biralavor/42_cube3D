@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/16 01:03:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:28:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -121,15 +121,15 @@ void	draw_minimap(t_game *game)
 	uint32_t	color;
 
 	y = 0;
-	while (game->map.gamemap[y])
+	while (game->map->gamemap[y])
 	{
 		x = 0;
-		while (game->map.gamemap[y][x])
+		while (game->map->gamemap[y][x])
 		{
 			color = 0x000000FF;
-			if (game->map.gamemap[y][x] == '1')
+			if (game->map->gamemap[y][x] == '1')
 				color = 0xFFFFFFFF;
-			else if (game->map.gamemap[y][x] == '0')
+			else if (game->map->gamemap[y][x] == '0')
 				color = 0x555555FF;
 			draw_minimap_tile(game, x, y, color);
 			x++;
