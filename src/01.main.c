@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:13:28 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/21 14:35:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:45:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -39,5 +39,6 @@ int	main(int ac, char **av)
 		clear_all_exit_smoothly(game);
 		ft_error_msg("Map validation failed\n");
 	}
+	clear_all_exit_smoothly(game);
 	exit(EXIT_SUCCESS);
 }
