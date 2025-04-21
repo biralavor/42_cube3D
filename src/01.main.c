@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:13:28 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/21 14:30:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:35:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -30,13 +30,13 @@ int	main(int ac, char **av)
 		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
 		if (setup_init(game) == -1)
 		{
-			clear_all_exit_smoothly(game->map);
+			clear_all_exit_smoothly(game);
 			ft_error_msg("Erro na inicialização gráfica");
 		}
 	}
 	else
 	{
-		clear_all_exit_smoothly(game->map);
+		clear_all_exit_smoothly(game);
 		ft_error_msg("Map validation failed\n");
 	}
 	exit(EXIT_SUCCESS);
