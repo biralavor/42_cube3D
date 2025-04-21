@@ -23,7 +23,7 @@ jobs:
     env:
       my_valgrind: >
         valgrind --leak-check=full --track-origins=yes --trace-children-skip='*/bin/*,*/sbin/*,/usr/bin/*'
-        --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=mlx_suppressions.sup
+        --trace-children=yes --track-fds=yes --show-reachable=yes --suppressions=mlx_suppressions_actions.sup
 
     steps:
     - name: Checkout repository
