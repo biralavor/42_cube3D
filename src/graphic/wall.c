@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 15:53:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:55:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,7 +45,7 @@ static char	**populate_texture_path(t_map *map)
 	idx = -1;
 	textures = ft_calloc(ft_strlen(map->ggraph[0]), sizeof(char *));
 	temp = ft_calloc(ft_strlen(map->ggraph[0]), sizeof(char *));
-	while (++idx <= 3)
+	while (++idx < MAX_INSIDE_ALLOC)
 	{
 		temp = ft_split(map->ggraph[idx], ' ');
 		textures[++id] = ft_strdup(temp[1]);
