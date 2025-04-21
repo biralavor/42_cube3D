@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 19:50:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:52:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -92,8 +92,8 @@ void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
 					int col, int tex_x, int y, int h);
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
 void			draw_background(t_game *game);
-void			draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
-void			draw_minimap_player(t_game *game);
+void			minimap_tile_render(t_game *game, int x, int y, uint32_t color);
+void			minimap_player_render(t_game *game);
 void			minimap_manager(t_game *game);
 void			setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos);
 void			perform_dda(t_game *g, t_ray *r, t_vec pos);

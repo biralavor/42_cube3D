@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 19:50:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 20:25:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,9 +20,11 @@
  * @param py The y coordinate of the player
  * @return `void`
  */
-static void	draw_player_direction_line(t_game *game, int px, int py);
+static void	player_line_direction_manager(t_game *game, int px, int py);
 
-void	draw_minimap_tile(t_game *game, int x, int y, uint32_t color)
+static void player_line_direction_designer(t_game *game, int px, int py);
+
+void	minimap_tile_render(t_game *game, int x, int y, uint32_t color)
 {
 	int	dy;
 	int	dx;
@@ -44,14 +46,12 @@ void	draw_minimap_tile(t_game *game, int x, int y, uint32_t color)
 	}
 }
 
-void	draw_minimap_player(t_game *game)
+void	minimap_player_render(t_game *game)
 {
 	int	px;
 	int	py;
 	int	dy;
 	int	dx;
-	int	draw_x;
-	int	draw_y;
 
 	px = MINIMAP_OFFSET_X + (int)(game->player_x * TILE_SIZE);
 	py = MINIMAP_OFFSET_Y + (int)(game->player_y * TILE_SIZE);
@@ -61,48 +61,54 @@ void	draw_minimap_player(t_game *game)
 		dx = -2;
 		while (dx <= 2)
 		{
-			draw_x = px + dx;
-			draw_y = py + dy;
-			if (draw_x >= 0 && draw_y >= 0)
-				mlx_put_pixel(game->mlx_image, draw_x, draw_y, PLAYER_POSITION_COLOR);
+			if ((px + dx) >= 0 && (py + dy) >= 0)
+				mlx_put_pixel(game->mlx_image, \
+					(px + dx), (py + dy), PLAYER_POSITION_COLOR);
 			dx++;
 		}
 		dy++;
 	}
-	draw_player_direction_line(game, px, py);
+	player_line_direction_manager(game, px, py);
 }
 
-static void	draw_player_direction_line(t_game *game, int px, int py)
+static void	player_line_direction_manager(t_game *game, int px, int py)
 {
-	float	dx;
-	float	dy;
-	float	x;
-	float	y;
+	int idx;
 
-	dx = cos(game->player_angle) * 5.0f; // Direction vector x
-	dy = sin(game->player_angle) * 5.0f; // Direction vector y
-	x = px;
-	y = py;
-	// Draw 4 small boxes in player's direction
-	for (int i = 0; i < 4; i++)
+	idx = 0;
+	while (idx < 4)
 	{
-		// Move to next position
-		x += dx;
-		y += dy;
-		// Draw a 2x2 yellow box at this position
-		for (int box_y = -1; box_y <= 0; box_y++)
+		px += cos(game->player_angle) * 5.0f;
+		py += sin(game->player_angle) * 5.0f;
+		player_line_direction_designer(game, px, py);
+		idx++;
+	}
+}
+
+// Draw a 2x2 yellow box at this position
+static void player_line_direction_designer(t_game *game, int px, int py)
+{
+	int	draw_x;
+	int	draw_y;
+	int	box_x;
+	int	box_y;
+
+	box_y = -1;
+	while (box_y <= 0)
+	{
+		box_x = -1;
+		while (box_x <= 0)
 		{
-			for (int box_x = -1; box_x <= 0; box_x++)
+			draw_x = px + box_x;
+			draw_y = py + box_y;
+			if (draw_x >= 0 && draw_y >= 0 && 
+				draw_x < MAX_MAP_WIDTH && draw_y < MAX_MAP_HEIGHT)
 			{
-				int draw_x = (int)x + box_x;
-				int draw_y = (int)y + box_y;
-				if (draw_x >= 0 && draw_y >= 0 && 
-					draw_x < MAX_MAP_WIDTH && draw_y < MAX_MAP_HEIGHT)
-				{
-					mlx_put_pixel(game->mlx_image, draw_x, draw_y, PLAYER_DIRECTION_COLOR);
-				}
+				mlx_put_pixel(game->mlx_image, draw_x, draw_y, PLAYER_DIRECTION_COLOR);
 			}
+			box_x++;
 		}
+		box_y++;
 	}
 }
 
@@ -123,10 +129,10 @@ void	minimap_manager(t_game *game)
 				color = WALLS_COLOR;
 			else if (game->map->gamemap[y][x] == '0')
 				color = EMPTY_SPACE_COLOR;
-			draw_minimap_tile(game, x, y, color);
+			minimap_tile_render(game, x, y, color);
 			x++;
 		}
 		y++;
 	}
-	draw_minimap_player(game);
+	minimap_player_render(game);
 }
