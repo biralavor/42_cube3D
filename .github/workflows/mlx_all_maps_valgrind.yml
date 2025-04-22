@@ -104,9 +104,9 @@ jobs:
         fi
         
         # Send clean termination signal
-        # echo "Sending termination signal to game (PID: $GAME_PID)"
-        # kill -USR1 $GAME_PID
-        # sleep 10
+        echo "Sending termination signal to game (PID: $GAME_PID)"
+        kill -USR1 $GAME_PID
+        sleep 10
         
         # If still running, try SIGTERM
         # if kill -0 $GAME_PID 2>/dev/null; then
