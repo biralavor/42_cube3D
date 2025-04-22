@@ -94,32 +94,32 @@ jobs:
           
           # Try to send ESC key via multiple methods
           echo "Attempting to send ESC key..."
-          xdotool key --window $WINDOW_ID Escape
-          sleep 1
+          # xdotool key --window $WINDOW_ID Escape
+          # sleep 10
           xdotool windowfocus $WINDOW_ID
           xdotool key --clearmodifiers Escape
-          sleep 1
+          sleep 10
         else
           echo "Window not found by name. Will use signals."
         fi
         
         # Send clean termination signal
-        echo "Sending termination signal to game (PID: $GAME_PID)"
-        kill -USR1 $GAME_PID
-        sleep 2
+        # echo "Sending termination signal to game (PID: $GAME_PID)"
+        # kill -USR1 $GAME_PID
+        # sleep 10
         
         # If still running, try SIGTERM
-        if kill -0 $GAME_PID 2>/dev/null; then
-          echo "Game still running. Sending SIGTERM."
-          kill -TERM $GAME_PID
-          sleep 2
-        fi
+        # if kill -0 $GAME_PID 2>/dev/null; then
+        #   echo "Game still running. Sending SIGTERM."
+        #   kill -TERM $GAME_PID
+        #   sleep 2
+        # fi
         
         # If still running, force kill
-        if kill -0 $GAME_PID 2>/dev/null; then
-          echo "Game still running. Force killing."
-          kill -9 $GAME_PID
-        fi
+        # if kill -0 $GAME_PID 2>/dev/null; then
+        #   echo "Game still running. Force killing."
+        #   kill -9 $GAME_PID
+        # fi
         
         # Wait for valgrind to finish writing
         sleep 2
