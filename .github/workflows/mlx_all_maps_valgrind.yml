@@ -131,22 +131,27 @@ jobs:
         
         # Extract and display the leak summary for clarity
         echo ""
+        echo "===== VALGRIND RAW OUTPUT ====="
+        # Print the full valgrind output for debugging
+        cat valgrind_output.log
+
+        echo ""
         echo "===== LEAK SUMMARY ====="
-        grep -A 10 "LEAK SUMMARY" valgrind_output.log
-        
-        # Check for memory leaks with specific reporting
-        if grep -q "definitely lost: [^0]" valgrind_output.log; then
-          echo "❌ DEFINITELY LOST memory detected!"
+        # Use grep with more context to ensure we get the full summary
+        grep -A 15 "LEAK SUMMARY" valgrind_output.log || echo "No leak summary found!"
+
+        # More robust leak detection
+        if grep -E "(definitely|indirectly|possibly|still) lost: [1-9][0-9]* bytes" valgrind_output.log; then
+          echo "❌ Memory leaks detected!"
           exit 1
-        elif grep -q "indirectly lost: [^0]" valgrind_output.log; then
-          echo "❌ INDIRECTLY LOST memory detected!"
-          exit 1
-        elif grep -q "possibly lost: [^0]" valgrind_output.log; then
-          echo "⚠️ POSSIBLY LOST memory detected (not failing the build)"
-        elif grep -q "still reachable: [^0]" valgrind_output.log; then
-          echo "ℹ️ STILL REACHABLE memory detected (not failing the build)"
         else
-          echo "✅ No memory leaks detected!"
+          # Double check that we have a summary at all
+          if grep -q "LEAK SUMMARY" valgrind_output.log; then
+            echo "✅ No memory leaks detected!"
+          else
+            echo "⚠️ Warning: No leak summary found in valgrind output!"
+            exit 1
+          fi
         fi
         
         # Don't fail the build for errors that likely come from graphics libraries
