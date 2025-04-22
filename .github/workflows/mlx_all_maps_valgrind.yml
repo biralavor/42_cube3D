@@ -64,7 +64,11 @@ jobs:
         # Start virtual display
         Xvfb :99 -screen 0 1024x768x24 &
         export DISPLAY=:99
-        sleep 2
+        
+        # Install and start a lightweight window manager
+        sudo apt-get install -y fluxbox
+        fluxbox &
+        sleep 3  # Give the window manager time to start
         
         # Create test script
         cat << 'EOF' > test_memory.sh
