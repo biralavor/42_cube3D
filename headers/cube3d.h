@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:52:38 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/21 15:14:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/21 20:47:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -59,12 +59,16 @@
 # define PUR	"\033[0;35m"
 # define CYA	"\033[0;36m"
 # define RESET	"\033[0m"
+# define EMPTY_SPACE_COLOR 0x555555FF
+# define WALLS_COLOR 0xFFFFFFFF
+# define BACKGROUND_COLOR 0x000000FF
+# define PLAYER_DIR_COLOR 0xFFFF00FF
+# define PLAYER_POS_COLOR 0xFF0000FF
 # define TILE_SIZE 8
 # define MINIMAP_OFFSET_X 10
 # define MINIMAP_OFFSET_Y 10
 # define MOVE_SPEED 1.0
 # define ROTATE_SPEED 0.1
-
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
@@ -88,9 +92,9 @@ void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
 					int col, int tex_x, int y, int h);
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
 void			draw_background(t_game *game);
-void			draw_minimap_tile(t_game *game, int x, int y, uint32_t color);
-void			draw_minimap_player(t_game *game);
-void			draw_minimap(t_game *game);
+void			minimap_tile_render(t_game *game, int x, int y, uint32_t color);
+void			minimap_player_render(t_game *game);
+void			minimap_manager(t_game *game);
 void			setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos);
 void			perform_dda(t_game *g, t_ray *r, t_vec pos);
 void			cast_ray_dda(t_game *g, float angle, t_ray *r);
