@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/22 19:21:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:14:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void			handle_keypress(mlx_key_data_t keydata, void *param);
 void			setup_hooks(t_game *game);
 void			set_player_position(t_game *game);
 void			game_loop(t_game *game);
-int				setup_init(t_game *game);
+void			setup_init(t_game *game);
 /**
  * @brief Allocate memory for the entire struct (map->gamemap,
  * 			map->ggraph, map->colors).
