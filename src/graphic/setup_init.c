@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/22 19:20:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:00:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int setup_init(t_game *game)
 		ft_error_msg("Erro ao criar a imagem MLX\n");
 	}
 	printf("Imagem MLX criada com sucesso!\n");
+	printf(GRE"\n\n>>>>>> Starting Cube3D now!\n"RESET);
 	set_player_position(game);
 	mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
 	render_init(game);
