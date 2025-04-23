@@ -3,15 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   map_colors_manager.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/22 19:22:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:08:39 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_COLORS_MANAGER_H
 # define MAP_COLORS_MANAGER_H
+
+/**
+ * @brief Apply the RGB values to the map structure by converting the
+ *        floor and ceiling colors into 32-bit RGBA format.
+ * @param map Pointer to the map structure to update
+ * @param rgb Array containing 6 RGB components: [R_floor, G_floor,
+ * B_floor, R_ceil, G_ceil, B_ceil]
+ * @return true Always returns true after assigning the colors
+ */
+
+bool	apply_rgb_to_map(t_map *map, int *rgb);
 
 /**
  * @brief Check if the color values are valid, by calling the functions

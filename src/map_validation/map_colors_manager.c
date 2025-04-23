@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   map_colors_manager.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:20:52 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/22 19:20:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:07:02 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+bool	apply_rgb_to_map(t_map *map, int *rgb)
+{
+	map->floor_color = (rgb[0] << 24) | (rgb[1] << 16)
+		| (rgb[2] << 8) | 0xFF;
+	map->ceiling_color = (rgb[3] << 24) | (rgb[4] << 16)
+		| (rgb[5] << 8) | 0xFF;
+	printf(GRE"✅ Color Map \t\tapproved!\n");
+	return (true);
+}
 
 bool	map_colors_manager(t_map *map)
 {
@@ -31,14 +41,7 @@ bool	map_colors_manager(t_map *map)
 		}
 		if (color_values_into_array(map->colors, color_digits, rgbrgb)
 			&& colors_with_min_max_values(rgbrgb))
-		{
-			map->floor_color = (rgbrgb[0] << 24) | (rgbrgb[1] << 16)
-				| (rgbrgb[2] << 8) | 0xFF;
-			map->ceiling_color = (rgbrgb[3] << 24) | (rgbrgb[4] << 16)
-				| (rgbrgb[5] << 8) | 0xFF;
-			printf(GRE"✅ Color Map \t\tapproved!\n");
-			return (true);
-		}
+			return (apply_rgb_to_map(map, rgbrgb));
 	}
 	return (false);
 }
