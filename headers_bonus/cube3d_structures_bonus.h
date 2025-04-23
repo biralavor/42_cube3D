@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_structures.h                                :+:      :+:    :+:   */
+/*   cube3d_structures_bonus.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 09:29:32 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:37:34 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_STRUCTURES_H
-# define CUBE3D_STRUCTURES_H
+#ifndef CUBE3D_STRUCTURES_BONUS_H
+# define CUBE3D_STRUCTURES_BONUS_H
 
 /**
  * @brief Structure for map file data

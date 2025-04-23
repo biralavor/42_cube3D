@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   raycast_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 15:10:22 by bira              #+#    #+#             */
-/*   Updated: 2025/04/23 10:13:16 by gigardin         ###   ########.fr       */
+/*   Created: 2025/04/23 09:23:03 by gigardin          #+#    #+#             */
+/*   Updated: 2025/04/23 10:20:54 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cube3d.h"
 
-bool	ft_isalnum(int content)
+void	setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos)
 {
-	if ((content >= '0' && content <= '9')
-		|| (content >= 'a' && content <= 'z')
-		|| (content >= 'A' && content <= 'Z'))
-		return (true);
-	return (false);
+	pos->x = g->player_x;
+	pos->y = g->player_y;
+	r->dir.x = cos(angle);
+	r->dir.y = sin(angle);
+	r->map.x = (int)pos->x;
+	r->map.y = (int)pos->y;
+	setup_step_and_delta(r);
 }

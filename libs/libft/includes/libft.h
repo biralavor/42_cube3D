@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:30:01 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/11 15:55:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:13:51 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ size_t			ft_strlcat(char *dest, const char *src, size_t catsize);
 size_t			ft_strlcpy(char *dest, const char *src, size_t dest_size);
 size_t			ft_strlen(const char *content);
 int				ft_strncmp(const char *str1, const char *str2, size_t num);
-char			*ft_strnstr(const char *haystack, const char *tofind, \
+char			*ft_strnstr(const char *haystack, const char *tofind,
 					size_t len);
 char			*ft_strrchr(const char *str, int c);
 int				ft_tolower(int c);
@@ -116,7 +116,7 @@ void			ft_lstdelone_void(t_list *lst, void (*del)(void*));
 t_list			*ft_lstend_void(t_list *list, void *value);
 void			ft_lstiter_void(t_list *lst, void (*f)(void *));
 t_list			*ft_lstlast_t_list(t_list *lst);
-t_list			*ft_lstmap_t_list(t_list *lst, void *(*f)(void *), \
+t_list			*ft_lstmap_t_list(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 t_list			*ft_lstnew_t_list(void *content);
 int				ft_lstsize_int(t_list *lst);

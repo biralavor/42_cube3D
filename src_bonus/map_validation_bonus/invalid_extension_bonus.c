@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   invalid_extension_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 15:10:22 by bira              #+#    #+#             */
-/*   Updated: 2025/04/23 10:13:16 by gigardin         ###   ########.fr       */
+/*   Created: 2025/01/06 18:32:29 by gigardin          #+#    #+#             */
+/*   Updated: 2025/04/23 10:25:35 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cube3d.h"
 
-bool	ft_isalnum(int content)
+bool	valid_extension_checker(char **av, t_map *map)
 {
-	if ((content >= '0' && content <= '9')
-		|| (content >= 'a' && content <= 'z')
-		|| (content >= 'A' && content <= 'Z'))
+	int		idx;
+	char	*map_name;
+
+	idx = ft_strlen(av[1]);
+	map_name = av[1];
+	if (ft_strncmp(&map_name[idx - 4], ".cub", 4) == 0)
 		return (true);
+	close(map->fd);
+	ft_putendl_fd(RED"Map not in '.cub' extension!"RESET, STDOUT_FILENO);
 	return (false);
 }

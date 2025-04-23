@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   map_printer_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 15:10:22 by bira              #+#    #+#             */
-/*   Updated: 2025/04/23 10:13:16 by gigardin         ###   ########.fr       */
+/*   Created: 2025/01/06 19:08:32 by umeneses          #+#    #+#             */
+/*   Updated: 2025/04/23 10:26:33 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cube3d.h"
 
-bool	ft_isalnum(int content)
+void	map_printer(t_map *map)
 {
-	if ((content >= '0' && content <= '9')
-		|| (content >= 'a' && content <= 'z')
-		|| (content >= 'A' && content <= 'Z'))
-		return (true);
-	return (false);
+	if (map->buffer)
+	{
+		ft_printf(CYA"\nThis is your MAP:\n"RESET);
+		write(STDOUT_FILENO, map->buffer, map->bytes_read);
+	}
 }

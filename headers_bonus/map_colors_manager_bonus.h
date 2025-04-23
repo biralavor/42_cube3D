@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_colors_manager.h                               :+:      :+:    :+:   */
+/*   map_colors_manager_bonus.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:08:39 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:34:54 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_COLORS_MANAGER_H
-# define MAP_COLORS_MANAGER_H
+#ifndef MAP_COLORS_MANAGER_BONUS_H
+# define MAP_COLORS_MANAGER_BONUS_H
 
 /**
  * @brief Apply the RGB values to the map structure by converting the

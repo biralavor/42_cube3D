@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   cube3d_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 09:51:02 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:34:12 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#ifndef CUBE3D_BONUS_H
+# define CUBE3D_BONUS_H
 
 /* ************************************************************************** */
 /*                            STANDARD LIBRARIES                              */
@@ -31,14 +31,14 @@
 /* ************************************************************************** */
 /*                            PROGRAM LIBRARIES                               */
 /* ************************************************************************** */
-# include "cube3d_structures.h"
-# include "map_file_manager.h"
-# include "map_player_manager.h"
-# include "map_closed_wall_manager.h"
-# include "map_no_garbage_manager.h"
-# include "map_texture_path_manager.h"
-# include "map_colors_manager.h"
-# include "clear_all.h"
+# include "cube3d_structures_bonus.h"
+# include "map_file_manager_bonus.h"
+# include "map_player_manager_bonus.h"
+# include "map_closed_wall_manager_bonus.h"
+# include "map_no_garbage_manager_bonus.h"
+# include "map_texture_path_manager_bonus.h"
+# include "map_colors_manager_bonus.h"
+# include "clear_all_bonus.h"
 
 /* ************************************************************************** */
 /*                            CONSTANT DEFINITIONS                            */
