@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_init.c                                       :+:      :+:    :+:   */
+/*   wall_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 00:23:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 09:21:42 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,22 @@ int	get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t)
 }
 
 void	draw_texture_line(t_game *g, mlx_texture_t *t,
-    t_ray *r, int col, int tex_x)
+	t_ray *r, t_drawinfo *info)
 {
-int		h;
-int		y;
-float	corrected;
-int		draw_end;
+	float	corrected;
+	int		draw_end;
 
-corrected = r->perp_dist * cos(r->angle - g->player_angle);
-h = g->mlx_image->height / (corrected + 0.0001f);
-y = -h / 2 + g->mlx_image->height / 2;
-if (y < 0)
-y = 0;
-draw_end = h / 2 + g->mlx_image->height / 2;
-if (draw_end > (int)g->mlx_image->height)
-draw_end = g->mlx_image->height;
-while (y < draw_end)
-{
-draw_texture_pixel(g, t, col, tex_x, y, h);
-y++;
-}
+	corrected = r->perp_dist * cos(r->angle - g->player_angle);
+	info->h = g->mlx_image->height / (corrected + 0.0001f);
+	info->y = -info->h / 2 + g->mlx_image->height / 2;
+	if (info->y < 0)
+		info->y = 0;
+	draw_end = info->h / 2 + g->mlx_image->height / 2;
+	if (draw_end > (int)g->mlx_image->height)
+		draw_end = g->mlx_image->height;
+	while (info->y < draw_end)
+	{
+		draw_texture_pixel(g, t, info);
+		info->y++;
+	}
 }

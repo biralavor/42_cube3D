@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:06:11 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/22 19:20:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 09:21:56 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,27 @@ int	calculate_tex_y(t_game *g, int y, int h, int tex_height)
 	return (tex_y);
 }
 
-void	draw_texture_pixel(t_game *g, mlx_texture_t *t,
-			int col, int tex_x, int y, int h)
+void	draw_texture_pixel(t_game *g, mlx_texture_t *t, t_drawinfo *info)
 {
 	int			tex_y;
 	uint32_t	color;
 
-	tex_y = calculate_tex_y(g, y, h, t->height);
+	tex_y = calculate_tex_y(g, info->y, info->h, t->height);
 	if (tex_y < 0 || tex_y >= (int)t->height)
 		return ;
-	color = ((uint32_t *)t->pixels)[tex_y * t->width + tex_x];
-	mlx_put_pixel(g->mlx_image, col, y, color);
+	color = ((uint32_t *)t->pixels)[tex_y * t->width + info->tex_x];
+	mlx_put_pixel(g->mlx_image, info->col, info->y, color);
 }
 
 void	draw_textured_wall(t_game *g, t_ray *r, int col)
 {
 	mlx_texture_t	*t;
-	int				tex_x;
+	t_drawinfo		info;
 
 	t = get_texture_for_ray(g, r);
 	if (!t)
 		return ;
-	tex_x = get_tex_x(g, r, t);
-	draw_texture_line(g, t, r, col, tex_x);
+	info.tex_x = get_tex_x(g, r, t);
+	info.col = col;
+	draw_texture_line(g, t, r, &info);
 }

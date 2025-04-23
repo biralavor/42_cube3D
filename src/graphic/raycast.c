@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:44:24 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/22 19:19:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 09:44:29 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
  * between the player and the next horizontal grid line (delta.y), and the step
  * will be forwards (step.y = 1).
  */
-static void	setup_step_and_delta(t_ray *r)
+void	setup_step_and_delta(t_ray *r)
 {
 	if (r->dir.x < 0)
 		r->step.x = -1;
@@ -49,17 +49,6 @@ static void	setup_step_and_delta(t_ray *r)
 		r->delta.y = 1e30;
 	if (r->dir.y != 0)
 		r->delta.y = fabsf(1 / r->dir.y);
-}
-
-void	setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos)
-{
-	pos->x = g->player_x;
-	pos->y = g->player_y;
-	r->dir.x = cos(angle);
-	r->dir.y = sin(angle);
-	r->map.x = (int)pos->x;
-	r->map.y = (int)pos->y;
-	setup_step_and_delta(r);
 }
 
 static void	calculate_initial_side(t_ray *r, t_vec pos)

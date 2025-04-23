@@ -75,6 +75,7 @@ SRC_FILES			+= map_validation/player_checker.c
 SRC_FILES			+= clear_all.c
 SRC_FILES			+= graphic/setup_init.c
 SRC_FILES			+= graphic/raycast.c
+SRC_FILES			+= graphic/raycast_utils.c
 SRC_FILES			+= graphic/draw_loop.c
 SRC_FILES			+= graphic/hooks.c
 SRC_FILES			+= graphic/rotate_player.c

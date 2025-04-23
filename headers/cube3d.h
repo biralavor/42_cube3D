@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 00:18:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 09:51:02 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,18 @@ void			load_textures(t_game *game);
  */
 mlx_texture_t	*get_texture_for_ray(t_game *game, t_ray *ray);
 int				get_tex_x(t_game *g, t_ray *r, mlx_texture_t *t);
+
 void			draw_texture_pixel(t_game *g, mlx_texture_t *t,
-					int col, int tex_x, int y, int h);
+					t_drawinfo *info);
+void			draw_texture_line(t_game *g, mlx_texture_t *t,
+					t_ray *r, t_drawinfo *info);
 void			draw_textured_wall(t_game *g, t_ray *r, int col);
+
 void			draw_background(t_game *game);
 void			minimap_tile_render(t_game *game, int x, int y, uint32_t color);
 void			minimap_player_render(t_game *game);
 void			minimap_manager(t_game *game);
+void			setup_step_and_delta(t_ray *r);
 void			setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos);
 void			perform_dda(t_game *g, t_ray *r, t_vec pos);
 void			cast_ray_dda(t_game *g, float angle, t_ray *r);
@@ -137,7 +142,8 @@ void			move_player(t_game *game, float move_x, float move_y);
  * @return `void`
  */
 void			rotate_player(t_game *game, float rotation_speed);
-
+void			resolve_move_direction(int key, t_game *game,
+					t_movement *m);
 void			handle_movement(mlx_key_data_t keydata, t_game *game);
 void			handle_keypress(mlx_key_data_t keydata, void *param);
 void			setup_hooks(t_game *game);
