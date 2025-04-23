@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/22 23:00:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:15:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void setup_hooks(t_game *game)
+void	setup_hooks(t_game *game)
 {
 	if (!game->mlx)
 	{
@@ -23,7 +23,7 @@ void setup_hooks(t_game *game)
 	mlx_key_hook(game->mlx, handle_keypress, game);
 }
 
-void set_player_position(t_game *game)
+void	set_player_position(t_game *game)
 {
 	char	mapdir;
 
@@ -60,16 +60,19 @@ void set_player_position(t_game *game)
 	}
 }
 
-int setup_init(t_game *game)
+void	setup_init(t_game *game)
 {
 	game->mlx = mlx_init(MAX_MAP_WIDTH, MAX_MAP_HEIGHT, "Cub3D", false);
 	if (!game->mlx)
-		return (-1);
+	{
+		clear_all_exit_smoothly(game);
+		ft_error_msg("MLX initialization error\n");
+	}
 	game->mlx_image = mlx_new_image(game->mlx, MAX_MAP_WIDTH, MAX_MAP_HEIGHT);
 	if (!game->mlx_image)
 	{
 		clear_all_exit_smoothly(game);
-		ft_error_msg("Erro ao criar a imagem MLX\n");
+		ft_error_msg("MLX Image initialization error\n");
 	}
 	printf("Imagem MLX criada com sucesso!\n");
 	printf(GRE"\n\n>>>>>> Starting Cube3D now!\n"RESET);
@@ -78,5 +81,4 @@ int setup_init(t_game *game)
 	render_init(game);
 	setup_hooks(game);
 	mlx_loop(game->mlx);
-	return (EXIT_SUCCESS);
 }
