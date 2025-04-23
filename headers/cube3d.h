@@ -73,8 +73,6 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-void			try_open_door(t_game *g);
-
 void			load_textures(t_game *game);
 /**
  * @brief Get the texture for the ray based on the hit side.

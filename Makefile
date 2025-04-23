@@ -80,7 +80,7 @@ SRC_FILES			+= graphic/hooks.c
 SRC_FILES			+= graphic/rotate_player.c
 SRC_FILES			+= graphic/minimap.c
 SRC_FILES			+= graphic/wall.c
-SRC_FILES			+= graphic/door.c
+SRC_FILES			+= graphic/wall_utils.c
 
 SRC_FILES_ALL		= $(addprefix $(SRC_D), $(SRC_FILES))
 

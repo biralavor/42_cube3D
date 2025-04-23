@@ -101,8 +101,6 @@ void	handle_keypress(mlx_key_data_t keydata, void *param)
 		mlx_close_window(game->mlx);
 		return ;
 	}
-	// if (keydata.key == MLX_KEY_E && keydata.action == MLX_PRESS)
-	// 	try_open_door(game);
 	handle_movement(keydata, game);
 	render(game);
 }
