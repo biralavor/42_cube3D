@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/22 23:14:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:18:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void			loop_hook(t_game *game);
  * @param  game struct with all game data
  * @return `void`
  */
-void			set_player_position(t_game *game);
+void			game_direction_setter(t_game *game);
 
 void			move_player(t_game *game, float move_x, float move_y);
 /**
@@ -143,7 +143,6 @@ void			rotate_player(t_game *game, float rotation_speed);
 void			handle_movement(mlx_key_data_t keydata, t_game *game);
 void			handle_keypress(mlx_key_data_t keydata, void *param);
 void			setup_hooks(t_game *game);
-void			set_player_position(t_game *game);
 void			game_loop(t_game *game);
 void			setup_init(t_game *game);
 /**
