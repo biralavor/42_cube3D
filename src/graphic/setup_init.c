@@ -6,13 +6,16 @@
 /*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 00:20:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:23:09 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	map_direction_getter(t_game *game)
+static void	game_directions_setter(t_game *game);
+static void	map_direction_getter(t_game *game);
+
+static void	map_direction_getter(t_game *game)
 {
 	int	y;
 	int	x;
@@ -22,7 +25,7 @@ void	map_direction_getter(t_game *game)
 	game->map->map_direction = game->map->gamemap[y][x];
 }
 
-void	game_directions_setter(t_game *game)
+static void	game_directions_setter(t_game *game)
 {
 	game->player_x = game->map->player_pos_x;
 	game->player_y = game->map->player_pos_y;
