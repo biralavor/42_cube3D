@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 13:34:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:51:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	setup_hooks(t_game *game)
 	}
 	printf("Registering keyboard events...\n");
 	mlx_key_hook(game->mlx, handle_keypress, game);
+	mlx_cursor_hook(game->mlx, handle_mouse_direction, game);
 }
 
 void	move_player(t_game *game, float move_x, float move_y)

@@ -78,6 +78,7 @@ SRC_FILES			+= graphic/raycast.c
 SRC_FILES			+= graphic/raycast_utils.c
 SRC_FILES			+= graphic/draw_loop.c
 SRC_FILES			+= graphic/hooks.c
+SRC_FILES			+= graphic/hooks_utils.c
 SRC_FILES			+= graphic/rotate_player.c
 SRC_FILES			+= graphic/minimap.c
 SRC_FILES			+= graphic/wall.c
@@ -159,7 +160,7 @@ endef
 
 define				instructions_bonus
 					@echo "Are you ready to run Cube3D with adrenaline???"
-					@echo "Hit ./$(NAME_BONUS) and call any command to start"
+					@echo "Hit $(PURPLE)./$(NAME_BONUS)$(YELLOW) and call your favorate map file at $(PURPLE)'maps/'$(YELLOW) folder"
 endef
 
 ifdef				WITH_BONUS
