@@ -26,14 +26,7 @@ int	main(int ac, char **av)
 	struct_memory_alloc(game->map);
 	if (map_opener(ac, av, game->map)
 		&& map_validation_manager(av, game->map))
-	{
-		printf(GRE"\n\n>>>>>> Hello, Cube3D!\n"RESET);
-		if (setup_init(game) == -1)
-		{
-			clear_all_exit_smoothly(game);
-			ft_error_msg("Erro na inicialização gráfica");
-		}
-	}
+		setup_init(game);
 	else
 	{
 		clear_all_exit_smoothly(game);
