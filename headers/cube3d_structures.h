@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d_structures.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/22 19:21:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:04:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_map
 	char	**ggraph;
 	char	**colors;
 	char	*buffer;
+	char	map_direction;
 	int32_t	bytes_read;
 	int32_t	fd;
 	int		floor_color;
