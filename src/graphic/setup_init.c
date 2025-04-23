@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   setup_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 00:23:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:45:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void	game_directions_setter(t_game *game);
+static void	game_directions_init(t_game *game);
 static void	map_direction_getter(t_game *game);
 
 static void	map_direction_getter(t_game *game)
@@ -25,7 +25,7 @@ static void	map_direction_getter(t_game *game)
 	game->map->map_direction = game->map->gamemap[y][x];
 }
 
-static void	game_directions_setter(t_game *game)
+static void	game_directions_init(t_game *game)
 {
 	game->player_x = game->map->player_pos_x;
 	game->player_y = game->map->player_pos_y;
@@ -35,7 +35,7 @@ static void	game_directions_setter(t_game *game)
 	game->plane_x = 0;
 }
 
-void	game_direction_setter(t_game *game)
+void	game_directions_setter(t_game *game)
 {
 	if (game->map->map_direction == 'N')
 	{
@@ -85,8 +85,8 @@ void	setup_init(t_game *game)
 	setup_init_validation(game);
 	printf(GRE"\n\n>>>>>> Starting Cube3D now!\n"RESET);
 	map_direction_getter(game);
+	game_directions_init(game);
 	game_directions_setter(game);
-	game_direction_setter(game);
 	mlx_image_to_window(game->mlx, game->mlx_image, 0, 0);
 	render_init(game);
 	setup_hooks(game);
