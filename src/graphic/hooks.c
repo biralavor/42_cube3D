@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/22 19:20:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:20:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+void	setup_hooks(t_game *game)
+{
+	if (!game->mlx)
+	{
+		printf("Erro: MLX não inicializado corretamente!\n");
+		return ;
+	}
+	printf("Registrando eventos de teclado...\n");
+	mlx_key_hook(game->mlx, handle_keypress, game);
+}
 
 void move_player(t_game *game, float move_x, float move_y)
 {

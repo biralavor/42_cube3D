@@ -6,22 +6,11 @@
 /*   By: umeneses <umeneses@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 00:18:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 00:20:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-void	setup_hooks(t_game *game)
-{
-	if (!game->mlx)
-	{
-		printf("Erro: MLX não inicializado corretamente!\n");
-		return ;
-	}
-	printf("Registrando eventos de teclado...\n");
-	mlx_key_hook(game->mlx, handle_keypress, game);
-}
 
 void	map_direction_getter(t_game *game)
 {
