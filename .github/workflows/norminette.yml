@@ -57,7 +57,7 @@ jobs:
         run: python -m pip install --upgrade pip setuptools
 
       - name: Install Norminette
-        run: python -m pip install norminette
+        run: python -m pip install norminette==3.3.51
 
       - name: Running Norminette with Failure Counter
         run: |
