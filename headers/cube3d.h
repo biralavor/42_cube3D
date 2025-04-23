@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 09:51:02 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:45:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void			loop_hook(t_game *game);
  * @param  game struct with all game data
  * @return `void`
  */
-void			game_direction_setter(t_game *game);
+void			game_directions_setter(t_game *game);
 
 void			move_player(t_game *game, float move_x, float move_y);
 /**
