@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 15:06:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:32:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ void	toggle_wall_in_front(t_game *game)
 
 	front_x = game->player_x + game->dir_x;
 	front_y = game->player_y + game->dir_y;
-	if (front_x <= 0 || front_y <= 0 || front_y >= MAX_MAP_HEIGHT - 1
-		|| front_x == (int)ft_strlen(game->map->gamemap[0] - 1))
+	if (front_x <= 0 || front_y <= 0
+		|| front_x >= (int)ft_strlen(game->map->gamemap[0]) - 1
+		|| front_y >= TILE_SIZE * 2)
 	{
-		printf("Your are in front a wall. Return!\n");
+		printf("You can NOT modify the Boundary. Try other location!\n");
 		return ;
 	}
 	if (game->map->gamemap[front_y][front_x] == '0')
