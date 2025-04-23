@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 09:49:30 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:34:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	move_player(t_game *game, float move_x, float move_y)
 
 void	resolve_move_direction(int key, t_game *game, t_movement *m)
 {
-	if (key == MLX_KEY_W)
+	if (key == MLX_KEY_W || key == MLX_KEY_UP)
 	{
 		m->move_x = game->dir_x * MOVE_SPEED;
 		m->move_y = game->dir_y * MOVE_SPEED;
 	}
-	else if (key == MLX_KEY_S)
+	else if (key == MLX_KEY_S || key == MLX_KEY_DOWN)
 	{
 		m->move_x = -game->dir_x * MOVE_SPEED;
 		m->move_y = -game->dir_y * MOVE_SPEED;
