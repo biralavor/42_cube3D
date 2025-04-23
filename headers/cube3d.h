@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 14:39:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:00:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void			handle_movement(mlx_key_data_t keydata, t_game *game);
 void			handle_keypress(mlx_key_data_t keydata, void *param);
 void			handle_mouse_direction(double m_xpos, double m_ypos,
 					void *param);
+void			toggle_wall_in_front(t_game *game);
 void			setup_hooks(t_game *game);
 void			game_loop(t_game *game);
 void			setup_init(t_game *game);
