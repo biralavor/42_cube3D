@@ -6,11 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/24 17:42:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:58:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static int	actual_max_line_width_getter(t_game *game);
+static int	actual_max_line_height_getter(t_game *game);
 
 void	handle_mouse_direction(double m_xpos, double m_ypos, void *param)
 {
@@ -42,8 +45,9 @@ void	minicraft_effect_runner(t_game *game)
 
 	front_x = game->player_x + game->dir_x;
 	front_y = game->player_y + game->dir_y;
-	actual_max_line_height = game->player_y;
-	actual_max_line_width = game->player_x;
+	actual_max_line_height = actual_max_line_height_getter(game);
+	actual_max_line_width = actual_max_line_width_getter(game);
+	map_array_printer(game->map->gamemap, ">>>> gamemap at minicraft_effect_runner");
 	while (game->map->gamemap[actual_max_line_height][0])
 		actual_max_line_height++;
 	while (game->map->gamemap[0][actual_max_line_width])
@@ -58,4 +62,24 @@ void	minicraft_effect_runner(t_game *game)
 		game->map->gamemap[front_y][front_x] = '1';
 	else if (game->map->gamemap[front_y][front_x] == '1')
 		game->map->gamemap[front_y][front_x] = '0';
+}
+
+static int	actual_max_line_width_getter(t_game *game)
+{
+	int	actual_width;
+
+	actual_width = 0;
+	while (game->map->gamemap[(int)game->player_x][actual_width] != 'S')
+		actual_width++;
+	return (actual_width);
+}
+
+static int	actual_max_line_height_getter(t_game *game)
+{
+	int	actual_height;
+
+	actual_height = 0;
+	while (game->map->gamemap[actual_height][(int)game->player_y] != 'S')
+		actual_height++;
+	return (actual_height);
 }
