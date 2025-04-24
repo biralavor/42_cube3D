@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:00:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/22 19:18:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:58:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,12 @@ void	cleanup(t_game *game)
 		mlx_delete_image(game->mlx, game->mlx_image);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
-	printf("Saindo do jogo...\n");
+	printf("\nLeaving the game...\n");
+}
+
+void	alloc_error_exit(char **matrix, char *str)
+{
+	ft_free_array(matrix);
+	matrix = NULL;
+	ft_error_msg(str);
 }
