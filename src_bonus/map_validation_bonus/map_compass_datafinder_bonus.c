@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 bool	north_compass_datafinder(t_map *map, int *already_found)
 {

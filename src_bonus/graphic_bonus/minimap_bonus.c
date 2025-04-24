@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:16:07 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 10:20:45 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:52:28 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 /**
  * @brief Draws a line on the minimap at the specified coordinates,

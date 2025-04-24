@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   setup_init_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 13:45:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:52:59 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 static void	game_directions_init(t_game *game);
 static void	map_direction_getter(t_game *game);

@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:21:47 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:25:27 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:53:25 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 bool	middle_wall_finder(char **arr, char w)
 {

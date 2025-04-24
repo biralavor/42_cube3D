@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:28:14 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:26:29 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:54:12 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 bool	map_opener(int ac, char **av, t_map *map)
 {

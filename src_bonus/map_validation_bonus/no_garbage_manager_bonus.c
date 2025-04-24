@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 static bool	garbage_inside_gamemap_detected(char **arr, int x, int y);
 

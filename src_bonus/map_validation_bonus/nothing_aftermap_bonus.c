@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:57:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:27:30 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:55:00 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 bool	nothing_aftermap(char **arr)
 {

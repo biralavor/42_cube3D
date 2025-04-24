@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:09 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:25:55 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:53:54 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 static char	*copy_digits_to_str(char **arr, int y, int *x, int *color_digits);
 

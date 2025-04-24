@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:20:52 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:25:43 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:53:50 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 bool	apply_rgb_to_map(t_map *map, int *rgb)
 {

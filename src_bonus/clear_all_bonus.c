@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:00:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:24:13 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:55:30 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 void	clear_all_exit_smoothly(t_game *game)
 {

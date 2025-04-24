@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:23:03 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 10:20:54 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:52:45 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 void	setup_ray(t_game *g, float angle, t_ray *r, t_vec *pos)
 {

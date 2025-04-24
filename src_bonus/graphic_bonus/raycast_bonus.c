@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:44:24 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 10:20:50 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:52:33 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 /**
  * @brief This function prepares the ste[ direction and delta distance values

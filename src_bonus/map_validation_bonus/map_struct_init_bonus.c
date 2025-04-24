@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:05:54 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:26:57 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:54:26 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 void	map_structs_init(t_map *map)
 {

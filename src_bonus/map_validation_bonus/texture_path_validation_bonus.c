@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:42:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:27:55 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:55:13 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 bool	texture_path_manager(t_map *map)
 {

@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:14:30 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:25:39 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:53:44 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 static void	inside_array_content_printer(char **array, int y_id, int x_id);
 

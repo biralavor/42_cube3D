@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:32:29 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 10:25:35 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:53:39 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 bool	valid_extension_checker(char **av, t_map *map)
 {

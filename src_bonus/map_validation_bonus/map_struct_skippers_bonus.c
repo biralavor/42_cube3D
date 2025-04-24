@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 19:13:19 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:27:02 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:54:31 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 int	skipping_all_except_colors(t_map *map)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 static void	inside_ptrs_alloc(char **array, int idx, int max_alloc,
 				int alloc_nitems);

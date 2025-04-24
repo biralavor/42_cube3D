@@ -6,11 +6,11 @@
 /*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:08:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 10:26:33 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:54:17 by gigardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cube3d_bonus.h"
 
 void	map_printer(t_map *map)
 {
