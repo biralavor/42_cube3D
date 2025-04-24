@@ -53,35 +53,36 @@ bool	no_garbage_at_gamemap(char **arr)
 	int	x;
 
 	y = -1;
-	while (arr[++y][0] != '\0')
+	while (arr[++y])
 	{
 		x = -1;
 		while (arr[y][++x])
 		{
 			if (garbage_inside_gamemap_detected(arr, x, y))
 				return (false);
-			if (arr[y][x] && (arr[y][x] == '1' || arr[y][x] == '0')
-				&& (x - 1) > 0 && arr[y][x - 1] && arr[y][x - 1] == '1'
-				&& (x - 2) > 0 && arr[y][x - 2] && arr[y][x - 2] == '1'
-				&& y > 2 && arr[y - 1][x] == '1' && (arr[y][x + 1] == '\n'
-				|| !arr[y][x + 1]))
-				return (true);
-			else if (arr[y][x + 1] == '\0' && arr[y + 1][0])
-				break ;
+			if (arr[y] && x + 1 < (int)ft_strlen(arr[y])
+				&& arr[y][x + 1] == '\0'
+				&& arr[y + 1] && arr[y + 1][0])
+			{
+				if (x >= 2 && arr[y][x - 1] && arr[y][x - 2]
+					&& arr[y][x - 1] == '1' && arr[y][x - 2] == '1'
+					&& y >= 1 && arr[y - 1] && arr[y - 1][x] == '1')
+					continue ;
+			}
 		}
 	}
-	ft_putstr_fd(YEL"Garbage inside GameMap detected", STDERR_FILENO);
-	return (false);
+	return (true);
 }
 
 static bool	garbage_inside_gamemap_detected(char **arr, int x, int y)
 {
-	if (arr[y][x] != '1' && arr[y][x] != '0' && arr[y][x] != 'N'
-		&& arr[y][x] != 'S' && arr[y][x] != 'W' && arr[y][x] != 'E'
-		&& arr[y][x] != '2')
+	char	c;
+
+	c = arr[y][x];
+	if (c != '1' && c != '0' && c != 'N' && c != 'S'
+		&& c != 'W' && c != 'E' && c != '2' && c != ' ')
 	{
-		ft_putstr_fd(YEL"Garbage inside GameMap "
-			"detected", STDERR_FILENO);
+		ft_putstr_fd(YEL"Garbage inside GameMap detected\n", STDERR_FILENO);
 		return (true);
 	}
 	return (false);

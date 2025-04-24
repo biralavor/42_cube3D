@@ -6,14 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/24 20:09:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:35:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static int safe_get_line_height(t_game *game);
-static int safe_get_line_width(t_game *game, int row);
+static int	safe_get_line_height(t_game *game);
+static int	safe_get_line_width(t_game *game, int row);
 
 void	handle_mouse_direction(double m_xpos, double m_ypos, void *param)
 {
@@ -59,19 +59,23 @@ void	minicraft_effect_runner(t_game *game)
 		game->map->gamemap[front_y][front_x] = '0';
 }
 
-static int safe_get_line_width(t_game *game, int row)
+static int	safe_get_line_width(t_game *game, int row)
 {
+	int	width;
+
+	width = 0;
 	if (row < 0 || row >= game->map->max_height || !game->map->gamemap[row])
-		return 0;
-	return ft_strlen(game->map->gamemap[row]);
+		return (width);
+	width = ft_strlen(game->map->gamemap[row]);
+	return (width);
 }
 
-static int safe_get_line_height(t_game *game)
+static int	safe_get_line_height(t_game *game)
 {
-	int height;
+	int	height;
 
 	height = 0;
 	while (game->map->gamemap[height] != NULL)
 		height++;
-	return height;
+	return (height);
 }
