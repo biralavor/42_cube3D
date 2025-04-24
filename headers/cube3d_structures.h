@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d_structures.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gigardin <gigardin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 09:29:32 by gigardin         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:16:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_map
 	int		ceiling_color;
 	int		player_pos_y;
 	int		player_pos_x;
+	int		max_width;
+	int		max_height;
 }			t_map;
 
 typedef struct s_render_info

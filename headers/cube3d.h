@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/23 15:00:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:50:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,5 +186,20 @@ void			map_array_printer(char **array, char *array_name);
  * @return `void`
  */
 void			map_printer(t_map *map);
+
+bool			map_boundaries_validation(t_map *map);
+bool			is_map_closed(t_map *map, char **padded_map);
+int				skip_walls_and_spaces(t_map *map, int x, int y,
+					char *boundary_char);
+void			flood_fill_it(char **map, int x, int y, int height, int width);
+void			alloc_error_exit(char **matrix, char *str);
+char			**create_padded_map_at_bottom(t_map *map, char **padded_map);
+char			**create_padded_map_at_middle(t_map *map, char **padded_map);
+void			copy_map_data_and_fill_spaces(t_map *map, char **padded_map,
+					int idx, int actual_width);
+char			**create_padded_map_at_top(t_map *map);
+void			map_spaces_normalizer(t_map *map);
+void			max_height_getter(t_map *map);
+void			max_width_getter(t_map *map);
 
 #endif
