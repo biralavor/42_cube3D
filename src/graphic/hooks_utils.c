@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 17:45:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:42:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	handle_mouse_direction(double m_xpos, double m_ypos, void *param)
 	render(game);
 }
 
-void	toggle_wall_in_front(t_game *game)
+void	minicraft_effect_runner(t_game *game)
 {
 	int	front_x;
 	int	front_y;
