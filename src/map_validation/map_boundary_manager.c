@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 00:20:53 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 16:16:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:34:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	map_boundaries_validation_manager(t_map *map)
 {
-	char	**padded_map;
+	char		**padded_map;
+	t_flood_dim	dim;
 
 	max_width_getter(map);
 	max_height_getter(map);
@@ -22,7 +23,9 @@ bool	map_boundaries_validation_manager(t_map *map)
 	padded_map = create_padded_map_at_top(map);
 	padded_map = create_padded_map_at_middle(map, padded_map);
 	padded_map = create_padded_map_at_bottom(map, padded_map);
-	flood_fill_it(padded_map, 0, 0, map->max_height + 2, map->max_width + 2);
+	dim.height = map->max_height + 2;
+	dim.width = map->max_width + 2;
+	flood_fill_it(padded_map, 0, 0, &dim);
 	map_array_printer(padded_map, "padded_map");
 	if (is_map_closed(map, padded_map))
 	{

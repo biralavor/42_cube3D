@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 11:16:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:35:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct s_map
 	int		max_width;
 	int		max_height;
 }			t_map;
+
+typedef struct s_flood_dim
+{
+	int		height;
+	int		width;
+}			t_flood_dim;
 
 typedef struct s_render_info
 {
