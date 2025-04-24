@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:00:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 19:08:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:37:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	clear_all_exit_smoothly(t_game *game)
 	ft_free_array(game->map->colors);
 	ft_free_array(game->map->ggraph);
 	ft_free_array(game->map->gamemap);
-	ft_free_array(game->map->boundary_map);
 	free(game->map->buffer);
 	free(game->map);
 	free(game);
