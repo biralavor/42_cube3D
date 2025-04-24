@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 16:29:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:04:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void			handle_movement(mlx_key_data_t keydata, t_game *game);
 void			handle_keypress(mlx_key_data_t keydata, void *param);
 void			handle_mouse_direction(double m_xpos, double m_ypos,
 					void *param);
-void			toggle_wall_in_front(t_game *game);
+void			minicraft_effect_runner(t_game *game);
 void			setup_hooks(t_game *game);
 void			game_loop(t_game *game);
 void			setup_init(t_game *game);
@@ -188,11 +188,12 @@ void			map_array_printer(char **array, char *array_name);
 void			map_printer(t_map *map);
 
 bool			map_boundaries_validation_manager(t_map *map);
+bool			create_boundary_markers(t_map *map);
 bool			is_map_closed(t_map *map, char **padded_map);
 bool			is_position_valid(t_map *map, char **padded_map,
 					int map_y, int map_x);
 void			flood_fill_it(char **map, int x, int y, t_flood_dim *dim);
-void			alloc_error_exit(char **matrix, char *str);
+void			alloc_error_msg(char **matrix, char *str);
 char			**create_padded_map_at_bottom(t_map *map, char **padded_map);
 char			**create_padded_map_at_middle(t_map *map, char **padded_map);
 void			copy_map_data_and_fill_spaces(t_map *map, char **padded_map,

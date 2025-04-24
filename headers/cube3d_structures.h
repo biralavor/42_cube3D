@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 16:35:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:42:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 typedef struct s_map
 {
 	char	**gamemap;
+	char	**boundary_map;
 	char	**ggraph;
 	char	**colors;
 	char	*buffer;
