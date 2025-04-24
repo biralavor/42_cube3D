@@ -16,7 +16,7 @@ bool	map_validation_manager(char **av, t_map *map)
 {
 	if (map_file_manager(av, map)
 		&& map_player_manager(map)
-		// && no_garbage_manager(map)
+		&& no_garbage_manager(map)
 		&& closed_wall_manager(map)
 		&& texture_path_manager(map)
 		&& map_colors_manager(map))
