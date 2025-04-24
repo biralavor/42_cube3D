@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   map_array_printer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umeneses <umenses@student.42.fr>           +#+  +:+       +#+        */
+/*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:14:30 by umeneses          #+#    #+#             */
-/*   Updated: 2025/02/13 17:01:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:26:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void	inside_array_content_printer(char **array, int y_id, int x_id);
+static void	inside_array_content_printer(char **array, int y_id);
 
 void	map_array_printer(char **array, char *array_name)
 {
 	int	y_id;
-	int	x_id;
 
 	y_id = 0;
-	x_id = 0;
 	ft_printf(YEL"\\ Printing Array from: "CYA"   %s\n", array_name);
 	while (array[y_id])
 	{
@@ -30,16 +28,24 @@ void	map_array_printer(char **array, char *array_name)
 			ft_printf(PUR"\\0\n");
 			break ;
 		}
-		inside_array_content_printer(array, y_id, x_id);
+		inside_array_content_printer(array, y_id);
 		ft_printf(RESET"\n");
 		y_id++;
 	}
 	ft_printf(YEL"\\ End of Array Printing_______________________\n");
 }
 
-static void	inside_array_content_printer(char **array, int y_id, int x_id)
+static void	inside_array_content_printer(char **array, int y_id)
 {
-	while (array[y_id][x_id])
+	int	x_id;
+	int	max_len;
+
+	x_id = 0;
+	if (array[y_id][x_id])
+		max_len = (int)ft_strlen(array[y_id]);
+	else
+		return ;
+	while (x_id < max_len)
 	{
 		if (array[y_id][x_id] == '\0')
 			ft_printf(PUR"\\0");
