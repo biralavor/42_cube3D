@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/22 19:19:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:14:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ bool	map_validation_manager(char **av, t_map *map)
 {
 	if (map_file_manager(av, map)
 		&& map_player_manager(map)
+		// && no_garbage_manager(map)
 		&& closed_wall_manager(map)
-		&& no_garbage_manager(map)
 		&& texture_path_manager(map)
 		&& map_colors_manager(map))
 	{
@@ -51,12 +51,7 @@ bool	map_player_manager(t_map *map)
 
 bool	closed_wall_manager(t_map *map)
 {
-	char	w;
-
-	w = '1';
-	if (top_wall_finder(map->gamemap, w)
-		&& middle_wall_finder(map->gamemap, w)
-		&& bottom_wall_finder(map->gamemap, w))
+	if (map_boundaries_validation_manager(map))
 		return (true);
 	return (false);
 }

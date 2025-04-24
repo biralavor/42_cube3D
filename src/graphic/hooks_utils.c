@@ -6,11 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 17:45:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 20:09:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static int safe_get_line_height(t_game *game);
+static int safe_get_line_width(t_game *game, int row);
 
 void	handle_mouse_direction(double m_xpos, double m_ypos, void *param)
 {
@@ -33,23 +36,19 @@ void	handle_mouse_direction(double m_xpos, double m_ypos, void *param)
 	render(game);
 }
 
-void	toggle_wall_in_front(t_game *game)
+void	minicraft_effect_runner(t_game *game)
 {
 	int	front_x;
 	int	front_y;
-	int	actual_max_line_height;
-	int	actual_max_line_width;
 
-	front_x = game->player_x + game->dir_x;
-	front_y = game->player_y + game->dir_y;
-	actual_max_line_height = game->player_y;
-	actual_max_line_width = game->player_x;
-	while (game->map->gamemap[actual_max_line_height][0])
-		actual_max_line_height++;
-	while (game->map->gamemap[0][actual_max_line_width])
-		actual_max_line_width++;
-	if (front_x <= 0 || front_y <= 0 || front_x >= actual_max_line_width - 1
-		|| front_y >= actual_max_line_height - 1)
+	front_x = (int)(game->player_x + game->dir_x);
+	front_y = (int)(game->player_y + game->dir_y);
+	if (front_y <= 0 || front_y >= safe_get_line_height(game) - 1
+		|| front_y >= safe_get_line_height(game)
+		|| front_x <= 0 || front_x >= safe_get_line_width(game, front_y)
+		|| front_x >= safe_get_line_width(game, front_y) - 1
+		|| safe_get_line_width(game, front_y - 1) <= front_x
+		|| safe_get_line_width(game, front_y + 1) <= front_x)
 	{
 		printf("You can NOT modify the Boundary. Try other location!\n");
 		return ;
@@ -58,4 +57,21 @@ void	toggle_wall_in_front(t_game *game)
 		game->map->gamemap[front_y][front_x] = '1';
 	else if (game->map->gamemap[front_y][front_x] == '1')
 		game->map->gamemap[front_y][front_x] = '0';
+}
+
+static int safe_get_line_width(t_game *game, int row)
+{
+	if (row < 0 || row >= game->map->max_height || !game->map->gamemap[row])
+		return 0;
+	return ft_strlen(game->map->gamemap[row]);
+}
+
+static int safe_get_line_height(t_game *game)
+{
+	int height;
+
+	height = 0;
+	while (game->map->gamemap[height] != NULL)
+		height++;
+	return height;
 }

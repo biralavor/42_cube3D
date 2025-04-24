@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 15:00:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:43:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,7 @@ void	handle_keypress(mlx_key_data_t keydata, void *param)
 		return ;
 	}
 	else if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
-	{
-		toggle_wall_in_front(game);
-	}
+		minicraft_effect_runner(game);
 	handle_movement(keydata, game);
 	render(game);
 }
