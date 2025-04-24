@@ -75,6 +75,7 @@ SRC_FILES			+= map_validation/player_checker.c
 SRC_FILES			+= map_validation/map_flood_fill.c
 SRC_FILES			+= map_validation/map_flood_fill_utils.c
 SRC_FILES			+= map_validation/map_flood_fill_padding.c
+SRC_FILES			+= map_validation/map_boundary_manager.c
 SRC_FILES			+= clear_all.c
 SRC_FILES			+= graphic/setup_init.c
 SRC_FILES			+= graphic/raycast.c

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:36:07 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 15:59:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:14:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	map_player_manager(t_map *map)
 
 bool	closed_wall_manager(t_map *map)
 {
-	if (map_boundaries_validation(map))
+	if (map_boundaries_validation_manager(map))
 		return (true);
 	return (false);
 }
