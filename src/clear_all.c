@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:00:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 15:58:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:38:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ void	cleanup(t_game *game)
 	printf("\nLeaving the game...\n");
 }
 
-void	alloc_error_exit(char **matrix, char *str)
+void	display_alloc_error_msg(char **matrix, char *str)
 {
 	ft_free_array(matrix);
 	matrix = NULL;
-	ft_error_msg(str);
+	ft_putstr_fd(RED, STDERR_FILENO);
+	ft_putstr_fd("\n<< Error >> ", STDERR_FILENO);
+	ft_putstr_fd(str, STDERR_FILENO);
 }

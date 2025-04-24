@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:21:35 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 17:42:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:37:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ bool			is_map_closed(t_map *map, char **padded_map);
 bool			is_position_valid(t_map *map, char **padded_map,
 					int map_y, int map_x);
 void			flood_fill_it(char **map, int x, int y, t_flood_dim *dim);
-void			alloc_error_exit(char **matrix, char *str);
+void			display_alloc_error_msg(char **matrix, char *str);
 char			**create_padded_map_at_bottom(t_map *map, char **padded_map);
 char			**create_padded_map_at_middle(t_map *map, char **padded_map);
 void			copy_map_data_and_fill_spaces(t_map *map, char **padded_map,

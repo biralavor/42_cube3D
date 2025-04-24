@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 00:20:53 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/24 15:46:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:30:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	**create_padded_map_at_top(t_map *map)
 
 	padded_map = ft_calloc(map->max_height + 3, sizeof(char *));
 	if (!padded_map)
-		alloc_error_exit(padded_map, "Memory alloc failed at padded map\n");
+		display_alloc_error_msg(padded_map, "Memory alloc failed at padded map\n");
 	padded_map[map->max_height + 2] = NULL;
 	padded_map[0] = ft_calloc(map->max_width + 2, sizeof(char));
 	if (!padded_map[0])
-		alloc_error_exit(padded_map, "Memory alloc failed at padded map\n");
+		display_alloc_error_msg(padded_map, "Memory alloc failed at padded map\n");
 	ft_memset(padded_map[0], 'S', map->max_width + 1);
 	padded_map[0][map->max_width + 1] = '\0';
 	return (padded_map);
@@ -39,7 +39,7 @@ char	**create_padded_map_at_middle(t_map *map, char **padded_map)
 		actual_width = ft_strlen(map->gamemap[idx]);
 		padded_map[idx + 1] = ft_calloc(map->max_width + 2, sizeof(char));
 		if (!padded_map[idx + 1])
-			alloc_error_exit(padded_map, "Memory alloc failed at padded map\n");
+			display_alloc_error_msg(padded_map, "Memory alloc failed at padded map\n");
 		padded_map[idx + 1][0] = 'S';
 		copy_map_data_and_fill_spaces(map, padded_map, idx, actual_width);
 		padded_map[idx + 1][map->max_width + 1] = '\0';
@@ -72,7 +72,7 @@ char	**create_padded_map_at_bottom(t_map *map, char **padded_map)
 	padded_map[map->max_height + 1] = ft_calloc(map->max_width + 2,
 			sizeof(char));
 	if (!padded_map[map->max_height + 1])
-		alloc_error_exit(padded_map, "Memory alloc failed at padded map\n");
+		display_alloc_error_msg(padded_map, "Memory alloc failed at padded map\n");
 	ft_memset(padded_map[map->max_height + 1], 'S', map->max_width + 1);
 	padded_map[map->max_height + 1][map->max_width + 1] = '\0';
 	return (padded_map);
