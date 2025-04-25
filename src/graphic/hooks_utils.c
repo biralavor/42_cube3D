@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:43:16 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/24 20:35:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:11:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	handle_mouse_direction(double m_xpos, double m_ypos, void *param)
 	render(game);
 }
 
-void	minicraft_effect_runner(t_game *game)
+void	minecraft_effect_runner(t_game *game)
 {
 	int	front_x;
 	int	front_y;
