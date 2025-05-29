@@ -1,21 +1,20 @@
   # 42_cube3D
-| ![cub3de](https://github.com/user-attachments/assets/1cfe735e-9574-4941-8bcf-4694896f40b5) | This project is inspired by the world-famous Wolfenstein 3D game,<br> which was the first FPS ever, to explore ray-casting.<br> Yes, this game repository is being built with NO GAME ENGINE. |
-| :-: | :-: |
 
-  
+| ![cub3de](https://github.com/user-attachments/assets/1cfe735e-9574-4941-8bcf-4694896f40b5) | This project is inspired by the world-famous Wolfenstein 3D game,<br> which was the first FPS ever, to explore ray-casting.<br> Yes, this game repository is being built with NO GAME ENGINE. | ![image](https://github.com/user-attachments/assets/ab827357-fb0a-4231-ad82-5497928b6699) |
+| :-: | :-: | :-: |
+
+
 > [!Tip]
 > - We are building this game **without any game engine** (like Unity, Unreal Godot, etc). Instead, we are using just the **Math Library** and a **Image Controller Library** called [MXL Codam](https://github.com/codam-coding-college/MLX42)
 > - Our game will simulates a 3D environment (but it is totally 2D inside), using raycast calculations to a faster image rendering
-> - This is a **Pair-programming** project with @GioGardinali, in a **TBD** mode ([Trunk Based Development](https://trunkbaseddevelopment.com/#one-line-summary) which help us to  do small merges, in a non-stop iteration). You can follow the **Project Development** at [Github Projects](https://github.com/users/biralavor/projects/10)
+> - This is a **Pair-programming** project with [GioGardinali](https://github.com/giogardinali), in a **TBD** mode ([Trunk Based Development](https://trunkbaseddevelopment.com/#one-line-summary) which help us to  do small merges, in a non-stop iteration). You can follow the **Project Development** at [Github Projects](https://github.com/users/biralavor/projects/10)
 > - You can follow our **Automated Tests** at [GitHub Actions](https://github.com/biralavor/42_cube3D/actions)
 
-> [!WARNING]
-> **cub3d** is a WIP Project. Please check what we're doing now at [Github Projects](https://github.com/users/biralavor/projects/10)
 
 ## Here is what we have done so far:
 The majority functions of `map_validation_manager` was built in boolean type. This approach helps code maintenance and readability.
 - Map Validation Manager
-  - File Checker
+  - Map File Manager
     - Valid Extension Checker
     - Map Reader
     - Unique Definitions for Compass Points
@@ -23,13 +22,16 @@ The majority functions of `map_validation_manager` was built in boolean type. Th
   - Map Player Checker
     - Player Detected
     - Player Free To Go
-  - Closed Wall Manager
-    - Top Wall Finder
-    - Middle Wall Finder
-    - Bottom Wall Finder
-  - No Garbage Manager
-    - No Garbage at Texture
-    - No Garbage at Gamemap
+  - Map Boundaries Validation Manager
+    - Create paddad at at Top
+    - Create paddad at at Middle
+    - Create paddad at at Bottom
+    - Flood Fill it
+    - Are Sides Valid
+    - is Position Valid
+    - is Map Closed
+  - Testure Path Manager
+    - Texture Path Tester
   - Map Colors Manager
     - Color Digit Counter
     - Color Digit Quantity Checker
@@ -39,7 +41,8 @@ The majority functions of `map_validation_manager` was built in boolean type. Th
   
   This means that our $\color{BurntOrange}{Map Validation}$ is ready to go \o/
 
-![image](https://github.com/user-attachments/assets/b3675c28-1094-4b77-859a-0839f642d644)
+![image](https://github.com/user-attachments/assets/82a38c60-5c91-4649-af59-cab4f4aad049)
+
 
 ## How to run it:
 ### Cloning this repository:
@@ -78,9 +81,9 @@ make gdb
 ```
 make help
 ```
+## Watch the gameplay of Cub3D!
+[Promo-video-Cub3D.webm](https://github.com/user-attachments/assets/df27337c-82f2-44b0-815c-82c3358f46eb)
 
-> [!WARNING]
-> **cub3d** is a WIP Project. Maybe the Game isn't fully ready yet as expected. Please check our [Releases](https://github.com/biralavor/42_cube3D/releases) and what we're doing now at [Github Projects](https://github.com/users/biralavor/projects/10)
 
 
 > All 42 Badges -- the astronomer Human Coder -- were done by Larissa Cristina [@mewmewdevart](https://github.com/mewmewdevart/42Badges)
