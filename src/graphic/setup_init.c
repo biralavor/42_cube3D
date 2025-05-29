@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:22:42 by gigardin          #+#    #+#             */
-/*   Updated: 2025/04/23 13:45:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/05/29 13:08:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	setup_init_validation(t_game *game)
 		clear_all_exit_smoothly(game);
 		ft_error_msg("MLX Image initialization error\n");
 	}
-	printf("Imagem MLX criada com sucesso!\n");
 }
 
 void	setup_init(t_game *game)
