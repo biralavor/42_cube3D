@@ -1,6 +1,6 @@
   # 42_cube3D
 
-| ![cub3de](https://github.com/user-attachments/assets/1cfe735e-9574-4941-8bcf-4694896f40b5) | This project is inspired by the world-famous Wolfenstein 3D game,<br> which was the first FPS ever, to explore ray-casting.<br> Yes, this game repository is being built with NO GAME ENGINE. | ![image](https://github.com/user-attachments/assets/ab827357-fb0a-4231-ad82-5497928b6699) |
+| ![cub3de-with-bonus](https://github.com/user-attachments/assets/7b10ec95-6406-4ef8-9ba1-e7636de3e996 "Cube 3D with Bonus") | This project is inspired by the world-famous Wolfenstein 3D game,<br> which was the first FPS ever, to explore ray-casting.<br> Yes, this game repository is being built with NO GAME ENGINE. | ![image](https://github.com/user-attachments/assets/ab827357-fb0a-4231-ad82-5497928b6699) |
 | :-: | :-: | :-: |
 
 
